@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "504304444884",
+    "project_id": "lotrwiki-2dd76",
+    "storage_bucket": "lotrwiki-2dd76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504304444884:android:adc5e86e7f3a3fdaf5a241",
+        "android_client_info": {
+          "package_name": "com.example.lotrwiki"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCobmFx_jsNEbf5CeEkdugezM6rS0pe9Os"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
