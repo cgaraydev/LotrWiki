@@ -1,11 +1,8 @@
 package com.example.lotrwiki.activities
 
 import android.os.Bundle
-import android.os.Handler
-import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lotrwiki.R
 import com.example.lotrwiki.adapters.CharacterAdapter
@@ -24,7 +21,7 @@ class MainActivity : BaseActivity() {
 
         initCharacters()
         configSwipe()
-        loadAllCharacters()
+//        loadAllCharacters()
     }
 
     private fun configSwipe() {
@@ -48,14 +45,24 @@ class MainActivity : BaseActivity() {
         viewModel.loadRandomCharacters()
     }
 
-    private fun loadAllCharacters() {
-        binding.tvSeeAll.setOnClickListener {
-            viewModel.characters.observe(this, Observer {
-                binding.rvMain.layoutManager = GridLayoutManager(this, 2)
-                binding.rvMain.adapter = CharacterAdapter(it)
-            })
-            viewModel.loadCharacters()
-            binding.tvSeeAll.visibility = View.GONE
-        }
-    }
+//    private fun btnSeeAllClick() {
+//        val adapter: CharacterAdapter = CharacterAdapter()
+//        adapter.onItemClick = {
+//            val intent = Intent(this@MainActivity, DetailsActivity::class.java)
+////            intent.putExtra("character_id", it.id)
+//        }
+//
+//    }
+
+
+//    private fun loadAllCharacters() {
+//        binding.tvSeeAll.setOnClickListener {
+//            viewModel.characters.observe(this, Observer {
+//                binding.rvMain.layoutManager = GridLayoutManager(this, 2)
+//                binding.rvMain.adapter = CharacterAdapter(it)
+//            })
+//            viewModel.loadCharacters()
+//            binding.tvSeeAll.visibility = View.GONE
+//        }
+//    }
 }
