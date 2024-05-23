@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">LotrWiki</string>
     <string name="personajes">Personajes</string>
+    <string name="frodo_description_example">Frodo Baggins es un hobbit de la Comarca, conocido por su papel
+        crucial en la Guerra del Anillo. Sobrino de Bilbo Baggins, hereda el Anillo Único y es encargado de destruirlo en el Monte del Destino. A lo largo de su viaje, muestra valentía y resistencia, enfrentando grandes peligros y tentaciones. Con la ayuda de la Comunidad del Anillo, especialmente su fiel amigo Samwise Gamgee, Frodo supera innumerables obstáculos, simbolizando la lucha del bien contra el mal. Su sacrificio y determinación son fundamentales para la caída de Sauron y la restauración de la paz en la Tierra Media.</string>
 </resources>

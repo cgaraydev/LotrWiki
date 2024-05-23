@@ -38,9 +38,9 @@ class MainActivity : BaseActivity() {
 
     private fun initCharacters() {
         viewModel.characters.observe(this, Observer {
-            binding.rvMain.layoutManager =
+            binding.rvMainCharacters.layoutManager =
                 LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-            binding.rvMain.adapter = CharacterAdapter(it)
+            binding.rvMainCharacters.adapter = CharacterAdapter(it)
         })
         viewModel.loadRandomCharacters()
     }

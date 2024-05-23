@@ -22,10 +22,11 @@
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="Aragorn"
+        android:fontFamily="@font/party_business"
+        android:text="Legolas"
+        android:textColor="@color/white"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textSize="24sp" />
 
 </LinearLayout>

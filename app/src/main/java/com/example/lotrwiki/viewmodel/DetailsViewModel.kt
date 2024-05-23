@@ -1,5 +1,6 @@
 package com.example.lotrwiki.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,6 +22,7 @@ class DetailsViewModel : ViewModel() {
         ref.addListenerForSingleValueEvent(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 val character = snapshot.getValue(Character::class.java)
+                Log.d("FirebaseCharacter", character.toString())
                 _characterDetails.value = character
             }
 
