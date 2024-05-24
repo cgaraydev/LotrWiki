@@ -4,10 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.lotrwiki.model.Character
+import com.example.lotrwiki.model.Location
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.getValue
 
 class MainViewModel : ViewModel() {
 
@@ -15,6 +17,9 @@ class MainViewModel : ViewModel() {
 
     private val _characters = MutableLiveData<MutableList<Character>>()
     val characters: LiveData<MutableList<Character>> = _characters
+
+    private val _locations = MutableLiveData<MutableList<Location>>()
+    val locations: LiveData<MutableList<Location>> = _locations
 
     fun loadCharacters() {
         val ref = firebaseDatabase.getReference("characters")
@@ -29,6 +34,7 @@ class MainViewModel : ViewModel() {
                 }
                 _characters.value = charactersList.shuffled().toMutableList()
             }
+
             override fun onCancelled(error: DatabaseError) {
             }
         })
@@ -65,4 +71,23 @@ class MainViewModel : ViewModel() {
         fetchCharacters(characterIds)
     }
 
+    fun loadLocations() {
+        val ref = firebaseDatabase.getReference("locations")
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val locationsList = mutableListOf<Location>()
+                for (child in snapshot.children) {
+                    val item = child.getValue(Location::class.java)
+                    if (item != null) {
+                        locationsList.add(item)
+                    }
+                }
+                _locations.value = locationsList
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+    }
 }

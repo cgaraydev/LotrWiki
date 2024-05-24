@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lotrwiki.R
 import com.example.lotrwiki.adapters.CharacterAdapter
+import com.example.lotrwiki.adapters.LocationAdapter
 import com.example.lotrwiki.databinding.ActivityMainBinding
 import com.example.lotrwiki.viewmodel.MainViewModel
 
@@ -20,30 +21,50 @@ class MainActivity : BaseActivity() {
         setContentView(binding.root)
 
         initCharacters()
-        configSwipe()
+        initLocations()
+        initUpdate()
+//        configSwipe()
 //        loadAllCharacters()
     }
 
-    private fun configSwipe() {
-        binding.swipe.setColorSchemeResources(R.color.black, R.color.red)
-        binding.swipe.setProgressBackgroundColorSchemeColor(
-            ContextCompat.getColor(this, R.color.green)
-        )
+    private fun initLocations() {
+        val adapter = LocationAdapter()
+        binding.rvMainLocations.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvMainLocations.adapter = adapter
 
-        binding.swipe.setOnRefreshListener {
+        viewModel.locations.observe(this, Observer {
+            adapter.submitList(it)
+        })
+        viewModel.loadLocations()
+    }
+
+    private fun initUpdate() {
+        binding.ivUpdate.setOnClickListener {
             viewModel.loadRandomCharacters()
-            binding.swipe.isRefreshing = false
         }
     }
 
     private fun initCharacters() {
+        val adapter = CharacterAdapter()
+        binding.rvMainCharacters.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvMainCharacters.adapter = adapter
+
         viewModel.characters.observe(this, Observer {
-            binding.rvMainCharacters.layoutManager =
-                LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-            binding.rvMainCharacters.adapter = CharacterAdapter(it)
+            adapter.submitList(it)
         })
         viewModel.loadRandomCharacters()
     }
+
+//    private fun initCharacters() {
+//        viewModel.characters.observe(this, Observer {
+//            binding.rvMainCharacters.layoutManager =
+//                LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+//            binding.rvMainCharacters.adapter = CharacterAdapter(it)
+//        })
+//        viewModel.loadRandomCharacters()
+//    }
 
 //    private fun btnSeeAllClick() {
 //        val adapter: CharacterAdapter = CharacterAdapter()
@@ -63,6 +84,18 @@ class MainActivity : BaseActivity() {
 //            })
 //            viewModel.loadCharacters()
 //            binding.tvSeeAll.visibility = View.GONE
+//        }
+//    }
+
+    //    private fun configSwipe() {
+//        binding.swipe.setColorSchemeResources(R.color.black, R.color.red)
+//        binding.swipe.setProgressBackgroundColorSchemeColor(
+//            ContextCompat.getColor(this, R.color.green)
+//        )
+//
+//        binding.swipe.setOnRefreshListener {
+//            viewModel.loadRandomCharacters()
+//            binding.swipe.isRefreshing = false
 //        }
 //    }
 }

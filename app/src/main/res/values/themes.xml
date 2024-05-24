@@ -13,4 +13,9 @@
         <item name="strokeWidth">5dp</item>
         <item name="strokeColor">@color/white</item>
     </style>
+
+    <style name="CustomShapeAppearance1" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">15dp</item>
+    </style>
 </resources>
