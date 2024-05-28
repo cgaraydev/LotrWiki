@@ -11,6 +11,8 @@
         android:id="@+id/ivMainRvItem"
         android:layout_width="150dp"
         android:layout_height="250dp"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/white"
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars"
         app:shapeAppearanceOverlay="@style/CustomShapeAppearance"/>

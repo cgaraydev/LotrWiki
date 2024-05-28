@@ -60,6 +60,6 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
 
     //swiperefresh
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+//    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 
 }
