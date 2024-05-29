@@ -13,7 +13,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="@color/white"
+        app:strokeColor="@color/golden"
         app:strokeWidth="2dp"
         android:scaleType="fitXY"
         app:shapeAppearanceOverlay="@style/CustomShapeAppearance1"

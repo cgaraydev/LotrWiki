@@ -3,6 +3,8 @@ package com.example.lotrwiki.activities
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lotrwiki.R
@@ -24,8 +26,23 @@ class MainActivity : BaseActivity() {
         initCharacters()
         initLocations()
         initUpdate()
-//        configSwipe()
-//        loadAllCharacters()
+        initMenu()
+    }
+
+    private fun initMenu() {
+        binding.ivMenuButton.setOnClickListener {
+            if(binding.drawerLayout.isDrawerOpen(GravityCompat.END)){
+                binding.drawerLayout.closeDrawer(GravityCompat.END)
+            } else{
+                binding.drawerLayout.openDrawer(GravityCompat.END)
+            }
+        }
+        binding.ivMenuArrowForward.setOnClickListener {
+                binding.drawerLayout.closeDrawer(GravityCompat.END)
+        }
+//        binding.navView.setNavigationItemSelectedListener {
+//
+//        }
     }
 
     private fun initLocations() {
@@ -67,15 +84,6 @@ class MainActivity : BaseActivity() {
 //        viewModel.loadRandomCharacters()
 //    }
 
-//    private fun btnSeeAllClick() {
-//        val adapter: CharacterAdapter = CharacterAdapter()
-//        adapter.onItemClick = {
-//            val intent = Intent(this@MainActivity, DetailsActivity::class.java)
-////            intent.putExtra("character_id", it.id)
-//        }
-//
-//    }
-
 
 //    private fun loadAllCharacters() {
 //        binding.tvSeeAll.setOnClickListener {
@@ -85,18 +93,6 @@ class MainActivity : BaseActivity() {
 //            })
 //            viewModel.loadCharacters()
 //            binding.tvSeeAll.visibility = View.GONE
-//        }
-//    }
-
-    //    private fun configSwipe() {
-//        binding.swipe.setColorSchemeResources(R.color.black, R.color.red)
-//        binding.swipe.setProgressBackgroundColorSchemeColor(
-//            ContextCompat.getColor(this, R.color.green)
-//        )
-//
-//        binding.swipe.setOnRefreshListener {
-//            viewModel.loadRandomCharacters()
-//            binding.swipe.isRefreshing = false
 //        }
 //    }
 }

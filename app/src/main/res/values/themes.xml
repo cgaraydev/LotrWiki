@@ -16,4 +16,19 @@
         <item name="cornerFamily">cut</item>
         <item name="cornerSize">15dp</item>
     </style>
+
+    <style name="MyNavigationViewStyle" parent="Widget.Design.NavigationView">
+        <item name="android:fontFamily">@font/middle_earth</item>
+    </style>
+
+    <style name="MyNavigationViewTextAppearance" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:fontFamily">@font/middle_earth</item>
+    </style>
+
+    <style name="navigation_item_text_style">
+        <item name="android:fontFamily">@font/aniron</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>

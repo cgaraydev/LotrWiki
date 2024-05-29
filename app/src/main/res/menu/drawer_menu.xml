@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/explorar">
+        <menu>
+            <item
+                android:id="@+id/characters"
+                android:icon="@drawable/ic_characters"
+                android:title="@string/personajes" />
+            <item
+                android:id="@+id/locations"
+                android:icon="@drawable/ic_locations"
+                android:title="@string/locaciones" />
+            <item
+                android:id="@+id/weapons"
+                android:icon="@drawable/ic_weapons"
+                android:title="@string/armas" />
+            <item
+                android:id="@+id/races"
+                android:icon="@drawable/ic_race"
+                android:title="@string/razas" />
+        </menu>
+    </item>
+    <item android:title="@string/media">
+        <menu>
+            <item
+                android:id="@+id/movies"
+                android:icon="@drawable/ic_movies"
+                android:title="@string/peliculas" />
+            <item
+                android:id="@+id/books"
+                android:icon="@drawable/ic_books"
+                android:title="@string/libros" />
+            <item
+                android:id="@+id/games"
+                android:icon="@drawable/ic_games"
+                android:title="@string/juegos" />
+        </menu>
+    </item>
+    <item android:title="@string/otros">
+        <menu>
+            <item
+                android:id="@+id/tolkien"
+                android:icon="@drawable/ic_ring"
+                android:title="@string/tolkien" />
+            <item
+                android:id="@+id/maps"
+                android:icon="@drawable/ic_maps"
+                android:title="@string/mapas" />
+        </menu>
+    </item>
+</menu>

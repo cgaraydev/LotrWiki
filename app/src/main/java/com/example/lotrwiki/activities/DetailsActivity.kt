@@ -1,18 +1,11 @@
 package com.example.lotrwiki.activities
 
-import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
-import android.util.Log
 import android.view.View
-import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.lotrwiki.R
 import com.example.lotrwiki.databinding.ActivityDetailsBinding
-import com.example.lotrwiki.utils.Race
 import com.example.lotrwiki.viewmodel.DetailsViewModel
 
 class DetailsActivity : BaseActivity() {
@@ -38,9 +31,9 @@ class DetailsActivity : BaseActivity() {
         viewModel.characterDetails.observe(this, Observer { character ->
             character?.let {
                 with(binding) {
-                    val race = Race.fromString(it.race)
-                    tvDetailsName.typeface =
-                        ResourcesCompat.getFont(this@DetailsActivity, race.fontResId)
+//                    val race = Race.fromString(it.race)
+//                    tvDetailsName.typeface =
+//                        ResourcesCompat.getFont(this@DetailsActivity, race.fontResId)
                     tvDetailsName.text = it.name
                     tvDetailsRace.text = it.race
                     tvDetailsBirth.text = it.birth
@@ -59,7 +52,7 @@ class DetailsActivity : BaseActivity() {
                 val otherNamesString = it.otherNames.joinToString(", ")
                 binding.tvOtherNames.text = otherNamesString
                 Glide.with(this)
-                    .load(it.imageUrl)
+                    .load(it.poster)
                     .into(binding.ivDetailsImage)
             } ?: run {
                 binding.tvDetailsName.text = "Character not found"

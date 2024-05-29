@@ -25,7 +25,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="50dp"
         android:contentDescription="Back button"
-        android:src="@drawable/baseline_arrow_back_24"
+        android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/white" />
@@ -48,6 +48,7 @@
             android:layout_marginTop="12dp"
             android:gravity="top|center"
             android:textColor="@color/black"
+            android:fontFamily="@font/middle_earth"
             android:textSize="28sp"
             android:textStyle="bold"
             tools:text="Name" />
@@ -144,6 +145,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            android:fontFamily="@font/aniron"
+            android:textSize="12sp"
             android:text="@string/frodo_description_example"/>
 
         <ImageView

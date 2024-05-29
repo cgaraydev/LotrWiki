@@ -12,7 +12,7 @@
         android:layout_width="150dp"
         android:layout_height="250dp"
         app:strokeWidth="2dp"
-        app:strokeColor="@color/white"
+        app:strokeColor="@color/golden"
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars"
         app:shapeAppearanceOverlay="@style/CustomShapeAppearance"/>
@@ -24,7 +24,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:fontFamily="@font/party_business"
+        android:fontFamily="@font/middle_earth"
         android:text="Legolas"
         android:textColor="@color/white"
         android:ellipsize="end"

@@ -44,7 +44,7 @@ class CharacterAdapter
         holder.binding.tvMainItemName.text = item.name
 
         Glide.with(holder.itemView.context)
-            .load(item.imageUrl)
+            .load(item.poster)
             .into(holder.binding.ivMainRvItem)
 
         holder.itemView.setOnClickListener {
