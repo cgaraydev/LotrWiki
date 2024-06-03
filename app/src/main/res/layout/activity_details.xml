@@ -158,8 +158,6 @@
             android:src="@drawable/ic_down"
             app:tint="@color/black"/>
 
-
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

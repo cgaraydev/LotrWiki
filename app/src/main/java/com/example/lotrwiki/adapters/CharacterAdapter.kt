@@ -1,6 +1,7 @@
 package com.example.lotrwiki.adapters
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -41,6 +42,7 @@ class CharacterAdapter
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
         val item = differ.currentList[position]
+
         holder.binding.tvMainItemName.text = item.name
 
         Glide.with(holder.itemView.context)

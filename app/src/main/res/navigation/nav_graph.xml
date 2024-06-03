@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.lotrwiki.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_weaponsFragment"
+            app:destination="@id/weaponsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_raceFragment"
+            app:destination="@id/raceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_booksFragment"
+            app:destination="@id/booksFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_charactersFragment"
+            app:destination="@id/charactersFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_gamesFragment"
+            app:destination="@id/gamesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_locationsFragment"
+            app:destination="@id/locationsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_moviesFragment"
+            app:destination="@id/moviesFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_tolkienFragment"
+            app:destination="@id/tolkienFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/booksFragment"
+        android:name="com.example.lotrwiki.fragments.BooksFragment"
+        android:label="fragment_books"
+        tools:layout="@layout/fragment_books" />
+    <fragment
+        android:id="@+id/charactersFragment"
+        android:name="com.example.lotrwiki.fragments.CharactersFragment"
+        android:label="fragment_characters"
+        tools:layout="@layout/fragment_characters" />
+    <fragment
+        android:id="@+id/gamesFragment"
+        android:name="com.example.lotrwiki.fragments.GamesFragment"
+        android:label="fragment_games"
+        tools:layout="@layout/fragment_games" />
+    <fragment
+        android:id="@+id/locationsFragment"
+        android:name="com.example.lotrwiki.fragments.LocationsFragment"
+        android:label="fragment_locations"
+        tools:layout="@layout/fragment_locations" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.example.lotrwiki.fragments.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps" />
+    <fragment
+        android:id="@+id/moviesFragment"
+        android:name="com.example.lotrwiki.fragments.MoviesFragment"
+        android:label="fragment_movies"
+        tools:layout="@layout/fragment_movies" />
+    <fragment
+        android:id="@+id/raceFragment"
+        android:name="com.example.lotrwiki.fragments.RaceFragment"
+        android:label="fragment_race"
+        tools:layout="@layout/fragment_race" />
+    <fragment
+        android:id="@+id/tolkienFragment"
+        android:name="com.example.lotrwiki.fragments.TolkienFragment"
+        android:label="fragment_tolkien"
+        tools:layout="@layout/fragment_tolkien" />
+    <fragment
+        android:id="@+id/weaponsFragment"
+        android:name="com.example.lotrwiki.fragments.WeaponsFragment"
+        android:label="fragment_weapons"
+        tools:layout="@layout/fragment_weapons" />
+</navigation>

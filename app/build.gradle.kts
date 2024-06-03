@@ -59,6 +59,13 @@ dependencies {
     //gson
     implementation("com.google.code.gson:gson:2.10.1")
 
+    //navigation
+    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+
+    //pagination
+    implementation("androidx.paging:paging-runtime-ktx:3.1.1")
+
     //swiperefresh
 //    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 

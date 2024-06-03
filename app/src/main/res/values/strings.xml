@@ -16,4 +16,6 @@
     <string name="explorar">Explorar</string>
     <string name="arrow_forward">Arrow forward</string>
     <string name="razas">Razas</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

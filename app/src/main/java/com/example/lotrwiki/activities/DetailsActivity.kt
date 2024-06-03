@@ -1,6 +1,7 @@
 package com.example.lotrwiki.activities
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -29,6 +30,9 @@ class DetailsActivity : BaseActivity() {
 
     private fun setUpObservers() {
         viewModel.characterDetails.observe(this, Observer { character ->
+            Log.d("detailsactivity", "Character details received")
+            Log.d("detailsactivity", character.poster.toString())
+            Log.d("detailsactivity", character.toString())
             character?.let {
                 with(binding) {
 //                    val race = Race.fromString(it.race)
@@ -49,8 +53,8 @@ class DetailsActivity : BaseActivity() {
                     }
                 }
 
-                val otherNamesString = it.otherNames.joinToString(", ")
-                binding.tvOtherNames.text = otherNamesString
+                binding.tvOtherNames.text = it.otherNames
+                Log.d("detailsactivity", it.poster.toString())
                 Glide.with(this)
                     .load(it.poster)
                     .into(binding.ivDetailsImage)
