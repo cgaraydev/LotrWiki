@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/hobbiton_brush_hand"
-                android:text="LOTR Wiki"
+                android:text="Tolkien wiki"
                 android:textColor="@color/white"
                 android:textSize="54sp" />
 
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:text="Bienvenido a la Wiki del Universo Tolkien"
                 android:textColor="@color/white"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 android:gravity="center"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/aniron" />

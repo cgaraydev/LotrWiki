@@ -1,7 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-parcelize")
     id("com.google.gms.google-services")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -42,6 +44,8 @@ android {
 
 dependencies {
 
+    val navVersion = "2.7.0"
+
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.12.0")
@@ -60,11 +64,12 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
 
     //navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
-    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
     //pagination
     implementation("androidx.paging:paging-runtime-ktx:3.1.1")
+
 
     //swiperefresh
 //    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")

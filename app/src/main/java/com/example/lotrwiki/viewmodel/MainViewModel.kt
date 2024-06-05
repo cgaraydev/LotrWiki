@@ -3,6 +3,7 @@ package com.example.lotrwiki.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -26,11 +27,9 @@ class MainViewModel : ViewModel() {
     private val _quotes = MutableLiveData<String>()
     val quotes: LiveData<String> = _quotes
 
-//    private val _characters = MutableLiveData<MutableList<Character>>()
-//    val characters: LiveData<MutableList<Character>> = _characters
+    private val _characterDetails = MutableLiveData<Character?>()
+    val characterDetails: MutableLiveData<Character?> = _characterDetails
 
-//    private val _locations = MutableLiveData<MutableList<Location>>()
-//    val locations: LiveData<MutableList<Location>> = _locations
 
     val characters: Flow<PagingData<Character>> = Pager(
         config = PagingConfig(
@@ -63,6 +62,41 @@ class MainViewModel : ViewModel() {
             }
         })
     }
+
+    fun getCharacterById(id:String){
+        val ref = firebaseDatabase.getReference("characters").child(id)
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val character = snapshot.getValue(Character::class.java)
+                if (character != null) {
+                    _characterDetails.value = character
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
+    }
+
+    fun clearCharacterDetails() {
+        _characterDetails.value = null
+    }
+
+//    private val originalCharacters = mutableListOf<Character>() // Store original characters
+//
+//    fun filterCharacters(query: String): List<Character> {
+//        if (query.isEmpty()) {
+//            return originalCharacters.toList() // Return original characters if no filter
+//        } else {
+//            val filteredCharacters = originalCharacters.filter { character ->
+//                character.name?.lowercase()?.contains(query.lowercase()) ?: false
+//            }
+//            return filteredCharacters
+//        }
+//    }
+
 
 //    fun loadCharacters() {
 //        val ref = firebaseDatabase.getReference("characters")

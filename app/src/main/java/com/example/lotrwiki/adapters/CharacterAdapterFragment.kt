@@ -1,6 +1,5 @@
 package com.example.lotrwiki.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -11,14 +10,16 @@ import com.example.lotrwiki.databinding.ItemCharacterFragmentBinding
 import com.example.lotrwiki.model.Character
 
 
-class CharacterAdapterFragment :
+
+class CharacterAdapterFragment(
+    private val onItemClick: (String) -> Unit
+) :
     PagingDataAdapter<Character, CharacterAdapterFragment.CharacterFragmentViewHolder>(DIFF_CALLBACK) {
 
     inner class CharacterFragmentViewHolder(val binding: ItemCharacterFragmentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(character: Character) {
             binding.apply {
-                Log.d("characteradapterfragment", character.toString())
                 tvCharacterNameFragment.text = character.name
                 Glide.with(ivCharacterFragment.context)
                     .load(character.poster)
@@ -43,6 +44,10 @@ class CharacterAdapterFragment :
         val character = getItem(position)
         if (character != null) {
             holder.bind(character)
+            holder.itemView.setOnClickListener {
+                onItemClick(character.id.toString())
+                Glide.with(holder.itemView.context).load(character.poster).preload()
+            }
         }
     }
 

@@ -11,18 +11,13 @@ import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lotrwiki.R
-import com.example.lotrwiki.adapters.MyNewAdapter
 import com.example.lotrwiki.databinding.FragmentHomeBinding
 import com.example.lotrwiki.viewmodel.MainViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
@@ -59,7 +54,7 @@ class HomeFragment : Fragment() {
         job?.cancel()
         job = lifecycleScope.launch {
             while (isActive) {
-                delay(5000)
+                delay(7000)
                 viewModel.getRandomQuote()
             }
         }
@@ -78,13 +73,6 @@ class HomeFragment : Fragment() {
             binding.tvQuotes.setText(it)
         }
     }
-
-//    private fun initQuotes() {
-//        viewModel.getRandomQuote()
-//        viewModel.quotes.observe(viewLifecycleOwner) {
-//            binding.tvQuotes.text = it
-//        }
-//    }
 
     private fun initMenu() {
         binding.ivMenuButton.setOnClickListener {

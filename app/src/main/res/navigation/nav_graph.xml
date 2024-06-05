@@ -46,7 +46,11 @@
         android:id="@+id/charactersFragment"
         android:name="com.example.lotrwiki.fragments.CharactersFragment"
         android:label="fragment_characters"
-        tools:layout="@layout/fragment_characters" />
+        tools:layout="@layout/fragment_characters" >
+        <action
+            android:id="@+id/action_charactersFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/gamesFragment"
         android:name="com.example.lotrwiki.fragments.GamesFragment"
@@ -82,4 +86,14 @@
         android:name="com.example.lotrwiki.fragments.WeaponsFragment"
         android:label="fragment_weapons"
         tools:layout="@layout/fragment_weapons" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.example.lotrwiki.fragments.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="characterId"
+            app:argType="string" />
+
+    </fragment>
 </navigation>

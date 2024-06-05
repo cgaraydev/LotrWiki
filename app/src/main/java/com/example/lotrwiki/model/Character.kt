@@ -1,7 +1,10 @@
 package com.example.lotrwiki.model
 
-import com.google.gson.annotations.SerializedName
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+
+@Parcelize
 data class Character(
     var id: String? = "",
     var name: String? = "",
@@ -15,4 +18,4 @@ data class Character(
     var family: String? = "",
     var culture: String? = "",
     var biography: String? = ""
-)
+) : Parcelable
