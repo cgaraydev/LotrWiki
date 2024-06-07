@@ -4,7 +4,7 @@ Esta App busca acercar a los fanaticos del mundo creado por Tolkien a informacio
 La base de datos esta construida por mi y esta ubicada en Firebase Storage
 
 
-## En desarrollo..
+# En desarrollo..
 
 
 ## Capturas
