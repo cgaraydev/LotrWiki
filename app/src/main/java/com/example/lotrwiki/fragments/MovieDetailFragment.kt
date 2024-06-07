@@ -46,9 +46,9 @@ class MovieDetailFragment : Fragment() {
                         .into(ivMovieDetailsPoster)
                     tvMovieName.text = it.title
                     tvMovieYearValue.text = it.year
-                    tvMovieDirectorValue.text = it.director
-                    tvMovieCastValue.text = it.cast
-                    tvMovieDurationValue.text = it.duration
+                    tvMovieDirectorValue.text = it.director.lowercase()
+                    tvMovieCastValue.text = it.cast.lowercase()
+                    tvMovieDurationValue.text = it.duration.lowercase()
                 }
             }
         }
