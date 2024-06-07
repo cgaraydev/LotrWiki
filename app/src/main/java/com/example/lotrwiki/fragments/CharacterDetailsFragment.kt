@@ -1,35 +1,29 @@
 package com.example.lotrwiki.fragments
 
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.bumptech.glide.request.RequestListener
-import com.example.lotrwiki.R
-import com.example.lotrwiki.databinding.FragmentDetailsBinding
+import com.example.lotrwiki.databinding.FragmentCharacterDetailsBinding
 import com.example.lotrwiki.viewmodel.MainViewModel
 
-class DetailsFragment : Fragment() {
+class CharacterDetailsFragment : Fragment() {
 
-    private lateinit var binding: FragmentDetailsBinding
+    private lateinit var binding: FragmentCharacterDetailsBinding
     private val viewModel: MainViewModel by activityViewModels()
-    private val args: DetailsFragmentArgs by navArgs()
+    private val args: CharacterDetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentDetailsBinding.inflate(layoutInflater)
+        binding = FragmentCharacterDetailsBinding.inflate(layoutInflater)
         return binding.root
     }
 
@@ -37,7 +31,12 @@ class DetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initDetails()
+        initBackButton()
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.clearCharacterDetails()
     }
 
     private fun initDetails() {
@@ -47,10 +46,10 @@ class DetailsFragment : Fragment() {
         viewModel.characterDetails.observe(viewLifecycleOwner) {
             binding.apply {
                 if (it != null) {
-                    Log.d("detailsfragment", it.otherNames.toString())
                     pbDetailsImage.visibility = View.GONE
                     tvDetailsName.text = ""
                     tvDetailsName.text = it.name
+
                     Glide.with(ivDetailsPoster.context)
                         .load(it.poster)
                         .transition(DrawableTransitionOptions.withCrossFade())
@@ -62,48 +61,31 @@ class DetailsFragment : Fragment() {
                     } else {
                         tvDetailsOtherNames.visibility = View.VISIBLE
                         tvDetailsOtherNamesValue.visibility = View.VISIBLE
-                        tvDetailsOtherNamesValue.text = it.otherNames
+                        tvDetailsOtherNamesValue.text = it.otherNames!!.lowercase()
                     }
+
                     if (it.titles.isNullOrEmpty()) {
                         tvDetailsTitles.visibility = View.GONE
                         tvDetailsTitlesValue.visibility = View.GONE
                     } else {
                         tvDetailsTitles.visibility = View.VISIBLE
                         tvDetailsTitlesValue.visibility = View.VISIBLE
-                        tvDetailsTitlesValue.text = it.titles
+                        tvDetailsTitlesValue.text = it.titles!!.lowercase()
                     }
 
-                    if (it.birth.isNullOrEmpty()){
-                        tvDetailsBirth.visibility = View.GONE
-                        tvDetailsBirthValue.visibility = View.GONE
-                        viewDetailsSeparator.visibility = View.GONE
-                    } else {
-                        tvDetailsBirth.visibility = View.VISIBLE
-                        tvDetailsBirthValue.visibility = View.VISIBLE
-                        viewDetailsSeparator.visibility = View.VISIBLE
-                        tvDetailsBirthValue.text = it.birth
-                    }
-
-                    if (it.death.isNullOrEmpty()){
-                        tvDetailsDeath.visibility = View.GONE
-                        tvDetailsDeathValue.visibility = View.GONE
-                        viewDetailsSeparator.visibility = View.GONE
-                    } else {
-                        tvDetailsDeath.visibility = View.VISIBLE
-                        tvDetailsDeathValue.visibility = View.VISIBLE
-                        viewDetailsSeparator.visibility = View.VISIBLE
-                        tvDetailsDeathValue.text = it.birth
-                    }
-
-
+                    tvDetailsBirthValue.text = it.birth?.lowercase() ?: ""
+                    tvDetailsDeathValue.text = it.death?.lowercase() ?: ""
+                    tvDetailsFamilyValue.text = it.family?.lowercase() ?: ""
+                    tvDetailsRaceValue.text = it.race?.lowercase() ?: ""
                 }
             }
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        viewModel.clearCharacterDetails()
+    private fun initBackButton() {
+        binding.ivBtnBackDetails.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
 }

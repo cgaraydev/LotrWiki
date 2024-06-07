@@ -1,5 +1,6 @@
 package com.example.lotrwiki.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,6 +14,8 @@ import androidx.paging.cachedIn
 import com.example.lotrwiki.adapters.CharactersPagingSource
 import com.example.lotrwiki.model.Character
 import com.example.lotrwiki.model.Location
+import com.example.lotrwiki.model.Map
+import com.example.lotrwiki.model.Movie
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -28,7 +31,19 @@ class MainViewModel : ViewModel() {
     val quotes: LiveData<String> = _quotes
 
     private val _characterDetails = MutableLiveData<Character?>()
-    val characterDetails: MutableLiveData<Character?> = _characterDetails
+    val characterDetails: LiveData<Character?> = _characterDetails
+
+    private val _map = MutableLiveData<List<Map>>()
+    val map: LiveData<List<Map>> = _map
+
+    private val _mapImage = MutableLiveData<String?>()
+    val mapImage: LiveData<String?> = _mapImage
+
+    private val _movieList = MutableLiveData<List<Movie>>()
+    val movieList: LiveData<List<Movie>> = _movieList
+
+    private val _movieDetails = MutableLiveData<Movie?>()
+    val movieDetails: LiveData<Movie?> = _movieDetails
 
 
     val characters: Flow<PagingData<Character>> = Pager(
@@ -63,7 +78,7 @@ class MainViewModel : ViewModel() {
         })
     }
 
-    fun getCharacterById(id:String){
+    fun getCharacterById(id: String) {
         val ref = firebaseDatabase.getReference("characters").child(id)
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -74,15 +89,83 @@ class MainViewModel : ViewModel() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-
             }
-
         })
     }
 
     fun clearCharacterDetails() {
         _characterDetails.value = null
     }
+
+    fun clearMapImage() {
+        _mapImage.value = null
+    }
+
+    fun getMaps() {
+        val ref = firebaseDatabase.getReference("maps")
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val mapsList = mutableListOf<Map>()
+                for (child in snapshot.children) {
+                    val map = child.getValue(Map::class.java)
+                    if (map != null) {
+                        mapsList.add(map)
+                    }
+                }
+                _map.value = mapsList
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("MainViewModel", "Error loading maps: ${error.message}")
+            }
+
+        })
+    }
+
+    fun getMapById(id: String) {
+        val ref = firebaseDatabase.getReference("maps").child(id)
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val map = snapshot.getValue(Map::class.java)
+                if (map != null) {
+                    _mapImage.value = map.mapUrl.toString()
+                } else {
+                    Log.d("MainViewModel", "Map is null for ID: $id")
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("MainViewModel", "Error loading map with ID: $id. Error: ${error.message}")
+            }
+        })
+    }
+
+    fun getMovieById(id: String) {
+        val ref = firebaseDatabase.getReference("movies").child(id)
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val movie = snapshot.getValue(Movie::class.java)
+                if (movie != null) {
+                    val currentList = _movieList.value?.toMutableList() ?: mutableListOf()
+                    currentList.add(movie)
+                    _movieList.value = currentList
+                    _movieDetails.value = movie
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+    }
+
+    fun initMovieList() {
+        val movieIds = listOf("0", "1", "2", "3", "4", "5", "6", "7", "8")
+        movieIds.forEach {
+            getMovieById(it)
+        }
+    }
+
 
 //    private val originalCharacters = mutableListOf<Character>() // Store original characters
 //

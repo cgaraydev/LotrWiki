@@ -70,6 +70,9 @@ dependencies {
     //pagination
     implementation("androidx.paging:paging-runtime-ktx:3.1.1")
 
+    //zoomlayout
+    implementation("com.otaliastudios:zoomlayout:1.9.0")
+
 
     //swiperefresh
 //    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")

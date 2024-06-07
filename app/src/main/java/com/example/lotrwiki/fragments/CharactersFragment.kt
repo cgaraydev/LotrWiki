@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -13,6 +14,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.lotrwiki.R
 import com.example.lotrwiki.adapters.CharacterAdapterFragment
 import com.example.lotrwiki.databinding.FragmentCharactersBinding
@@ -53,7 +55,6 @@ class CharactersFragment : Fragment() {
 
     private fun initCharactersLoad() {
         val adapter = CharacterAdapterFragment {
-            Log.d("charactersFragment", "Clicked characterId: $it")
             val action =
                 CharactersFragmentDirections.actionCharactersFragmentToDetailsFragment(characterId = it)
             findNavController().navigate(action)
@@ -61,6 +62,22 @@ class CharactersFragment : Fragment() {
         binding.rvCharactersFragment.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvCharactersFragment.adapter = adapter
 
+//        binding.rvCharactersFragment.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                super.onScrolled(recyclerView, dx, dy)
+//                if (dy > 0){
+//                    for (i in 0 until recyclerView.childCount){
+//                        val view = recyclerView.getChildAt(i)
+//                        view.startAnimation(AnimationUtils.loadAnimation(view.context, R.anim.my_slide_up))
+//                    }
+//                } else if (dy < 0){
+//                    for (i in 0 until recyclerView.childCount){
+//                        val view = recyclerView.getChildAt(i)
+//                        view.startAnimation(AnimationUtils.loadAnimation(view.context, R.anim.my_slide_down))
+//                    }
+//                }
+//            }
+//        })
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {

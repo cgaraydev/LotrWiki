@@ -2,10 +2,12 @@ package com.example.lotrwiki.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.lotrwiki.R
 import com.example.lotrwiki.databinding.ItemCharacterFragmentBinding
 import com.example.lotrwiki.model.Character
 
@@ -48,6 +50,7 @@ class CharacterAdapterFragment(
                 onItemClick(character.id.toString())
                 Glide.with(holder.itemView.context).load(character.poster).preload()
             }
+            holder.itemView.startAnimation(AnimationUtils.loadAnimation(holder.itemView.context,  R.anim.my_slide_up))
         }
     }
 

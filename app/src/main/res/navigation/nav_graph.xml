@@ -65,12 +65,20 @@
         android:id="@+id/mapsFragment"
         android:name="com.example.lotrwiki.fragments.MapsFragment"
         android:label="fragment_maps"
-        tools:layout="@layout/fragment_maps" />
+        tools:layout="@layout/fragment_maps" >
+        <action
+            android:id="@+id/action_mapsFragment_to_zoomImageFragment"
+            app:destination="@id/zoomImageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/moviesFragment"
         android:name="com.example.lotrwiki.fragments.MoviesFragment"
         android:label="fragment_movies"
-        tools:layout="@layout/fragment_movies" />
+        tools:layout="@layout/fragment_movies" >
+        <action
+            android:id="@+id/action_moviesFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/raceFragment"
         android:name="com.example.lotrwiki.fragments.RaceFragment"
@@ -88,12 +96,30 @@
         tools:layout="@layout/fragment_weapons" />
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.example.lotrwiki.fragments.DetailsFragment"
+        android:name="com.example.lotrwiki.fragments.CharacterDetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details">
+        tools:layout="@layout/fragment_character_details">
         <argument
             android:name="characterId"
             app:argType="string" />
 
+    </fragment>
+    <fragment
+        android:id="@+id/zoomImageFragment"
+        android:name="com.example.lotrwiki.fragments.ZoomImageFragment"
+        android:label="fragment_zoom_image"
+        tools:layout="@layout/fragment_zoom_image" >
+        <argument
+            android:name="mapId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.example.lotrwiki.fragments.MovieDetailFragment"
+        android:label="fragment_movie_detail"
+        tools:layout="@layout/fragment_movie_detail" >
+        <argument
+            android:name="movieId"
+            app:argType="string" />
     </fragment>
 </navigation>

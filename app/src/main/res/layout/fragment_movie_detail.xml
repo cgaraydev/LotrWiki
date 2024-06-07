@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    tools:context=".fragments.MovieDetailFragment">
+
+    <ImageView
+        android:id="@+id/ivMovieDetailsPoster"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/ivBtnBackDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/back_button"
+        android:src="@drawable/ic_back"
+        app:tint="@color/white" />
+
+    <ProgressBar
+        android:id="@+id/pbDetailsImage"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:cardCornerRadius="20dp"
+        android:elevation="4dp"
+        android:alpha="0.7"
+        android:backgroundTint="@color/black"
+        android:layout_marginBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="6dp">
+
+            <TextView
+                android:id="@+id/tvMovieName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/aniron"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:visibility="visible"
+                tools:text="la comunidad del anillo" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvMovieYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aniron"
+                    android:text="año: "
+                    android:textColor="@color/golden"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvMovieYearValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aniron"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    tools:text="2001" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvMovieDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aniron"
+                    android:text="duracion: "
+                    android:textColor="@color/golden"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvMovieDurationValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aniron"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    tools:text="150 minutos" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvMovieDirector"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aniron"
+                    android:text="director: "
+                    android:textColor="@color/golden"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvMovieDirectorValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aniron"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    tools:text="Peter Jackson" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvMovieCast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aniron"
+                    android:gravity="center"
+                    android:text="reparto: "
+                    android:textColor="@color/golden"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvMovieCastValue"
+                    android:layout_width="wrap_content"
+                    android:maxWidth="280dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aniron"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    tools:text="Elijah Wood (Frodo), Viggo Mortensen (Aragorn), Ian McKellen (Gandalf), Orlando Bloom (Legolas), Sean Astin (Sam), Dominic Monaghan (Merry Brandigamo), Billy Boyd (Pippin Took), John Rhys-Davies (Gimli), Bernard Hill (Théoden), Miranda Otto (Éowyn), Brad Dourif (Gríma), Karl Urban (Éomer), David Wenham (Faramir), Christopher Lee (Saruman), Hugo Weaving (Elrond), Cate Blanchett (Galadriel), Liv Tyler (Arwen)" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
