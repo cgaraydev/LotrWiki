@@ -1,6 +1,6 @@
 # Enciclopedia Tolkien
 
-Esta App busca acercar a los fanaticos de el mundo creado por Tolkien a informacion rapida y precisa.
+Esta App busca acercar a los fanaticos del mundo creado por Tolkien a informacion rapida y precisa.
 La base de datos esta construida por mi y esta ubicada en Firebase Storage
 
 
