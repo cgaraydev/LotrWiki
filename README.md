@@ -7,7 +7,8 @@ La base de datos esta construida por mi y esta ubicada en Firebase Storage
 ## En desarrollo..
 
 
-##Capturas
+## Capturas
+
 <p align="center">
   <img src="https://firebasestorage.googleapis.com/v0/b/lotrwiki-2dd76.appspot.com/o/screen_shot%2Fscreen_shot_1.jpg?alt=media&token=8773141d-27d2-4ac9-9f2d-419fa5ebe99c" alt="ScreenShot1" width="200"/>
   
