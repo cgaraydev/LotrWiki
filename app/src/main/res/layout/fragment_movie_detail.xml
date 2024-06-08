@@ -172,10 +172,12 @@
                 <TextView
                     android:id="@+id/tvMovieCastValue"
                     android:layout_width="wrap_content"
-                    android:maxWidth="280dp"
+                    android:maxWidth="250dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/aniron"
                     android:layout_gravity="center"
+                    android:maxLines="6"
+                    android:ellipsize="end"
                     android:gravity="center_horizontal"
                     android:textColor="@color/white"
                     android:textSize="12sp"

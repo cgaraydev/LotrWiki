@@ -73,6 +73,11 @@ dependencies {
     //zoomlayout
     implementation("com.otaliastudios:zoomlayout:1.9.0")
 
+    //dotindicator
+    implementation("com.tbuonomo:dotsindicator:5.0")
+
+
+
 
     //swiperefresh
 //    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")

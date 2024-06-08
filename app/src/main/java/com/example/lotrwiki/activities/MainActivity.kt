@@ -3,27 +3,9 @@ package com.example.lotrwiki.activities
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lotrwiki.R
-import com.example.lotrwiki.adapters.CharacterAdapter
-import com.example.lotrwiki.adapters.LocationAdapter
-import com.example.lotrwiki.adapters.MyNewAdapter
-import com.example.lotrwiki.databinding.ActivityMainBinding
 import com.example.lotrwiki.viewmodel.MainViewModel
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 
 class MainActivity : BaseActivity() {

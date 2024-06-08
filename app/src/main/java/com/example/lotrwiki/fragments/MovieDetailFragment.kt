@@ -36,6 +36,11 @@ class MovieDetailFragment : Fragment() {
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.clearMovieDetails()
+    }
+
     private fun initMovieDetails() {
         val movieId = args.movieId
         viewModel.movieDetails.observe(viewLifecycleOwner) {
@@ -58,7 +63,7 @@ class MovieDetailFragment : Fragment() {
 
     private fun initBackButton() {
         binding.ivBtnBackDetails.setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().popBackStack()
         }
     }
 

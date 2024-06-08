@@ -4,16 +4,13 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import androidx.paging.PagingSource
 import androidx.paging.cachedIn
 import com.example.lotrwiki.adapters.CharactersPagingSource
 import com.example.lotrwiki.model.Character
-import com.example.lotrwiki.model.Location
 import com.example.lotrwiki.model.Map
 import com.example.lotrwiki.model.Movie
 import com.google.firebase.database.DataSnapshot
@@ -45,7 +42,8 @@ class MainViewModel : ViewModel() {
     private val _movieDetails = MutableLiveData<Movie?>()
     val movieDetails: LiveData<Movie?> = _movieDetails
 
-
+    //CHARACTER
+    //Pagination
     val characters: Flow<PagingData<Character>> = Pager(
         config = PagingConfig(
             pageSize = 50,
@@ -55,6 +53,39 @@ class MainViewModel : ViewModel() {
     ).flow
         .cachedIn(viewModelScope)
 
+    fun getCharacterById(id: String) {
+        val ref = firebaseDatabase.getReference("characters").child(id)
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val character = snapshot.getValue(Character::class.java)
+                if (character != null) {
+                    _characterDetails.value = character
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+    }
+
+//    fun loadCharacterImages(id: String) {
+//        val ref = firebaseDatabase.getReference("characters").child(id)
+//        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//            }
+//
+//        })
+//    }
+
+    fun clearCharacterDetails() {
+        _characterDetails.value = null
+    }
+
+    // QUOTE
     fun getRandomQuote() {
         val ref = firebaseDatabase.getReference("quotes")
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -78,29 +109,7 @@ class MainViewModel : ViewModel() {
         })
     }
 
-    fun getCharacterById(id: String) {
-        val ref = firebaseDatabase.getReference("characters").child(id)
-        ref.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val character = snapshot.getValue(Character::class.java)
-                if (character != null) {
-                    _characterDetails.value = character
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-            }
-        })
-    }
-
-    fun clearCharacterDetails() {
-        _characterDetails.value = null
-    }
-
-    fun clearMapImage() {
-        _mapImage.value = null
-    }
-
+    // MAPS
     fun getMaps() {
         val ref = firebaseDatabase.getReference("maps")
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -140,6 +149,11 @@ class MainViewModel : ViewModel() {
         })
     }
 
+    fun clearMapImage() {
+        _mapImage.value = null
+    }
+
+    // MOVIE
     fun getMovieById(id: String) {
         val ref = firebaseDatabase.getReference("movies").child(id)
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -164,6 +178,10 @@ class MainViewModel : ViewModel() {
         movieIds.forEach {
             getMovieById(it)
         }
+    }
+
+    fun clearMovieDetails() {
+        _movieDetails.value = null
     }
 
 

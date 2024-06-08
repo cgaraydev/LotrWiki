@@ -8,16 +8,21 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.example.lotrwiki.adapters.ImagePagerAdapter
 import com.example.lotrwiki.databinding.FragmentCharacterDetailsBinding
 import com.example.lotrwiki.viewmodel.MainViewModel
+import com.otaliastudios.zoom.ZoomImageView
 
 class CharacterDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentCharacterDetailsBinding
     private val viewModel: MainViewModel by activityViewModels()
     private val args: CharacterDetailsFragmentArgs by navArgs()
+    private lateinit var adapter: ImagePagerAdapter
+    private lateinit var zoomImageView: ZoomImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,14 +51,13 @@ class CharacterDetailsFragment : Fragment() {
         viewModel.characterDetails.observe(viewLifecycleOwner) {
             binding.apply {
                 if (it != null) {
+                    val imageUrls = it.images
                     pbDetailsImage.visibility = View.GONE
                     tvDetailsName.text = ""
                     tvDetailsName.text = it.name
-
-                    Glide.with(ivDetailsPoster.context)
-                        .load(it.poster)
-                        .transition(DrawableTransitionOptions.withCrossFade())
-                        .into(ivDetailsPoster)
+                    adapter = ImagePagerAdapter(imageUrls)
+                    viewPager2.adapter = adapter
+                    dotIndicator.attachTo(viewPager2)
 
                     if (it.otherNames.isNullOrEmpty()) {
                         tvDetailsOtherNames.visibility = View.GONE
