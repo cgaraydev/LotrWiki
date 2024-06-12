@@ -22,13 +22,16 @@ La base de datos esta construida por mi y esta ubicada en Firebase Storage
 <ul>
   <li>Kotlin</li>
   <li>XML</li>
-  <li>navigation</li>
+  <li>Navigation</li>
   <li>MVVM</li>
   <li>Estructura Single Activity</li>
+  <li>Firebase Realtime Database y Firebase Storage</li>
   <li>Fragments</li>
   <li>Pagination</li>
   <li>ZoomLayout</li>
   <li>SafeArgs</li> 
+  <li>DiffUtil</li>
+  <li>Glide</li>
 </ul>
 
 
