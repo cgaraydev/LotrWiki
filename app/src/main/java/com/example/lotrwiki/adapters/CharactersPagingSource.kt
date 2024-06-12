@@ -1,5 +1,6 @@
 package com.example.lotrwiki.adapters
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.lotrwiki.model.Character
@@ -25,9 +26,22 @@ class CharactersPagingSource : PagingSource<Int, Character>() {
         val pageSize = params.loadSize
 
         return try {
-            val ref = firebaseDatabase.getReference("characters")
+//            val ref = firebaseDatabase.getReference("articles")
+//            val query = if (onlyFeatured) {
+//                ref.orderByChild("featured").equalTo(true).limitToFirst(pageSize)
+//            } else {
+//                ref.orderByKey().limitToFirst(pageSize)
+//            }
+//            val snapshot = query.get().await()
+//            val characters = snapshot.children.mapNotNull { it.getValue(Character::class.java) }
+
+            val ref = firebaseDatabase.getReference("articles")
             val snapshot = ref.orderByKey().limitToFirst(pageSize).get().await()
             val characters = snapshot.children.mapNotNull { it.getValue(Character::class.java) }
+
+//            val snapshot = queryRef!!.limitToFirst(pageSize).get().await()
+//            val characters = snapshot.children.mapNotNull { it.getValue(Character::class.java) }
+
 
             LoadResult.Page(
                 data = characters,
@@ -35,6 +49,7 @@ class CharactersPagingSource : PagingSource<Int, Character>() {
                 nextKey = if (characters.size == pageSize) currentPage + 1 else null
             )
         } catch (e: Exception) {
+            Log.e("CharactersPagingSource", "Error loading characters", e)
             LoadResult.Error(e)
         }
     }

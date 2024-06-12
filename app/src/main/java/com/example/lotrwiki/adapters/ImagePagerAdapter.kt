@@ -28,7 +28,4 @@ class ImagePagerAdapter(
             .into(holder.binding.ivItemDetails)
     }
 
-
-
-
 }

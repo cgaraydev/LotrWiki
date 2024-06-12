@@ -42,10 +42,10 @@ class MapsFragment : Fragment() {
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rvMapsFragment.adapter = adapter
         Log.d("MapsFragment", "RecyclerView initialized")
-        viewModel.map.observe(viewLifecycleOwner, Observer {
+        viewModel.mapList.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
         })
-        viewModel.getMaps()
+        viewModel.getMapList()
     }
 
     private fun initBackButton() {

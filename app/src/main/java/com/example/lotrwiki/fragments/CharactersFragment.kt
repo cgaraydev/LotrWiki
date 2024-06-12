@@ -1,6 +1,7 @@
 package com.example.lotrwiki.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.lotrwiki.adapters.CharacterAdapter
 import com.example.lotrwiki.databinding.FragmentCharactersBinding
@@ -21,24 +23,57 @@ class CharactersFragment : Fragment() {
 
     private val viewModel: MainViewModel by activityViewModels()
     private lateinit var binding: FragmentCharactersBinding
-//    private var currentQuery: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCharactersBinding.inflate(layoutInflater)
-
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initCharactersLoad()
         initBackButton()
-//        initFabSearch()
+    }
+
+    private fun initCharactersLoad() {
+        val adapter = CharacterAdapter {
+            val action =
+                CharactersFragmentDirections.actionCharactersFragmentToDetailsFragment(
+                    characterId = it
+                )
+            findNavController().navigate(action)
+        }
+        binding.rvCharactersFragment.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.rvCharactersFragment.adapter = adapter
+        viewLifecycleOwner.lifecycleScope.launch {
+            adapter.loadStateFlow.collectLatest {
+                when (it.refresh) {
+                    is LoadState.Loading -> {
+                        binding.pbCharacters.visibility = View.VISIBLE
+                    }
+
+                    is LoadState.NotLoading -> {
+                        binding.pbCharacters.visibility = View.GONE
+                    }
+
+                    is LoadState.Error -> {
+                        binding.pbCharacters.visibility = View.GONE
+                    }
+                }
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.characters.collectLatest {
+                    adapter.submitData(it)
+                }
+            }
+
+        }
     }
 
     private fun initBackButton() {
@@ -47,54 +82,101 @@ class CharactersFragment : Fragment() {
         }
     }
 
-    private fun initCharactersLoad() {
-        val adapter = CharacterAdapter {
-            val action =
-                CharactersFragmentDirections.actionCharactersFragmentToDetailsFragment(characterId = it)
-            findNavController().navigate(action)
-        }
-        binding.rvCharactersFragment.layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.rvCharactersFragment.adapter = adapter
-
-//        binding.rvCharactersFragment.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-//                super.onScrolled(recyclerView, dx, dy)
-//                if (dy > 0){
-//                    for (i in 0 until recyclerView.childCount){
-//                        val view = recyclerView.getChildAt(i)
-//                        view.startAnimation(AnimationUtils.loadAnimation(view.context, R.anim.my_slide_up))
+    //    private fun initCharactersFiltered() {
+//        val adapter = CharacterAdapter {
+//            val action =
+//                CharactersFragmentDirections.actionCharactersFragmentToDetailsFragment(
+//                    characterId = it
+//                )
+//            findNavController().navigate(action)
+//        }
+//        binding.rvCharactersFragment.layoutManager = GridLayoutManager(requireContext(), 2)
+//        binding.rvCharactersFragment.adapter = adapter
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            adapter.loadStateFlow.collectLatest {
+//                when (it.refresh) {
+//                    is LoadState.Loading -> {
+//                        binding.pbCharacters.visibility = View.VISIBLE
 //                    }
-//                } else if (dy < 0){
-//                    for (i in 0 until recyclerView.childCount){
-//                        val view = recyclerView.getChildAt(i)
-//                        view.startAnimation(AnimationUtils.loadAnimation(view.context, R.anim.my_slide_down))
+//
+//                    is LoadState.NotLoading -> {
+//                        binding.pbCharacters.visibility = View.GONE
+//                    }
+//
+//                    is LoadState.Error -> {
+//                        binding.pbCharacters.visibility = View.GONE
 //                    }
 //                }
 //            }
-//        })
+//
+//        }
 
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.characters.collectLatest {
-                    adapter.submitData(it)
-                }
-            }
-        }
-    }
-
-//    override fun onFilter(query: String) {
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                viewModel.characters.observe(viewLifecycleOwner) {
+//                    adapter.submitData(viewLifecycleOwner.lifecycle, it)
+//                }
+//                viewModel.filterCharacters("faction", "evil")
+//            }
+//        }
+//
 //
 //    }
 
-//    override fun onFilter(query: String) {
-//        viewModel.filterCharacters(query)
-//    }
-
-    //    private fun initFabSearch() {
-//        binding.fabCharacterFragment.setOnClickListener {
-//            showFilterDialog()
+//    private fun initCharactersLoad() {
+//        val adapter = CharacterAdapter {
+//            val action =
+//                CharactersFragmentDirections.actionCharactersFragmentToDetailsFragment(
+//                    characterId = it
+//                )
+//            findNavController().navigate(action)
+//        }
+//        binding.rvCharactersFragment.layoutManager = GridLayoutManager(requireContext(),2)
+//        binding.rvCharactersFragment.adapter = adapter
+//
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            adapter.loadStateFlow.collectLatest {
+//                when(it.refresh){
+//                    is LoadState.Loading -> {
+//                        binding.pbCharacters.visibility = View.VISIBLE
+//                    }
+//                    is LoadState.NotLoading -> {
+//                        binding.pbCharacters.visibility = View.GONE
+//                    }
+//                    is LoadState.Error -> {
+//                        binding.pbCharacters.visibility = View.GONE
+//                    }
+//                }
+//            }
+//        }
+//        if (showAll){
+//            viewLifecycleOwner.lifecycleScope.launch {
+//                repeatOnLifecycle(Lifecycle.State.STARTED){
+//                    viewModel.charactersFlow.collectLatest {
+//                        adapter.submitData(it)
+//                    }
+//                }
+//            }
+//        } else {
+//            viewModel.filterCharacters("faction", "evil")
 //        }
 //    }
+
+
+    //        val adapter = CharacterAdapter {
+//            val action =
+//                CharactersFragmentDirections.actionCharactersFragmentToDetailsFragment(characterId = it)
+//            findNavController().navigate(action)
+//        }
+//        binding.rvCharactersFragment.layoutManager = GridLayoutManager(requireContext(), 2)
+//        binding.rvCharactersFragment.adapter = adapter
+//        viewModel.characters.observe(viewLifecycleOwner){
+//            Log.d("CharactersFragment", "Characters observed: ${it.toString()}")
+//            adapter.submitData(viewLifecycleOwner.lifecycle, it)
+//        }
+
+//        viewModel.filterCharacters("race", "Hobbits")
+
 
 //    private fun updateCharacters(filteredData: List<Character>) {
 //        val adapter = binding.rvCharactersFragment.adapter as CharacterAdapterFragment

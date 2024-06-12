@@ -13,6 +13,7 @@ import com.example.lotrwiki.adapters.CharactersPagingSource
 import com.example.lotrwiki.model.Character
 import com.example.lotrwiki.model.Map
 import com.example.lotrwiki.model.Movie
+import com.example.lotrwiki.model.Race
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -30,8 +31,8 @@ class MainViewModel : ViewModel() {
     private val _characterDetails = MutableLiveData<Character?>()
     val characterDetails: LiveData<Character?> = _characterDetails
 
-    private val _map = MutableLiveData<List<Map>>()
-    val map: LiveData<List<Map>> = _map
+    private val _mapList = MutableLiveData<List<Map>>()
+    val mapList: LiveData<List<Map>> = _mapList
 
     private val _mapImage = MutableLiveData<String?>()
     val mapImage: LiveData<String?> = _mapImage
@@ -41,6 +42,12 @@ class MainViewModel : ViewModel() {
 
     private val _movieDetails = MutableLiveData<Movie?>()
     val movieDetails: LiveData<Movie?> = _movieDetails
+
+    private val _raceList = MutableLiveData<List<Race>>()
+    val raceList: LiveData<List<Race>> = _raceList
+
+    private val _raceDetails = MutableLiveData<Race?>()
+    val raceDetails: LiveData<Race?> = _raceDetails
 
     //CHARACTER
     //Pagination
@@ -53,8 +60,74 @@ class MainViewModel : ViewModel() {
     ).flow
         .cachedIn(viewModelScope)
 
+
+//    fun loadAllCharacters() {
+//        val queryRef = firebaseDatabase.getReference("articles")
+//        val charactersFlow = Pager(
+//            config = PagingConfig(
+//                pageSize = 50,
+//                enablePlaceholders = false
+//            ),
+//            pagingSourceFactory = { CharactersPagingSource(queryRef) }
+//        ).flow
+//            .cachedIn(viewModelScope)
+//        viewModelScope.launch {
+//            charactersFlow.collect {
+//                _characters.postValue(it)
+//            }
+//        }
+//    }
+
+//    fun filterCharacters(filterField: String, filterValue: String) {
+//        val queryRef = firebaseDatabase.getReference("articles").orderByChild(filterField)
+//            .equalTo(filterValue)
+//        val filteredCharactersFlow = Pager(
+//            config = PagingConfig(
+//                pageSize = 50,
+//                enablePlaceholders = false
+//            ),
+//            pagingSourceFactory = { CharactersPagingSource(queryRef) }
+//        ).flow
+//            .cachedIn(viewModelScope)
+//        viewModelScope.launch {
+//            filteredCharactersFlow.collectLatest {
+//                _characters.postValue(it)
+//            }
+//        }
+//    }
+
+
+//    val charactersFlow: Flow<PagingData<Character>> = Pager(
+//        config = PagingConfig(
+//            pageSize = 50,
+//            enablePlaceholders = false
+//        ),
+//        pagingSourceFactory = { CharactersPagingSource() }
+//    ).flow
+//        .cachedIn(viewModelScope)
+//
+//    fun filterCharacters(filterField: String, filterValue: String) {
+//        Log.d("MainViewModel", "Filtering characters by $filterField: $filterValue")
+//        val queryRef = firebaseDatabase.getReference("articles").orderByChild(filterField)
+//            .equalTo(filterValue)
+//        val charactersFlow = Pager(
+//            config = PagingConfig(
+//                pageSize = 50,
+//                enablePlaceholders = false
+//            ),
+//            pagingSourceFactory = { CharactersPagingSource(queryRef) }
+//        ).flow
+//            .cachedIn(viewModelScope)
+//        viewModelScope.launch {
+//            charactersFlow.collect {
+//                Log.d("MainViewModel", "Characters loaded: $it")
+//                _characters.postValue(it)
+//            }
+//        }
+//    }
+
     fun getCharacterById(id: String) {
-        val ref = firebaseDatabase.getReference("characters").child(id)
+        val ref = firebaseDatabase.getReference("articles").child(id)
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val character = snapshot.getValue(Character::class.java)
@@ -110,7 +183,7 @@ class MainViewModel : ViewModel() {
     }
 
     // MAPS
-    fun getMaps() {
+    fun getMapList() {
         val ref = firebaseDatabase.getReference("maps")
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -121,7 +194,7 @@ class MainViewModel : ViewModel() {
                         mapsList.add(map)
                     }
                 }
-                _map.value = mapsList
+                _mapList.value = mapsList
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -182,6 +255,53 @@ class MainViewModel : ViewModel() {
 
     fun clearMovieDetails() {
         _movieDetails.value = null
+    }
+
+    //RACES
+    fun getRaceList() {
+        val ref = firebaseDatabase.getReference("races")
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val raceList = mutableListOf<Race>()
+                for (child in snapshot.children) {
+                    val race = child.getValue(Race::class.java)
+                    if (race != null) {
+                        raceList.add(race)
+                    }
+//                    val raceImage = child.child("image").getValue(String::class.java)
+//                    val raceText = child.child("name").getValue(String::class.java)
+//                    val raceId = child.child("id").getValue(String::class.java)
+//                    val raceDescription = child.child("description").getValue(String::class.java)
+//                    raceList.add(Race(raceImage, raceText, raceId, raceDescription))
+                }
+                _raceList.value = raceList
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("MainViewModel", "Error loading raceList: ${error.message}")
+
+            }
+
+        })
+
+    }
+
+    fun getRaceDetailsById(id: String) {
+        Log.d("RaceViewModel", "Fetching race details for ID: $id")
+        val ref = firebaseDatabase.getReference("races").child(id)
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val race = snapshot.getValue(Race::class.java)
+                if (race != null) {
+                    _raceDetails.value = race
+                    Log.d("RaceViewModel", "Lista de razas antes de la navegación: $raceList")
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
     }
 
 

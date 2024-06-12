@@ -83,7 +83,11 @@
         android:id="@+id/raceFragment"
         android:name="com.example.lotrwiki.fragments.RaceFragment"
         android:label="fragment_race"
-        tools:layout="@layout/fragment_race" />
+        tools:layout="@layout/fragment_race" >
+        <action
+            android:id="@+id/actionRaceFragmentToRaceDetailsFragment"
+            app:destination="@id/raceDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/tolkienFragment"
         android:name="com.example.lotrwiki.fragments.TolkienFragment"
@@ -106,7 +110,7 @@
     </fragment>
     <fragment
         android:id="@+id/zoomImageFragment"
-        android:name="com.example.lotrwiki.fragments.ZoomImageFragment"
+        android:name="com.example.lotrwiki.fragments.MapZoomFragment"
         android:label="fragment_zoom_image"
         tools:layout="@layout/fragment_zoom_image" >
         <argument
@@ -120,6 +124,15 @@
         tools:layout="@layout/fragment_movie_detail" >
         <argument
             android:name="movieId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/raceDetailsFragment"
+        android:name="com.example.lotrwiki.fragments.RaceDetailsFragment"
+        android:label="fragment_race_details"
+        tools:layout="@layout/fragment_race_details" >
+        <argument
+            android:name="id"
             app:argType="string" />
     </fragment>
 </navigation>

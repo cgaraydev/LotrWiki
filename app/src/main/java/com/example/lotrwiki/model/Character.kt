@@ -18,5 +18,7 @@ data class Character(
     var family: String? = "desconocido",
     var culture: String? = "",
     var biography: String? = "",
-    var images: List<String> = emptyList()
+    var images: List<String> = emptyList(),
+    var faction: String? = "",
+    var featured: Boolean = false
 ) : Parcelable

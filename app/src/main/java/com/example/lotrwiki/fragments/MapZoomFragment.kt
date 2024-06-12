@@ -7,20 +7,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
-import com.example.lotrwiki.R
 import com.example.lotrwiki.databinding.FragmentZoomImageBinding
-import com.example.lotrwiki.databinding.MapItemBinding
 import com.example.lotrwiki.viewmodel.MainViewModel
 
 
-class ZoomImageFragment : Fragment() {
+class MapZoomFragment : Fragment() {
 
     private lateinit var binding: FragmentZoomImageBinding
-    private val args: ZoomImageFragmentArgs by navArgs()
+    private val args: MapZoomFragmentArgs by navArgs()
     private val viewModel: MainViewModel by activityViewModels()
 
 
