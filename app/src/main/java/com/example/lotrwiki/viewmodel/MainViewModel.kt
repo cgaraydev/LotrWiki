@@ -304,6 +304,10 @@ class MainViewModel : ViewModel() {
         })
     }
 
+    fun clearRaceDetails() {
+        _raceDetails.value = null
+    }
+
 
 //    private val originalCharacters = mutableListOf<Character>() // Store original characters
 //

@@ -34,7 +34,14 @@ class RaceFragment : Fragment() {
 //            findNavController().navigate(R.id.actionRaceFragmentToRaceDetailsFragment)
 //        }
         initRaces()
+        initBackButton()
 //        viewModel.getRaces()
+    }
+
+    private fun initBackButton() {
+        binding.ivBtnBackDetails.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun initRaces() {

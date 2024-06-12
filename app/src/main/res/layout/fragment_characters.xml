@@ -62,7 +62,6 @@
                 android:layout_height="wrap_content"
                 tools:listitem="@layout/item_character_fragment" />
 
-
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>

@@ -1,15 +1,14 @@
 package com.example.lotrwiki.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.lotrwiki.R
-import com.example.lotrwiki.databinding.FragmentRaceBinding
+import com.bumptech.glide.Glide
 import com.example.lotrwiki.databinding.FragmentRaceDetailsBinding
 import com.example.lotrwiki.viewmodel.MainViewModel
 
@@ -32,20 +31,38 @@ class RaceDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initRaceDetails()
+        initBackButton()
 
     }
 
+    private fun initBackButton() {
+        binding.ivBtnBackDetails.setOnClickListener {
+            findNavController().navigateUp()
+        }
+    }
+
     private fun initRaceDetails() {
+        binding.pbRaceDetails.visibility = View.VISIBLE
         val raceId = args.id
-        viewModel.raceDetails.observe(viewLifecycleOwner){
+        viewModel.raceDetails.observe(viewLifecycleOwner) {
             binding.apply {
                 if (it != null) {
+                    pbRaceDetails.visibility = View.GONE
+                    Glide.with(requireContext()).load(it.image).into(ivRaceDetailsImage)
+                    Glide.with(requireContext()).load(it.image3).into(ivRaceDetails1)
+                    Glide.with(requireContext()).load(it.image2).into(ivRaceDetails2)
                     tvRaceDetailsTitle.text = it.name
-                    tvRaceDetailsDescription1.text = it.description
+                    tvRaceDetailsIntroduction.text = it.introduction
+                    tvRaceDetailsBody1.text = it.body1
+                    tvRaceDetailsBody2.text = it.body2
                 }
             }
-
         }
         viewModel.getRaceDetailsById(raceId)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.clearRaceDetails()
     }
 }

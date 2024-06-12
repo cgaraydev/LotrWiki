@@ -1,12 +1,12 @@
 package com.example.lotrwiki.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-
 data class Race(
     var image: String? = "",
     var name: String? = "",
     var id: String? = "",
-    var description: String? = "",
-
+    var introduction: String? = "",
+    var body1: String? = "",
+    var body2: String? = "",
+    var image3: String? = "",
+    var image2: String? = ""
 )
