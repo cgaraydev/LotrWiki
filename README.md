@@ -33,7 +33,6 @@ The database is built by me and is located in Firebase Storage
   <li>Firebase Realtime Database y Firebase Storage</li>
   <li>Fragments</li>
   <li>Pagination</li>
-  <li>ZoomLayout</li>
   <li>SafeArgs</li> 
   <li>DiffUtil</li>
   <li>Glide</li>
