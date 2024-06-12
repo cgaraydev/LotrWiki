@@ -1,7 +1,7 @@
 # Enciclopedia Tolkien
 
-Esta App busca acercar a los fanaticos del mundo creado por Tolkien a informacion rapida y precisa.
-La base de datos esta construida por mi y esta ubicada en Firebase Storage
+Esta app busca acercar a los fanáticos del mundo creado por Tolkien a información rápida y precisa.
+La base de datos está construida por mí y está ubicada en Firebase Storage
 
 
 ### En desarrollo..
@@ -32,6 +32,9 @@ La base de datos esta construida por mi y esta ubicada en Firebase Storage
   <li>SafeArgs</li> 
   <li>DiffUtil</li>
   <li>Glide</li>
+  <li>ViewPager2</li>
+  <li>DotIndicator</li>
+  <li>ZoomImageView</li>
 </ul>
 
 
