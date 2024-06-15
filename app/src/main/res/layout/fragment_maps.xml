@@ -11,9 +11,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
         android:orientation="horizontal"
-        android:paddingHorizontal="16dp"
+        android:layout_marginTop="16dp"
         tools:ignore="UseCompoundDrawables">
 
         <TextView
@@ -32,6 +31,7 @@
             android:id="@+id/ivBtnBackMaps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
             android:contentDescription="@string/back_button"
             android:src="@drawable/ic_back"
             app:tint="@color/white" />

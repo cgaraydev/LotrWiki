@@ -42,6 +42,7 @@ class HomeFragment : Fragment() {
         initMenu()
         initQuotes()
         initChangingQuotes()
+        viewModel.getRandomQuote()
     }
 
 

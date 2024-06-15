@@ -8,6 +8,36 @@
     android:orientation="vertical"
     tools:context=".fragments.CharacterDetailsFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        tools:ignore="UseCompoundDrawables">
+
+        <TextView
+            android:id="@+id/tvDetailsName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/aniron"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="Frodo Bolson" />
+
+        <ImageView
+            android:id="@+id/ivBtnBackDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/back_button"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -17,54 +47,23 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
-                android:orientation="horizontal"
-                android:paddingHorizontal="16dp"
-                tools:ignore="UseCompoundDrawables">
-
-                <TextView
-                    android:id="@+id/tvDetailsName"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/aniron"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    tools:text="Frodo Bolson" />
-
-                <ImageView
-                    android:id="@+id/ivBtnBackDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:contentDescription="@string/back_button"
-                    android:src="@drawable/ic_back"
-                    app:tint="@color/white" />
-
-            </LinearLayout>
-
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPager2"
-                android:layout_marginHorizontal="4dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="4dp" />
 
             <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
                 android:id="@+id/dotIndicator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="6dp"
-                app:selectedDotColor="@color/golden"
+                android:layout_marginBottom="6dp"
+                app:dotsColor="@color/white"
                 app:dotsSize="6dp"
                 app:dotsSpacing="2dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="6dp"
-                app:dotsColor="@color/white"/>
+                app:selectedDotColor="@color/golden" />
 
             <ProgressBar
                 android:id="@+id/pbDetailsImage"
@@ -229,9 +228,10 @@
                     tools:text="Rosita Coto (esposa), Elanor, Frodo, Rosa, Merry, Pippin, Rizos de Oro, Hamfast, Margarita, Prímula, Bilbo, Rubí, Robin, Tom (hijos)" />
 
             </LinearLayout>
-
         </LinearLayout>
 
+
     </androidx.core.widget.NestedScrollView>
+
 
 </LinearLayout>
