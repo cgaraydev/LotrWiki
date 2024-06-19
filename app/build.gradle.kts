@@ -76,8 +76,8 @@ dependencies {
     //dotindicator
     implementation("com.tbuonomo:dotsindicator:5.0")
 
-
-
+    //youtube
+    implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
 
 
 

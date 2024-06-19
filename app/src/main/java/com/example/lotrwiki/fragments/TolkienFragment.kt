@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.lotrwiki.R
 import com.example.lotrwiki.databinding.FragmentTolkienBinding
 
 class TolkienFragment : Fragment() {
@@ -45,7 +46,7 @@ class TolkienFragment : Fragment() {
                 startActivity(intent)
             }
             ivBtnBackBiography.setOnClickListener {
-                findNavController().navigateUp()
+                findNavController().navigate(R.id.action_global_homeFragment)
             }
         }
     }

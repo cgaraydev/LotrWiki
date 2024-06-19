@@ -20,11 +20,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/aniron"
+            android:fontFamily="@font/ring_bearer_medium"
             android:gravity="center"
             android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
+            android:textSize="28sp"
             tools:text="Frodo Bolson" />
 
         <ImageView
@@ -76,21 +75,21 @@
                 android:id="@+id/tvDetailsOtherNames"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aniron"
+                android:fontFamily="@font/ring_bearer_medium"
                 android:gravity="center"
                 android:text="otros nombres :"
                 android:textColor="@color/golden"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:visibility="visible" />
 
             <TextView
                 android:id="@+id/tvDetailsOtherNamesValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aniron"
+                android:fontFamily="@font/ring_bearer_medium"
                 android:gravity="center"
                 android:textColor="@color/white"
-                android:textSize="13sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:visibility="visible"
                 tools:text="portador del anillo" />
@@ -99,21 +98,21 @@
                 android:id="@+id/tvDetailsTitles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aniron"
+                android:fontFamily="@font/ring_bearer_medium"
                 android:gravity="center_horizontal"
                 android:text="titulos:"
                 android:textColor="@color/golden"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:visibility="visible" />
 
             <TextView
                 android:id="@+id/tvDetailsTitlesValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aniron"
+                android:fontFamily="@font/ring_bearer_medium"
                 android:gravity="center_horizontal"
                 android:textColor="@color/white"
-                android:textSize="13sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:visibility="visible"
                 tools:text="portador del anillo" />
@@ -129,19 +128,19 @@
                     android:id="@+id/tvDetailsRace"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:text="raza: "
                     android:textColor="@color/golden"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvDetailsRaceValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:gravity="center_horizontal"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:text="Hobbits" />
 
             </LinearLayout>
@@ -156,19 +155,19 @@
                     android:id="@+id/tvDetailsBirth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:text="nacimiento: "
                     android:textColor="@color/golden"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvDetailsBirthValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:gravity="center_horizontal"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:text="2489-te" />
 
             </LinearLayout>
@@ -183,20 +182,20 @@
                     android:id="@+id/tvDetailsDeath"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:text="muerte: "
                     android:textColor="@color/golden"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvDetailsDeathValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:gravity="center_horizontal"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:text="2489-te" />
 
             </LinearLayout>
@@ -211,20 +210,20 @@
                     android:id="@+id/tvDetailsFamily"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:text="familia: "
                     android:textColor="@color/golden"
-                    android:textSize="12sp" />
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/tvDetailsFamilyValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:gravity="start"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     tools:text="Rosita Coto (esposa), Elanor, Frodo, Rosa, Merry, Pippin, Rizos de Oro, Hamfast, Margarita, Prímula, Bilbo, Rubí, Robin, Tom (hijos)" />
 
             </LinearLayout>

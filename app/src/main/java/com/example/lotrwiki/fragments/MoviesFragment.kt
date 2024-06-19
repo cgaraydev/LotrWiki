@@ -9,6 +9,7 @@ import android.widget.ImageView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.example.lotrwiki.R
 import com.example.lotrwiki.databinding.FragmentMoviesBinding
 import com.example.lotrwiki.model.Movie
 import com.example.lotrwiki.viewmodel.MainViewModel
@@ -47,6 +48,7 @@ class MoviesFragment : Fragment() {
                     "6" -> loadImageIntoView(it, binding.ivHobbit77)
                     "7" -> loadImageIntoView(it, binding.ivLotr78)
                     "8" -> loadImageIntoView(it, binding.ivLotr80)
+                    else -> {}
                 }
             }
         }
@@ -70,7 +72,12 @@ class MoviesFragment : Fragment() {
 
     private fun initBackButton() {
         binding.ivBtnBackMovies.setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().navigate(R.id.action_global_homeFragment)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.clearMovieDetails()
     }
 }

@@ -39,9 +39,13 @@ class MapZoomFragment : Fragment() {
     }
 
     private fun initImage() {
+        binding.progressBarZoomImage.visibility = View.VISIBLE
         val mapId = args.mapId
         viewModel.mapImage.observe(viewLifecycleOwner) {
-            Glide.with(binding.ivZoomImageMap.context).load(it).into(binding.ivZoomImageMap)
+            if (it != null) {
+                binding.progressBarZoomImage.visibility = View.GONE
+                Glide.with(binding.ivZoomImageMap.context).load(it).into(binding.ivZoomImageMap)
+            }
 //            binding.tvMapName.text =
 
         }

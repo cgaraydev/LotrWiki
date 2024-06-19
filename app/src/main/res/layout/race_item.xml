@@ -34,9 +34,10 @@
 
                 <TextView
                     android:id="@+id/tvRaceText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
+                    android:gravity="center"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:text="Elfos"
                     android:textColor="@color/white"
                     android:textSize="56sp"

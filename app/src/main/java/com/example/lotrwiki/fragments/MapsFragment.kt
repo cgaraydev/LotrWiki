@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.lotrwiki.R
 import com.example.lotrwiki.adapters.MapAdapter
 import com.example.lotrwiki.databinding.FragmentMapsBinding
 import com.example.lotrwiki.viewmodel.MainViewModel
@@ -50,7 +51,7 @@ class MapsFragment : Fragment() {
 
     private fun initBackButton() {
         binding.ivBtnBackMaps.setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().navigate(R.id.action_global_homeFragment)
         }
     }
 }

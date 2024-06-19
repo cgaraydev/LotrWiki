@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     android:orientation="vertical"
-    android:paddingTop="48dp"
     tools:context=".fragments.MoviesFragment">
 
     <LinearLayout

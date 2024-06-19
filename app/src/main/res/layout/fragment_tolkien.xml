@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:fontFamily="@font/ring_bearer_medium"
             android:text="J. R. R. Tolkien"
             android:textColor="@color/golden"
             android:textSize="28sp"
@@ -97,9 +98,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="Wikipedia"
+            android:text="wikipedia"
+            android:fontFamily="@font/ring_bearer_medium"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:drawableEndCompat="@drawable/ic_link"
             app:drawableTint="@color/golden" />
 
@@ -108,9 +110,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Tolkien Estate"
+            android:text="tolkien estate"
+            android:fontFamily="@font/ring_bearer_medium"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:drawableEndCompat="@drawable/ic_link"
             app:drawableTint="@color/golden" />
 
@@ -119,9 +122,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Lotr Wiki (en)"
+            android:text="lotr wiki (en)"
+            android:fontFamily="@font/ring_bearer_medium"
             android:textColor="@color/white"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:drawableEndCompat="@drawable/ic_link"
             app:drawableTint="@color/golden" />
 

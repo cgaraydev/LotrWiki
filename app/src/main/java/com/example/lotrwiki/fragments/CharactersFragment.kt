@@ -13,6 +13,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.lotrwiki.NavGraphDirections
+import com.example.lotrwiki.R
 import com.example.lotrwiki.adapters.CharacterAdapter
 import com.example.lotrwiki.databinding.FragmentCharactersBinding
 import com.example.lotrwiki.viewmodel.MainViewModel
@@ -37,6 +39,8 @@ class CharactersFragment : Fragment() {
         initCharactersLoad()
         initBackButton()
     }
+
+
 
     private fun initCharactersLoad() {
         val adapter = CharacterAdapter {
@@ -78,7 +82,7 @@ class CharactersFragment : Fragment() {
 
     private fun initBackButton() {
         binding.ivBtnBack.setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().navigate(R.id.action_global_homeFragment)
         }
     }
 

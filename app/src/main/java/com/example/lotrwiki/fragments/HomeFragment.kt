@@ -1,5 +1,6 @@
 package com.example.lotrwiki.fragments
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
@@ -12,8 +13,10 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.lotrwiki.R
+import com.example.lotrwiki.activities.MainActivity
 import com.example.lotrwiki.databinding.FragmentHomeBinding
 import com.example.lotrwiki.viewmodel.MainViewModel
 import kotlinx.coroutines.Job
@@ -27,6 +30,7 @@ class HomeFragment : Fragment() {
     private val viewModel: MainViewModel by activityViewModels()
     private lateinit var binding: FragmentHomeBinding
     private var job: Job? = null
+    private var menuClickListener: MenuClickListener? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,12 +41,34 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is MenuClickListener) {
+            menuClickListener = context
+        } else {
+            throw RuntimeException("$context must implement MenuClickListener")
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initMenu()
         initQuotes()
         initChangingQuotes()
         viewModel.getRandomQuote()
+//        (activity as MainActivity).showMenuHint()
+    }
+
+
+    private fun initMenu() {
+        binding.ivMenuButton.setOnClickListener {
+            menuClickListener?.onMenuClicked()
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        menuClickListener = null
     }
 
 
@@ -75,71 +101,76 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun initMenu() {
-        binding.ivMenuButton.setOnClickListener {
-            if (binding.drawerLayout.isDrawerOpen(GravityCompat.END)) {
-                binding.drawerLayout.closeDrawer(GravityCompat.END)
-            } else {
-                binding.drawerLayout.openDrawer(GravityCompat.END)
-            }
-        }
-        binding.navView.setNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.characters -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_charactersFragment)
-                    closeDrawer()
-                    true
-                }
-
-                R.id.locations -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_locationsFragment)
-                    closeDrawer()
-                    true
-                }
-
-                R.id.movies -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_moviesFragment)
-                    closeDrawer()
-                    true
-                }
-
-                R.id.maps -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_mapsFragment)
-                    closeDrawer()
-                    true
-                }
-
-                R.id.games -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_gamesFragment)
-                    closeDrawer()
-                    true
-                }
-
-                R.id.races -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_raceFragment)
-                    closeDrawer()
-                    true
-                }
-
-                R.id.tolkien -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_tolkienFragment)
-                    closeDrawer()
-                    true
-                }
-
-                R.id.weapons -> {
-                    findNavController().navigate(R.id.action_homeFragment_to_weaponsFragment)
-                    closeDrawer()
-                    true
-                }
-
-                else -> false
-            }
-        }
+    interface MenuClickListener {
+        fun onMenuClicked()
     }
 
-    private fun closeDrawer() {
-        binding.drawerLayout.closeDrawer(GravityCompat.END)
-    }
+//    private fun initMenu() {
+//        binding.ivMenuButton.setOnClickListener {
+//            if (binding.drawerLayout.isDrawerOpen(GravityCompat.END)) {
+//                binding.drawerLayout.closeDrawer(GravityCompat.END)
+//            } else {
+//                binding.drawerLayout.openDrawer(GravityCompat.END)
+//            }
+//        }
+//        binding.navView.setNavigationItemSelectedListener {
+//            when (it.itemId) {
+//                R.id.characters -> {
+//                    findNavController().navigate(R.id.action_homeFragment_to_charactersFragment)
+//                    closeDrawer()
+//                    true
+//                }
+//
+//                R.id.locations -> {
+//                    findNavController().navigate(R.id.action_homeFragment_to_locationsFragment)
+//                    closeDrawer()
+//                    true
+//                }
+//
+//                R.id.movies -> {
+//                    findNavController().navigate(R.id.action_homeFragment_to_moviesFragment)
+//                    closeDrawer()
+//                    true
+//                }
+//
+//                R.id.maps -> {
+//                    findNavController().navigate(R.id.action_homeFragment_to_mapsFragment)
+//                    closeDrawer()
+//                    true
+//                }
+//
+//                R.id.games -> {
+//                    findNavController().navigate(R.id.action_homeFragment_to_gamesFragment)
+//                    closeDrawer()
+//                    true
+//                }
+//
+//                R.id.races -> {
+//                    findNavController().navigate(R.id.action_homeFragment_to_raceFragment)
+//                    closeDrawer()
+//                    true
+//                }
+//
+//                R.id.tolkien -> {
+//                    findNavController().navigate(R.id.action_homeFragment_to_tolkienFragment)
+//                    closeDrawer()
+//                    true
+//                }
+//
+//                R.id.weapons -> {
+//                    findNavController().navigate(R.id.action_homeFragment_to_weaponsFragment)
+//                    closeDrawer()
+//                    true
+//                }
+//
+//                else -> false
+//            }
+//        }
+//    }
+//
+//    private fun closeDrawer() {
+//        binding.drawerLayout.closeDrawer(GravityCompat.END)
+//    }
+
 
 }

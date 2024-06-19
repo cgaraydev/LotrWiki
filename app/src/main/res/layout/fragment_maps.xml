@@ -20,12 +20,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:fontFamily="@font/aniron"
-            android:gravity="center"
+            android:layout_gravity="center"
+            android:fontFamily="@font/ring_bearer_medium"
+            android:layout_marginStart="16dp"
             android:text="Mapas"
             android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="28sp"/>
 
         <ImageView
             android:id="@+id/ivBtnBackMaps"

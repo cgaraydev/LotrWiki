@@ -12,20 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingHorizontal="16dp"
         tools:ignore="UseCompoundDrawables">
 
         <TextView
             android:id="@+id/tvCharacters"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_weight="1"
-            android:fontFamily="@font/aniron"
-            android:gravity="center"
+            android:fontFamily="@font/ring_bearer_medium"
+            android:layout_gravity="center"
             android:text="@string/personajes"
             android:textColor="@color/white"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textSize="28sp" />
 
         <ImageView
             android:id="@+id/ivBtnBack"
@@ -34,6 +33,7 @@
             android:layout_gravity="center"
             android:contentDescription="@string/back_button"
             android:src="@drawable/ic_back"
+            android:layout_margin="16dp"
             app:tint="@color/white" />
 
     </LinearLayout>

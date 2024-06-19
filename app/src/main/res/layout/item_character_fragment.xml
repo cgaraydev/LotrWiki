@@ -27,22 +27,19 @@
 
         <TextView
             android:id="@+id/tvCharacterNameFragment"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginHorizontal="24dp"
             android:gravity="center"
-            android:textSize="12sp"
-            android:textStyle="bold"
+            android:paddingVertical="6dp"
+            android:textSize="16sp"
+            android:background="@color/golden"
             android:maxLines="1"
             android:ellipsize="end"
-            android:background="@drawable/white_background"
-            android:padding="4dp"
-            android:layout_marginBottom="8dp"
             android:textColor="@color/black"
-            android:fontFamily="@font/aniron"
+            android:fontFamily="@font/ring_bearer_medium"
             android:text="personaje"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.lotrwiki.R
 import com.example.lotrwiki.adapters.RaceAdapter
 import com.example.lotrwiki.databinding.FragmentRaceBinding
 import com.example.lotrwiki.viewmodel.MainViewModel
@@ -40,7 +41,7 @@ class RaceFragment : Fragment() {
 
     private fun initBackButton() {
         binding.ivBtnBackDetails.setOnClickListener {
-            findNavController().navigateUp()
+            findNavController().navigate(R.id.action_global_homeFragment)
         }
     }
 
