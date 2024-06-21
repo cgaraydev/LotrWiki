@@ -79,6 +79,9 @@ dependencies {
     //youtube
     implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0")
 
+    //expandablelayout
+    implementation("com.github.cachapa:ExpandableLayout:2.9.2")
+
 
 
     //swiperefresh

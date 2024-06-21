@@ -7,89 +7,107 @@
     android:layout_height="match_parent"
     android:background="@color/black">
 
-    <LinearLayout
-        android:id="@+id/layoutMain"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UseCompoundDrawables">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvLotrWiki"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="16dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/ring_bearer_medium"
-            android:text="Tolkien wiki"
-            android:textColor="@color/white"
-            android:textSize="48sp" />
-
-        <ImageView
-            android:id="@+id/ivMenuButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_gravity="end|center"
-            android:layout_margin="16dp"
-            android:contentDescription="Menu image"
-            android:src="@drawable/ic_menu" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutMain">
-
-        <TextView
-            android:id="@+id/tvWelcome"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="16dp"
-            android:fontFamily="@font/ring_bearer_medium"
-            android:gravity="center"
-            android:text="bienvenido a la wiki del legendarium de J.R.R. Tolkien"
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/ring_bearer_medium"
-            android:gravity="center"
-            android:text="aquí encontrarás toda la información sobre los personajes, lugares y eventos de la obra de J.R.R. Tolkien."
-            android:textColor="@color/white"
-            android:textSize="14sp" />
+            <LinearLayout
+                android:id="@+id/layoutMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UseCompoundDrawables">
 
-        <ImageView
-            android:id="@+id/ivWelcomeImage"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="16dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/lotr" />
+                <TextView
+                    android:id="@+id/tvLotrWiki"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/ring_bearer_medium"
+                    android:text="Tolkien wiki"
+                    android:textColor="@color/white"
+                    android:textSize="48sp" />
 
-        <TextSwitcher
-            android:id="@+id/tvQuotes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="16dp"
-            android:inAnimation="@anim/my_fade_in"
-            android:outAnimation="@anim/my_fade_out" />
+                <ImageView
+                    android:id="@+id/ivMenuButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="end|center"
+                    android:layout_margin="16dp"
+                    android:contentDescription="Menu image"
+                    android:src="@drawable/ic_menu" />
 
-    </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutMain">
+
+                <TextView
+                    android:id="@+id/tvWelcome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16dp"
+                    android:fontFamily="@font/ring_bearer_medium"
+                    android:gravity="center"
+                    android:text="bienvenido a la wiki del legendarium de J.R.R. Tolkien"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/ring_bearer_medium"
+                    android:gravity="center"
+                    android:text="aquí encontrarás toda la información sobre los personajes, lugares y eventos de la obra de J.R.R. Tolkien."
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/ivWelcomeImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/lotr" />
+
+                <TextSwitcher
+                    android:id="@+id/tvQuotes"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:inAnimation="@anim/my_fade_in"
+                    android:outAnimation="@anim/my_fade_out" />
+
+                <ImageView
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/logo" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

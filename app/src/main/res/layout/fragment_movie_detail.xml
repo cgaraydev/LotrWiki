@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     android:orientation="vertical"
-    tools:context=".fragments.MovieDetailFragment">
+    tools:context=".fragments.MovieDetailsFragment">
 
     <ImageView
         android:id="@+id/ivMovieDetailsPoster"
@@ -23,34 +23,34 @@
         android:id="@+id/ivBtnBackDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="16dp"
         android:contentDescription="@string/back_button"
         android:src="@drawable/ic_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/white" />
 
     <ProgressBar
         android:id="@+id/pbDetailsImage"
         android:layout_width="72dp"
         android:layout_height="72dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="gone" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:cardCornerRadius="20dp"
-        android:elevation="4dp"
+        android:layout_marginBottom="16dp"
         android:alpha="0.7"
         android:backgroundTint="@color/black"
-        android:layout_marginBottom="16dp">
+        android:elevation="4dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -62,11 +62,11 @@
                 android:id="@+id/tvMovieName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/aniron"
                 android:layout_gravity="center"
-                android:textColor="@color/white"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/ring_bearer_medium"
+                android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:visibility="visible"
@@ -82,7 +82,7 @@
                     android:id="@+id/tvMovieYear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:text="año: "
                     android:textColor="@color/golden"
                     android:textSize="12sp" />
@@ -91,7 +91,7 @@
                     android:id="@+id/tvMovieYearValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:gravity="center_horizontal"
                     android:textColor="@color/white"
                     android:textSize="12sp"
@@ -109,7 +109,7 @@
                     android:id="@+id/tvMovieDuration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:text="duracion: "
                     android:textColor="@color/golden"
                     android:textSize="12sp" />
@@ -118,7 +118,7 @@
                     android:id="@+id/tvMovieDurationValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:gravity="center_horizontal"
                     android:textColor="@color/white"
                     android:textSize="12sp"
@@ -136,7 +136,7 @@
                     android:id="@+id/tvMovieDirector"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:text="director: "
                     android:textColor="@color/golden"
                     android:textSize="12sp" />
@@ -145,7 +145,7 @@
                     android:id="@+id/tvMovieDirectorValue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:gravity="center_horizontal"
                     android:textColor="@color/white"
                     android:textSize="12sp"
@@ -163,7 +163,7 @@
                     android:id="@+id/tvMovieCast"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:gravity="center"
                     android:text="reparto: "
                     android:textColor="@color/golden"
@@ -172,13 +172,13 @@
                 <TextView
                     android:id="@+id/tvMovieCastValue"
                     android:layout_width="wrap_content"
-                    android:maxWidth="250dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/aniron"
                     android:layout_gravity="center"
-                    android:maxLines="6"
                     android:ellipsize="end"
+                    android:fontFamily="@font/ring_bearer_medium"
                     android:gravity="center_horizontal"
+                    android:maxWidth="250dp"
+                    android:maxLines="6"
                     android:textColor="@color/white"
                     android:textSize="12sp"
                     tools:text="Elijah Wood (Frodo), Viggo Mortensen (Aragorn), Ian McKellen (Gandalf), Orlando Bloom (Legolas), Sean Astin (Sam), Dominic Monaghan (Merry Brandigamo), Billy Boyd (Pippin Took), John Rhys-Davies (Gimli), Bernard Hill (Théoden), Miranda Otto (Éowyn), Brad Dourif (Gríma), Karl Urban (Éomer), David Wenham (Faramir), Christopher Lee (Saruman), Hugo Weaving (Elrond), Cate Blanchett (Galadriel), Liv Tyler (Arwen)" />

@@ -52,7 +52,10 @@ class MoviesFragment : Fragment() {
                 }
             }
         }
-        viewModel.initMovieList()
+        if (viewModel.movieList.value.isNullOrEmpty()) {
+            viewModel.getMovieList()
+        }
+
     }
 
     private fun loadImageIntoView(movie: Movie, imageView: ImageView) {

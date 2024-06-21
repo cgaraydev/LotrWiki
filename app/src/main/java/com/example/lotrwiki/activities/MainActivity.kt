@@ -1,6 +1,5 @@
 package com.example.lotrwiki.activities
 
-import android.animation.Animator
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -12,8 +11,8 @@ import android.view.Gravity
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
-import android.widget.ImageView
-import android.widget.TextView
+import android.view.WindowManager
+import android.view.animation.AnimationUtils
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -25,12 +24,11 @@ import com.example.lotrwiki.R
 import com.example.lotrwiki.databinding.ActivityMainBinding
 import com.example.lotrwiki.fragments.HomeFragment
 import com.example.lotrwiki.viewmodel.MainViewModel
-import com.google.android.material.snackbar.Snackbar
 
 
 class MainActivity : AppCompatActivity(), HomeFragment.MenuClickListener {
 
-    private val viewModel: MainViewModel by viewModels()
+    //    private val viewModel: MainViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +52,7 @@ class MainActivity : AppCompatActivity(), HomeFragment.MenuClickListener {
             }
             window.statusBarColor = Color.BLACK
         }
+
         initNav()
         initMenu()
         showMenuHint()
@@ -105,17 +104,21 @@ class MainActivity : AppCompatActivity(), HomeFragment.MenuClickListener {
         }
     }
 
-    @SuppressLint("InflateParams")
-    fun showMenuHint() {
+    private fun showMenuHint() {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
         val hasShownMenuHint = sharedPreferences.getBoolean("has_shown_menu_hint", false)
         if (!hasShownMenuHint) {
             val dialogView = layoutInflater.inflate(R.layout.dialog_menu_hint, null)
-            val dialog = AlertDialog.Builder(this).setView(dialogView).setCancelable(true).create()
+            val dialog = AlertDialog.Builder(this)
+                .setView(dialogView)
+                .setCancelable(true)
+                .create()
+
             dialog.window?.apply {
                 setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 setDimAmount(0.8f)
-
+//                addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
+//                setWindowAnimations(R.style.DialogAnimation)
             }
             val window = dialog.window
             window?.let {

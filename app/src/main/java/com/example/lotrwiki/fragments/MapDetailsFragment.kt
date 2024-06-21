@@ -14,10 +14,10 @@ import com.example.lotrwiki.databinding.FragmentZoomImageBinding
 import com.example.lotrwiki.viewmodel.MainViewModel
 
 
-class MapZoomFragment : Fragment() {
+class MapDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentZoomImageBinding
-    private val args: MapZoomFragmentArgs by navArgs()
+    private val args: MapDetailsFragmentArgs by navArgs()
     private val viewModel: MainViewModel by activityViewModels()
 
 

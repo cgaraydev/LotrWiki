@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingHorizontal="16dp"
+        android:layout_margin="16dp"
+        android:gravity="center"
         tools:ignore="UseCompoundDrawables">
 
         <TextView
@@ -23,14 +24,13 @@
             android:fontFamily="@font/ring_bearer_medium"
             android:gravity="center"
             android:textColor="@color/white"
-            android:textSize="28sp"
+            android:textSize="30sp"
             tools:text="Frodo Bolson" />
 
         <ImageView
             android:id="@+id/ivBtnBackDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:contentDescription="@string/back_button"
             android:src="@drawable/ic_back"
             app:tint="@color/white" />

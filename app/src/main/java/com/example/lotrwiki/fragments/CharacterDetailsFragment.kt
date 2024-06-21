@@ -22,7 +22,6 @@ class CharacterDetailsFragment : Fragment() {
     private val viewModel: MainViewModel by activityViewModels()
     private val args: CharacterDetailsFragmentArgs by navArgs()
     private lateinit var adapter: ImagePagerAdapter
-    private lateinit var zoomImageView: ZoomImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,7 +52,6 @@ class CharacterDetailsFragment : Fragment() {
                 if (it != null) {
                     val imageUrls = it.images
                     pbDetailsImage.visibility = View.GONE
-                    tvDetailsName.text = ""
                     tvDetailsName.text = it.name
                     adapter = ImagePagerAdapter(imageUrls)
                     viewPager2.adapter = adapter

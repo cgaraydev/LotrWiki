@@ -10,6 +10,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.lotrwiki.adapters.CharactersPagingSource
+import com.example.lotrwiki.model.Book
 import com.example.lotrwiki.model.Character
 import com.example.lotrwiki.model.Map
 import com.example.lotrwiki.model.Movie
@@ -49,6 +50,19 @@ class MainViewModel : ViewModel() {
     private val _raceDetails = MutableLiveData<Race?>()
     val raceDetails: LiveData<Race?> = _raceDetails
 
+    private val _posthumousBookList = MutableLiveData<List<Book>>()
+    val posthumousBookList: LiveData<List<Book>> = _posthumousBookList
+
+    private val _nonPosthumousBookList = MutableLiveData<List<Book>>()
+    val nonPosthumousBookList: LiveData<List<Book>> = _nonPosthumousBookList
+
+    private val _bookDetails = MutableLiveData<Book?>()
+    val bookDetails: LiveData<Book?> = _bookDetails
+
+//    init {
+//        _movieDetails.value = null
+//    }
+
     //CHARACTER
     //Pagination
     val characters: Flow<PagingData<Character>> = Pager(
@@ -60,71 +74,6 @@ class MainViewModel : ViewModel() {
     ).flow
         .cachedIn(viewModelScope)
 
-
-//    fun loadAllCharacters() {
-//        val queryRef = firebaseDatabase.getReference("articles")
-//        val charactersFlow = Pager(
-//            config = PagingConfig(
-//                pageSize = 50,
-//                enablePlaceholders = false
-//            ),
-//            pagingSourceFactory = { CharactersPagingSource(queryRef) }
-//        ).flow
-//            .cachedIn(viewModelScope)
-//        viewModelScope.launch {
-//            charactersFlow.collect {
-//                _characters.postValue(it)
-//            }
-//        }
-//    }
-
-//    fun filterCharacters(filterField: String, filterValue: String) {
-//        val queryRef = firebaseDatabase.getReference("articles").orderByChild(filterField)
-//            .equalTo(filterValue)
-//        val filteredCharactersFlow = Pager(
-//            config = PagingConfig(
-//                pageSize = 50,
-//                enablePlaceholders = false
-//            ),
-//            pagingSourceFactory = { CharactersPagingSource(queryRef) }
-//        ).flow
-//            .cachedIn(viewModelScope)
-//        viewModelScope.launch {
-//            filteredCharactersFlow.collectLatest {
-//                _characters.postValue(it)
-//            }
-//        }
-//    }
-
-
-//    val charactersFlow: Flow<PagingData<Character>> = Pager(
-//        config = PagingConfig(
-//            pageSize = 50,
-//            enablePlaceholders = false
-//        ),
-//        pagingSourceFactory = { CharactersPagingSource() }
-//    ).flow
-//        .cachedIn(viewModelScope)
-//
-//    fun filterCharacters(filterField: String, filterValue: String) {
-//        Log.d("MainViewModel", "Filtering characters by $filterField: $filterValue")
-//        val queryRef = firebaseDatabase.getReference("articles").orderByChild(filterField)
-//            .equalTo(filterValue)
-//        val charactersFlow = Pager(
-//            config = PagingConfig(
-//                pageSize = 50,
-//                enablePlaceholders = false
-//            ),
-//            pagingSourceFactory = { CharactersPagingSource(queryRef) }
-//        ).flow
-//            .cachedIn(viewModelScope)
-//        viewModelScope.launch {
-//            charactersFlow.collect {
-//                Log.d("MainViewModel", "Characters loaded: $it")
-//                _characters.postValue(it)
-//            }
-//        }
-//    }
 
     fun getCharacterById(id: String) {
         val ref = firebaseDatabase.getReference("articles").child(id)
@@ -140,19 +89,6 @@ class MainViewModel : ViewModel() {
             }
         })
     }
-
-//    fun loadCharacterImages(id: String) {
-//        val ref = firebaseDatabase.getReference("characters").child(id)
-//        ref.addListenerForSingleValueEvent(object : ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//            }
-//
-//        })
-//    }
 
     fun clearCharacterDetails() {
         _characterDetails.value = null
@@ -227,15 +163,37 @@ class MainViewModel : ViewModel() {
     }
 
     // MOVIE
+
+    fun getMovieList() {
+        val movieIds = listOf("0", "1", "2", "3", "4", "5", "6", "7", "8")
+        val movieList = mutableListOf<Movie>()
+        val ref = firebaseDatabase.getReference("movies")
+
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (id in movieIds) {
+                    snapshot.child(id).getValue(Movie::class.java)?.let {
+                        movieList.add(it)
+                    }
+                }
+                _movieList.value = movieList
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+    }
+
     fun getMovieById(id: String) {
         val ref = firebaseDatabase.getReference("movies").child(id)
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val movie = snapshot.getValue(Movie::class.java)
                 if (movie != null) {
-                    val currentList = _movieList.value?.toMutableList() ?: mutableListOf()
-                    currentList.add(movie)
-                    _movieList.value = currentList
+//                    val currentList = _movieList.value?.toMutableList() ?: mutableListOf()
+//                    currentList.add(movie)
+//                    _movieList.value = currentList
                     _movieDetails.value = movie
                 }
             }
@@ -246,12 +204,6 @@ class MainViewModel : ViewModel() {
         })
     }
 
-    fun initMovieList() {
-        val movieIds = listOf("0", "1", "2", "3", "4", "5", "6", "7", "8")
-        movieIds.forEach {
-            getMovieById(it)
-        }
-    }
 
     fun clearMovieDetails() {
         _movieDetails.value = null
@@ -268,11 +220,6 @@ class MainViewModel : ViewModel() {
                     if (race != null) {
                         raceList.add(race)
                     }
-//                    val raceImage = child.child("image").getValue(String::class.java)
-//                    val raceText = child.child("name").getValue(String::class.java)
-//                    val raceId = child.child("id").getValue(String::class.java)
-//                    val raceDescription = child.child("description").getValue(String::class.java)
-//                    raceList.add(Race(raceImage, raceText, raceId, raceDescription))
                 }
                 _raceList.value = raceList
             }
@@ -307,6 +254,165 @@ class MainViewModel : ViewModel() {
     fun clearRaceDetails() {
         _raceDetails.value = null
     }
+
+    //BOOKS
+//    fun getBookList(isPosthumous: Boolean) {
+//        val ref = firebaseDatabase.getReference("books")
+//        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                val bookList = mutableListOf<Book>()
+//                for (child in snapshot.children) {
+//                    val book = child.getValue(Book::class.java)
+//                    if (book != null && book.posthumous == isPosthumous) {
+//                        bookList.add(book)
+//                    }
+//                }
+//                if (isPosthumous) {
+//                    _posthumousBookList.value = bookList
+//                } else {
+//                    _nonPosthumousBookList.value = bookList
+//
+//                }
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                Log.e("MainViewModel", "Error loading book lists: ${error.message}")
+//            }
+//        })
+//    }
+
+    fun getBookList() {
+        val ref = firebaseDatabase.getReference("books")
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val posthumousList = mutableListOf<Book>()
+                val nonPosthumousList = mutableListOf<Book>()
+                for (child in snapshot.children) {
+                    val book = child.getValue(Book::class.java)
+                    if (book != null) {
+                        if (book.posthumous) {
+                            posthumousList.add(book)
+                        } else {
+                            nonPosthumousList.add(book)
+                        }
+                    }
+                }
+                _posthumousBookList.value = posthumousList
+                _nonPosthumousBookList.value = nonPosthumousList
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("MainViewModel", "Error loading book lists: ${error.message}")
+            }
+        })
+    }
+
+    fun getBookDetailsById(bookId: String) {
+        val ref = firebaseDatabase.getReference("books").child(bookId)
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val book = snapshot.getValue(Book::class.java)
+                if (book != null) {
+                    _bookDetails.value = book
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("MainViewModel", "Error loading book details: ${error.message}")
+            }
+        })
+    }
+
+    fun clearBookDetails() {
+        _bookDetails.value = null
+    }
+
+
+//    fun initMovieList() {
+//        val movieIds = listOf("0", "1", "2", "3", "4", "5", "6", "7", "8")
+//        movieIds.forEach {
+//            getMovieById(it)
+//        }
+//    }
+
+    //    fun loadCharacterImages(id: String) {
+//        val ref = firebaseDatabase.getReference("characters").child(id)
+//        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//            }
+//
+//        })
+//    }
+
+
+//    fun loadAllCharacters() {
+//        val queryRef = firebaseDatabase.getReference("articles")
+//        val charactersFlow = Pager(
+//            config = PagingConfig(
+//                pageSize = 50,
+//                enablePlaceholders = false
+//            ),
+//            pagingSourceFactory = { CharactersPagingSource(queryRef) }
+//        ).flow
+//            .cachedIn(viewModelScope)
+//        viewModelScope.launch {
+//            charactersFlow.collect {
+//                _characters.postValue(it)
+//            }
+//        }
+//    }
+
+//    fun filterCharacters(filterField: String, filterValue: String) {
+//        val queryRef = firebaseDatabase.getReference("articles").orderByChild(filterField)
+//            .equalTo(filterValue)
+//        val filteredCharactersFlow = Pager(
+//            config = PagingConfig(
+//                pageSize = 50,
+//                enablePlaceholders = false
+//            ),
+//            pagingSourceFactory = { CharactersPagingSource(queryRef) }
+//        ).flow
+//            .cachedIn(viewModelScope)
+//        viewModelScope.launch {
+//            filteredCharactersFlow.collectLatest {
+//                _characters.postValue(it)
+//            }
+//        }
+//    }
+
+
+//    val charactersFlow: Flow<PagingData<Character>> = Pager(
+//        config = PagingConfig(
+//            pageSize = 50,
+//            enablePlaceholders = false
+//        ),
+//        pagingSourceFactory = { CharactersPagingSource() }
+//    ).flow
+//        .cachedIn(viewModelScope)
+//
+//    fun filterCharacters(filterField: String, filterValue: String) {
+//        Log.d("MainViewModel", "Filtering characters by $filterField: $filterValue")
+//        val queryRef = firebaseDatabase.getReference("articles").orderByChild(filterField)
+//            .equalTo(filterValue)
+//        val charactersFlow = Pager(
+//            config = PagingConfig(
+//                pageSize = 50,
+//                enablePlaceholders = false
+//            ),
+//            pagingSourceFactory = { CharactersPagingSource(queryRef) }
+//        ).flow
+//            .cachedIn(viewModelScope)
+//        viewModelScope.launch {
+//            charactersFlow.collect {
+//                Log.d("MainViewModel", "Characters loaded: $it")
+//                _characters.postValue(it)
+//            }
+//        }
+//    }
 
 
 //    private val originalCharacters = mutableListOf<Character>() // Store original characters

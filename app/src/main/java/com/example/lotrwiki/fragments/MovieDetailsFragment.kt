@@ -13,11 +13,11 @@ import com.example.lotrwiki.databinding.FragmentMovieDetailBinding
 import com.example.lotrwiki.viewmodel.MainViewModel
 
 
-class MovieDetailFragment : Fragment() {
+class MovieDetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieDetailBinding
     private val viewModel: MainViewModel by activityViewModels()
-    private val args: MovieDetailFragmentArgs by navArgs()
+    private val args: MovieDetailsFragmentArgs by navArgs()
 
 
     override fun onCreateView(
@@ -36,9 +36,15 @@ class MovieDetailFragment : Fragment() {
 
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+//    override fun onDestroy() {
+//        super.onDestroy()
+//        viewModel.clearMovieDetails()
+//    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
         viewModel.clearMovieDetails()
+
     }
 
     private fun initMovieDetails() {
@@ -46,7 +52,7 @@ class MovieDetailFragment : Fragment() {
         viewModel.movieDetails.observe(viewLifecycleOwner) {
             if (it != null) {
                 with(binding) {
-                    Glide.with(this@MovieDetailFragment)
+                    Glide.with(this@MovieDetailsFragment)
                         .load(it.posterBackground)
                         .into(ivMovieDetailsPoster)
                     tvMovieName.text = it.title
@@ -63,7 +69,7 @@ class MovieDetailFragment : Fragment() {
 
     private fun initBackButton() {
         binding.ivBtnBackDetails.setOnClickListener {
-            findNavController().popBackStack()
+            findNavController().navigateUp()
         }
     }
 

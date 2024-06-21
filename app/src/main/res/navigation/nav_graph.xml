@@ -8,7 +8,7 @@
         android:id="@+id/homeFragment"
         android:name="com.example.lotrwiki.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_global_homeFragment"
             app:destination="@id/homeFragment" />
@@ -17,16 +17,19 @@
         android:id="@+id/booksFragment"
         android:name="com.example.lotrwiki.fragments.BooksFragment"
         android:label="fragment_books"
-        tools:layout="@layout/fragment_books" >
+        tools:layout="@layout/fragment_books">
         <action
             android:id="@+id/action_global_booksFragment"
             app:destination="@id/booksFragment" />
+        <action
+            android:id="@+id/action_booksFragment_to_bookDetailsFragment"
+            app:destination="@id/bookDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/charactersFragment"
         android:name="com.example.lotrwiki.fragments.CharactersFragment"
         android:label="fragment_characters"
-        tools:layout="@layout/fragment_characters" >
+        tools:layout="@layout/fragment_characters">
         <action
             android:id="@+id/action_charactersFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
@@ -39,7 +42,7 @@
         android:id="@+id/gamesFragment"
         android:name="com.example.lotrwiki.fragments.GamesFragment"
         android:label="fragment_games"
-        tools:layout="@layout/fragment_games" >
+        tools:layout="@layout/fragment_games">
         <action
             android:id="@+id/action_global_gamesFragment"
             app:destination="@id/gamesFragment" />
@@ -48,7 +51,7 @@
         android:id="@+id/locationsFragment"
         android:name="com.example.lotrwiki.fragments.LocationsFragment"
         android:label="fragment_locations"
-        tools:layout="@layout/fragment_locations" >
+        tools:layout="@layout/fragment_locations">
         <action
             android:id="@+id/action_global_locationsFragmentFragment"
             app:destination="@id/locationsFragment" />
@@ -57,7 +60,7 @@
         android:id="@+id/mapsFragment"
         android:name="com.example.lotrwiki.fragments.MapsFragment"
         android:label="fragment_maps"
-        tools:layout="@layout/fragment_maps" >
+        tools:layout="@layout/fragment_maps">
         <action
             android:id="@+id/action_mapsFragment_to_zoomImageFragment"
             app:destination="@id/zoomImageFragment" />
@@ -70,7 +73,7 @@
         android:id="@+id/moviesFragment"
         android:name="com.example.lotrwiki.fragments.MoviesFragment"
         android:label="fragment_movies"
-        tools:layout="@layout/fragment_movies" >
+        tools:layout="@layout/fragment_movies">
         <action
             android:id="@+id/action_moviesFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
@@ -82,7 +85,7 @@
         android:id="@+id/raceFragment"
         android:name="com.example.lotrwiki.fragments.RaceFragment"
         android:label="fragment_race"
-        tools:layout="@layout/fragment_race" >
+        tools:layout="@layout/fragment_race">
         <action
             android:id="@+id/actionRaceFragmentToRaceDetailsFragment"
             app:destination="@id/raceDetailsFragment" />
@@ -94,7 +97,7 @@
         android:id="@+id/tolkienFragment"
         android:name="com.example.lotrwiki.fragments.TolkienFragment"
         android:label="fragment_tolkien"
-        tools:layout="@layout/fragment_tolkien" >
+        tools:layout="@layout/fragment_tolkien">
         <action
             android:id="@+id/action_global_tolkienFragment"
             app:destination="@id/tolkienFragment" />
@@ -103,7 +106,7 @@
         android:id="@+id/weaponsFragment"
         android:name="com.example.lotrwiki.fragments.WeaponsFragment"
         android:label="fragment_weapons"
-        tools:layout="@layout/fragment_weapons" >
+        tools:layout="@layout/fragment_weapons">
         <action
             android:id="@+id/action_global_weaponsFragment"
             app:destination="@id/weaponsFragment" />
@@ -119,18 +122,18 @@
     </fragment>
     <fragment
         android:id="@+id/zoomImageFragment"
-        android:name="com.example.lotrwiki.fragments.MapZoomFragment"
+        android:name="com.example.lotrwiki.fragments.MapDetailsFragment"
         android:label="fragment_zoom_image"
-        tools:layout="@layout/fragment_zoom_image" >
+        tools:layout="@layout/fragment_zoom_image">
         <argument
             android:name="mapId"
             app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
-        android:name="com.example.lotrwiki.fragments.MovieDetailFragment"
+        android:name="com.example.lotrwiki.fragments.MovieDetailsFragment"
         android:label="fragment_movie_detail"
-        tools:layout="@layout/fragment_movie_detail" >
+        tools:layout="@layout/fragment_movie_detail">
         <argument
             android:name="movieId"
             app:argType="string" />
@@ -139,418 +142,51 @@
         android:id="@+id/raceDetailsFragment"
         android:name="com.example.lotrwiki.fragments.RaceDetailsFragment"
         android:label="fragment_race_details"
-        tools:layout="@layout/fragment_race_details" >
+        tools:layout="@layout/fragment_race_details">
         <argument
             android:name="id"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/bookDetailsFragment"
+        android:name="com.example.lotrwiki.fragments.BookDetailsFragment"
+        android:label="fragment_book_details"
+        tools:layout="@layout/fragment_book_details">
+        <argument
+            android:name="bookId"
+            app:argType="string" />
+    </fragment>
 
-    <action android:id="@+id/action_global_raceFragment" app:destination="@id/raceFragment" />
-    <action android:id="@+id/action_global_weaponsFragment" app:destination="@id/weaponsFragment" />
-    <action android:id="@+id/action_global_tolkienFragment" app:destination="@id/tolkienFragment" />
-    <action android:id="@+id/action_global_mapsFragment" app:destination="@id/mapsFragment" />
-    <action android:id="@+id/action_global_gamesFragment" app:destination="@id/gamesFragment" />
-    <action android:id="@+id/action_global_booksFragment" app:destination="@id/booksFragment" />
-    <action android:id="@+id/action_global_locationsFragment" app:destination="@id/locationsFragment" />
-    <action android:id="@+id/action_global_moviesFragment" app:destination="@id/moviesFragment" />
-    <action android:id="@+id/action_global_charactersFragment" app:destination="@id/charactersFragment" />
-    <action android:id="@+id/action_global_homeFragment" app:destination="@id/homeFragment"/>
+    <action
+        android:id="@+id/action_global_raceFragment"
+        app:destination="@id/raceFragment" />
+    <action
+        android:id="@+id/action_global_weaponsFragment"
+        app:destination="@id/weaponsFragment" />
+    <action
+        android:id="@+id/action_global_tolkienFragment"
+        app:destination="@id/tolkienFragment" />
+    <action
+        android:id="@+id/action_global_mapsFragment"
+        app:destination="@id/mapsFragment" />
+    <action
+        android:id="@+id/action_global_gamesFragment"
+        app:destination="@id/gamesFragment" />
+    <action
+        android:id="@+id/action_global_booksFragment"
+        app:destination="@id/booksFragment" />
+    <action
+        android:id="@+id/action_global_locationsFragment"
+        app:destination="@id/locationsFragment" />
+    <action
+        android:id="@+id/action_global_moviesFragment"
+        app:destination="@id/moviesFragment" />
+    <action
+        android:id="@+id/action_global_charactersFragment"
+        app:destination="@id/charactersFragment" />
+    <action
+        android:id="@+id/action_global_homeFragment"
+        app:destination="@id/homeFragment" />
+
 
 </navigation>
-
-<!--<navigation xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--xmlns:tools="http://schemas.android.com/tools"-->
-<!--android:id="@+id/nav_graph"-->
-<!--app:startDestination="@id/homeFragment">-->
-<!--<fragment-->
-<!--    android:id="@+id/homeFragment"-->
-<!--    android:name="com.example.lotrwiki.fragments.HomeFragment"-->
-<!--    android:label="fragment_home"-->
-<!--    tools:layout="@layout/fragment_home" >-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_homeFragment_to_weaponsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/weaponsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_homeFragment_to_raceFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/raceFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_homeFragment_to_booksFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/booksFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_homeFragment_to_charactersFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/charactersFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_homeFragment_to_gamesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/gamesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_homeFragment_to_locationsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/locationsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_homeFragment_to_mapsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/mapsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_homeFragment_to_moviesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/moviesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_homeFragment_to_tolkienFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/tolkienFragment" />&ndash;&gt;-->
-<!--</fragment>-->
-<!--<fragment-->
-<!--    android:id="@+id/booksFragment"-->
-<!--    android:name="com.example.lotrwiki.fragments.BooksFragment"-->
-<!--    android:label="fragment_books"-->
-<!--    tools:layout="@layout/fragment_books" >-->
-<!--    <action-->
-<!--        android:id="@+id/action_global_booksFragment"-->
-<!--        app:destination="@id/booksFragment" />-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_booksFragment_to_tolkienFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/tolkienFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_booksFragment_to_raceFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/raceFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_booksFragment_to_weaponsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/weaponsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_booksFragment_to_locationsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/locationsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_booksFragment_to_gamesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/gamesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_booksFragment_to_moviesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/moviesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_booksFragment_to_charactersFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/charactersFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_booksFragment_to_mapsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/mapsFragment" />&ndash;&gt;-->
-<!--</fragment>-->
-<!--<fragment-->
-<!--    android:id="@+id/charactersFragment"-->
-<!--    android:name="com.example.lotrwiki.fragments.CharactersFragment"-->
-<!--    android:label="fragment_characters"-->
-<!--    tools:layout="@layout/fragment_characters" >-->
-<!--    <action-->
-<!--        android:id="@+id/action_charactersFragment_to_detailsFragment"-->
-<!--        app:destination="@id/detailsFragment" />-->
-
-<!--    <action-->
-<!--        android:id="@+id/action_global_charactersFragment"-->
-<!--        app:destination="@id/charactersFragment" />-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_charactersFragment_to_moviesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/moviesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_charactersFragment_to_gamesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/gamesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_charactersFragment_to_booksFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/booksFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_charactersFragment_to_weaponsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/weaponsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_charactersFragment_to_raceFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/raceFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_charactersFragment_to_locationsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/locationsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_charactersFragment_to_tolkienFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/tolkienFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_charactersFragment_to_mapsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/mapsFragment" />&ndash;&gt;-->
-<!--</fragment>-->
-<!--<fragment-->
-<!--    android:id="@+id/gamesFragment"-->
-<!--    android:name="com.example.lotrwiki.fragments.GamesFragment"-->
-<!--    android:label="fragment_games"-->
-<!--    tools:layout="@layout/fragment_games" >-->
-<!--    <action-->
-<!--        android:id="@+id/action_global_gamesFragment"-->
-<!--        app:destination="@id/gamesFragment" />-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_gamesFragment_to_charactersFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/charactersFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_gamesFragment_to_moviesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/moviesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_gamesFragment_to_tolkienFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/tolkienFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_gamesFragment_to_raceFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/raceFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_gamesFragment_to_locationsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/locationsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_gamesFragment_to_weaponsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/weaponsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_gamesFragment_to_booksFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/booksFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_gamesFragment_to_mapsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/mapsFragment" />&ndash;&gt;-->
-<!--</fragment>-->
-<!--<fragment-->
-<!--    android:id="@+id/locationsFragment"-->
-<!--    android:name="com.example.lotrwiki.fragments.LocationsFragment"-->
-<!--    android:label="fragment_locations"-->
-<!--    tools:layout="@layout/fragment_locations" >-->
-<!--    <action-->
-<!--        android:id="@+id/action_global_locationsFragmentFragment"-->
-<!--        app:destination="@id/locationsFragment" />-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_locationsFragment_to_gamesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/gamesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_locationsFragment_to_raceFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/raceFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_locationsFragment_to_tolkienFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/tolkienFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_locationsFragment_to_weaponsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/weaponsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_locationsFragment_to_booksFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/booksFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_locationsFragment_to_mapsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/mapsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_locationsFragment_to_charactersFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/charactersFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_locationsFragment_to_moviesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/moviesFragment" />&ndash;&gt;-->
-<!--</fragment>-->
-<!--<fragment-->
-<!--    android:id="@+id/mapsFragment"-->
-<!--    android:name="com.example.lotrwiki.fragments.MapsFragment"-->
-<!--    android:label="fragment_maps"-->
-<!--    tools:layout="@layout/fragment_maps" >-->
-<!--    <action-->
-<!--        android:id="@+id/action_mapsFragment_to_zoomImageFragment"-->
-<!--        app:destination="@id/zoomImageFragment" />-->
-
-<!--    <action-->
-<!--        android:id="@+id/action_global_mapsFragment"-->
-<!--        app:destination="@id/mapsFragment" />-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_mapsFragment_to_charactersFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/charactersFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_mapsFragment_to_moviesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/moviesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_mapsFragment_to_tolkienFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/tolkienFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_mapsFragment_to_raceFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/raceFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_mapsFragment_to_gamesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/gamesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_mapsFragment_to_locationsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/locationsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_mapsFragment_to_weaponsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/weaponsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_mapsFragment_to_booksFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/booksFragment" />&ndash;&gt;-->
-<!--</fragment>-->
-<!--<fragment-->
-<!--    android:id="@+id/moviesFragment"-->
-<!--    android:name="com.example.lotrwiki.fragments.MoviesFragment"-->
-<!--    android:label="fragment_movies"-->
-<!--    tools:layout="@layout/fragment_movies" >-->
-<!--    <action-->
-<!--        android:id="@+id/action_moviesFragment_to_movieDetailFragment"-->
-<!--        app:destination="@id/movieDetailFragment" />-->
-<!--    <action-->
-<!--        android:id="@+id/action_global_moviesFragment"-->
-<!--        app:destination="@id/moviesFragment" />-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_moviesFragment_to_charactersFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/charactersFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_moviesFragment_to_tolkienFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/tolkienFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_moviesFragment_to_gamesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/gamesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_moviesFragment_to_raceFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/raceFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_moviesFragment_to_locationsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/locationsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_moviesFragment_to_weaponsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/weaponsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_moviesFragment_to_booksFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/booksFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_moviesFragment_to_mapsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/mapsFragment" />&ndash;&gt;-->
-<!--</fragment>-->
-<!--<fragment-->
-<!--    android:id="@+id/raceFragment"-->
-<!--    android:name="com.example.lotrwiki.fragments.RaceFragment"-->
-<!--    android:label="fragment_race"-->
-<!--    tools:layout="@layout/fragment_race" >-->
-<!--    <action-->
-<!--        android:id="@+id/actionRaceFragmentToRaceDetailsFragment"-->
-<!--        app:destination="@id/raceDetailsFragment" />-->
-<!--    <action-->
-<!--        android:id="@+id/action_global_raceFragment"-->
-<!--        app:destination="@id/raceFragment" />-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_raceFragment_to_tolkienFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/tolkienFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_raceFragment_to_gamesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/gamesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_raceFragment_to_locationsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/locationsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_raceFragment_to_moviesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/moviesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_raceFragment_to_charactersFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/charactersFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_raceFragment_to_mapsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/mapsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_raceFragment_to_booksFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/booksFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_raceFragment_to_weaponsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/weaponsFragment" />&ndash;&gt;-->
-<!--</fragment>-->
-<!--<fragment-->
-<!--    android:id="@+id/tolkienFragment"-->
-<!--    android:name="com.example.lotrwiki.fragments.TolkienFragment"-->
-<!--    android:label="fragment_tolkien"-->
-<!--    tools:layout="@layout/fragment_tolkien" >-->
-<!--    <action-->
-<!--        android:id="@+id/action_global_tolkienFragment"-->
-<!--        app:destination="@id/tolkienFragment" />-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_tolkienFragment_to_moviesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/moviesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_tolkienFragment_to_gamesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/gamesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_tolkienFragment_to_raceFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/raceFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_tolkienFragment_to_locationsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/locationsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_tolkienFragment_to_weaponsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/weaponsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_tolkienFragment_to_charactersFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/charactersFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_tolkienFragment_to_booksFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/booksFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_tolkienFragment_to_mapsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/mapsFragment" />&ndash;&gt;-->
-<!--</fragment>-->
-<!--<fragment-->
-<!--    android:id="@+id/weaponsFragment"-->
-<!--    android:name="com.example.lotrwiki.fragments.WeaponsFragment"-->
-<!--    android:label="fragment_weapons"-->
-<!--    tools:layout="@layout/fragment_weapons" >-->
-<!--    <action-->
-<!--        android:id="@+id/action_global_weaponsFragment"-->
-<!--        app:destination="@id/weaponsFragment" />-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_weaponsFragment_to_raceFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/raceFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_weaponsFragment_to_booksFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/booksFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_weaponsFragment_to_locationsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/locationsFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_weaponsFragment_to_gamesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/gamesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_weaponsFragment_to_tolkienFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/tolkienFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_weaponsFragment_to_moviesFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/moviesFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_weaponsFragment_to_charactersFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/charactersFragment" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        <action&ndash;&gt;-->
-<!--    &lt;!&ndash;            android:id="@+id/action_weaponsFragment_to_mapsFragment"&ndash;&gt;-->
-<!--    &lt;!&ndash;            app:destination="@id/mapsFragment" />&ndash;&gt;-->
-<!--</fragment>-->
-<!--<fragment-->
-<!--    android:id="@+id/detailsFragment"-->
-<!--    android:name="com.example.lotrwiki.fragments.CharacterDetailsFragment"-->
-<!--    android:label="fragment_details"-->
-<!--    tools:layout="@layout/fragment_character_details">-->
-<!--    <argument-->
-<!--        android:name="characterId"-->
-<!--        app:argType="string" />-->
-
-<!--</fragment>-->
-<!--<fragment-->
-<!--    android:id="@+id/zoomImageFragment"-->
-<!--    android:name="com.example.lotrwiki.fragments.MapZoomFragment"-->
-<!--    android:label="fragment_zoom_image"-->
-<!--    tools:layout="@layout/fragment_zoom_image" >-->
-<!--    <argument-->
-<!--        android:name="mapId"-->
-<!--        app:argType="string" />-->
-<!--</fragment>-->
-<!--<fragment-->
-<!--    android:id="@+id/movieDetailFragment"-->
-<!--    android:name="com.example.lotrwiki.fragments.MovieDetailFragment"-->
-<!--    android:label="fragment_movie_detail"-->
-<!--    tools:layout="@layout/fragment_movie_detail" >-->
-<!--    <argument-->
-<!--        android:name="movieId"-->
-<!--        app:argType="string" />-->
-<!--</fragment>-->
-<!--<fragment-->
-<!--    android:id="@+id/raceDetailsFragment"-->
-<!--    android:name="com.example.lotrwiki.fragments.RaceDetailsFragment"-->
-<!--    android:label="fragment_race_details"-->
-<!--    tools:layout="@layout/fragment_race_details" >-->
-<!--    <argument-->
-<!--        android:name="id"-->
-<!--        app:argType="string" />-->
-<!--</fragment>-->
-<!--<action android:id="@+id/action_global_raceFragment2" app:destination="@id/raceFragment" />-->
-<!--<action android:id="@+id/action_global_weaponsFragment2" app:destination="@id/weaponsFragment" />-->
-<!--<action android:id="@+id/action_global_tolkienFragment2" app:destination="@id/tolkienFragment" />-->
-<!--<action android:id="@+id/action_global_mapsFragment2" app:destination="@id/mapsFragment" />-->
-<!--<action android:id="@+id/action_global_gamesFragment2" app:destination="@id/gamesFragment" />-->
-<!--<action android:id="@+id/action_global_booksFragment2" app:destination="@id/booksFragment" />-->
-<!--<action android:id="@+id/action_global_locationsFragment2" app:destination="@id/locationsFragment" />-->
-<!--<action android:id="@+id/action_global_moviesFragment2" app:destination="@id/moviesFragment" />-->
-<!--<action android:id="@+id/action_global_charactersFragment2" app:destination="@id/charactersFragment" />-->
-<!--</navigation>-->
