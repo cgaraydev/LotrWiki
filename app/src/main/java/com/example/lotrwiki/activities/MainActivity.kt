@@ -1,6 +1,6 @@
 package com.example.lotrwiki.activities
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
@@ -11,9 +11,6 @@ import android.view.Gravity
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
-import android.view.WindowManager
-import android.view.animation.AnimationUtils
-import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -22,8 +19,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.lotrwiki.NavGraphDirections
 import com.example.lotrwiki.R
 import com.example.lotrwiki.databinding.ActivityMainBinding
-import com.example.lotrwiki.fragments.HomeFragment
-import com.example.lotrwiki.viewmodel.MainViewModel
+import com.example.lotrwiki.fragments.main.HomeFragment
 
 
 class MainActivity : AppCompatActivity(), HomeFragment.MenuClickListener {
@@ -85,10 +81,13 @@ class MainActivity : AppCompatActivity(), HomeFragment.MenuClickListener {
             R.id.movies -> navController.navigate(NavGraphDirections.actionGlobalMoviesFragment())
             R.id.tolkien -> navController.navigate(NavGraphDirections.actionGlobalTolkienFragment())
             R.id.maps -> navController.navigate(NavGraphDirections.actionGlobalMapsFragment())
-            R.id.weapons -> navController.navigate(NavGraphDirections.actionGlobalWeaponsFragment())
             R.id.games -> navController.navigate(NavGraphDirections.actionGlobalGamesFragment())
             R.id.books -> navController.navigate(NavGraphDirections.actionGlobalBooksFragment())
             R.id.races -> navController.navigate(NavGraphDirections.actionGlobalRaceFragment())
+            R.id.trivia -> {
+                val intent = Intent(this, TriviaActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 
@@ -117,8 +116,6 @@ class MainActivity : AppCompatActivity(), HomeFragment.MenuClickListener {
             dialog.window?.apply {
                 setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 setDimAmount(0.8f)
-//                addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND)
-//                setWindowAnimations(R.style.DialogAnimation)
             }
             val window = dialog.window
             window?.let {

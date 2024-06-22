@@ -1,4 +1,4 @@
-package com.example.lotrwiki.fragments
+package com.example.lotrwiki.fragments.main
 
 import android.os.Bundle
 import android.util.Log

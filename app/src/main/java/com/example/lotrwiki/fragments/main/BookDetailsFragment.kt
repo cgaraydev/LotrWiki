@@ -1,4 +1,4 @@
-package com.example.lotrwiki.fragments
+package com.example.lotrwiki.fragments.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.lotrwiki.R
 import com.example.lotrwiki.adapters.ImagePagerAdapter
 import com.example.lotrwiki.databinding.FragmentBookDetailsBinding
 import com.example.lotrwiki.viewmodel.MainViewModel

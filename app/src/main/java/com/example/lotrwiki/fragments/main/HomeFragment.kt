@@ -1,4 +1,4 @@
-package com.example.lotrwiki.fragments
+package com.example.lotrwiki.fragments.main
 
 import android.content.Context
 import android.graphics.Color
@@ -10,13 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.GravityCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.lotrwiki.R
-import com.example.lotrwiki.activities.MainActivity
 import com.example.lotrwiki.databinding.FragmentHomeBinding
 import com.example.lotrwiki.viewmodel.MainViewModel
 import kotlinx.coroutines.Job

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/trivia_nav_graph"
+    app:startDestination="@id/triviaIntroFragment">
+
+    <fragment
+        android:id="@+id/triviaIntroFragment"
+        android:name="com.example.lotrwiki.fragments.trivia.TriviaIntroFragment"
+        android:label="fragment_trivia_intro"
+        tools:layout="@layout/fragment_trivia_intro" >
+        <action
+            android:id="@+id/action_triviaIntroFragment_to_triviaQuestionFragment"
+            app:destination="@id/triviaQuestionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/triviaQuestionFragment"
+        android:name="com.example.lotrwiki.fragments.trivia.TriviaQuestionFragment"
+        android:label="fragment_trivia_question"
+        tools:layout="@layout/fragment_trivia_question" >
+        <action
+            android:id="@+id/action_triviaQuestionFragment_to_triviaResultFragment"
+            app:destination="@id/triviaResultFragment" />
+        <action
+            android:id="@+id/action_triviaQuestionFragment_to_triviaIntroFragment"
+            app:destination="@id/triviaIntroFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/triviaResultFragment"
+        android:name="com.example.lotrwiki.fragments.trivia.TriviaResultFragment"
+        android:label="fragment_trivia_result"
+        tools:layout="@layout/fragment_trivia_result" />
+</navigation>

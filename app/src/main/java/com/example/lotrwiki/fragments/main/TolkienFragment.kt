@@ -1,4 +1,4 @@
-package com.example.lotrwiki.fragments
+package com.example.lotrwiki.fragments.main
 
 import android.content.Intent
 import android.net.Uri

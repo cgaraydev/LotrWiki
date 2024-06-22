@@ -1,4 +1,4 @@
-package com.example.lotrwiki.fragments
+package com.example.lotrwiki.fragments.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,13 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.viewpager2.widget.ViewPager2
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.lotrwiki.adapters.ImagePagerAdapter
 import com.example.lotrwiki.databinding.FragmentCharacterDetailsBinding
 import com.example.lotrwiki.viewmodel.MainViewModel
-import com.otaliastudios.zoom.ZoomImageView
 
 class CharacterDetailsFragment : Fragment() {
 

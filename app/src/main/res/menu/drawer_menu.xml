@@ -11,10 +11,6 @@
                 android:icon="@drawable/ic_locations"
                 android:title="@string/locaciones" />
             <item
-                android:id="@+id/weapons"
-                android:icon="@drawable/ic_weapons"
-                android:title="@string/armas" />
-            <item
                 android:id="@+id/races"
                 android:icon="@drawable/ic_race"
                 android:title="@string/razas" />
@@ -46,6 +42,10 @@
                 android:id="@+id/maps"
                 android:icon="@drawable/ic_maps"
                 android:title="@string/mapas" />
+            <item
+                android:id="@+id/trivia"
+                android:icon="@drawable/ic_dice"
+                android:title="@string/trivia" />
         </menu>
     </item>
 </menu>

@@ -1,7 +1,6 @@
-package com.example.lotrwiki.fragments
+package com.example.lotrwiki.fragments.main
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,6 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.lotrwiki.NavGraphDirections
 import com.example.lotrwiki.R
 import com.example.lotrwiki.adapters.CharacterAdapter
 import com.example.lotrwiki.databinding.FragmentCharactersBinding
