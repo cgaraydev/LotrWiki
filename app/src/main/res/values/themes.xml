@@ -36,5 +36,12 @@
         <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
     </style>
 
+    <style name="RoundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+        <item name="strokeColor">@color/golden</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+
 
 </resources>

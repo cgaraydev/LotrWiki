@@ -8,5 +8,5 @@ data class Question(
     var id: Int = 0,
     var text: String = "",
     var options: List<String> = emptyList(),
-    var correct: Int = 0
+    var correct: String = ""
 ) : Parcelable

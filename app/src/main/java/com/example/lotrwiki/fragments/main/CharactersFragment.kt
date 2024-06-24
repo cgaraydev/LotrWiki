@@ -40,8 +40,6 @@ class CharactersFragment : Fragment() {
 
     }
 
-
-
     private fun initCharactersLoad() {
         val adapter = CharacterAdapter {
             val action =

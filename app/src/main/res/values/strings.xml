@@ -16,7 +16,6 @@
     <string name="explorar">Explorar</string>
     <string name="arrow_forward">Arrow forward</string>
     <string name="razas">Razas</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="back_button">Back button</string>
     <string name="mordor">mordor</string>
@@ -24,6 +23,15 @@
     <string name="tolkien_resumen">John Ronald Reuel Tolkien, más conocido como J.R.R. Tolkien, fue un destacado escritor, poeta, filólogo, lingüista y profesor universitario británico nacido en Sudáfrica en 1892 y fallecido en Inglaterra en 1973. Es famoso por ser el autor de obras icónicas como "El Hobbit" y "El Señor de los Anillos". Durante su carrera académica, ocupó importantes cátedras en la Universidad de Oxford, donde enseñó anglosajón y literatura inglesa. Tolkien era un devoto católico romano y mantuvo una estrecha amistad con el también escritor C.S. Lewis, siendo ambos miembros de un grupo literario conocido como los Inklings. Además de sus obras más conocidas, Tolkien escribió extensamente sobre un mundo ficticio llamado Arda y su continente principal, la Tierra Media, creando un complejo legendarium que incluye libros como "El Silmarillion" y "Los Hijos de Húrin". Su impacto en la literatura fantástica moderna es innegable, siendo considerado el "padre del género" y habiendo inspirado a numerosos escritores y obras posteriores. A lo largo de los años, la obra de Tolkien ha generado un vasto cuerpo de crítica y análisis conocido como "erudición tolkieniana", destacando su profundo impacto cultural y literario en todo el mundo occidental.</string>
     <string name="trivia">Trivia</string>
     <string name="ready_trivia">Preparado para poner a prueba tus conocimientos sobre el legendarium de Tolkien?</string>
-    <string name="question_number">Question %1$d of %2$d</string>
+    <string name="question_number">Pregunta %1$d de %2$d</string>
+    <string name="next_question">siguiente</string>
+    <string name="finish">finalizar</string>
+    <string name="score">Tu puntuación es: %1$d de %2$d</string>
+    <string name="rank1">Eres un simple y sucio orco sin conocimientos</string>
+    <string name="rank2">Te arrastras como Gollum en busca de conocimientos</string>
+    <string name="rank3">Has mejorado, al parecer has estudiado</string>
+    <string name="rank4">Bien! Tienes el nivel de un rey</string>
+    <string name="rank5">Nivel divino, podrias ser un Istari junto a Gandalf</string>
+    <string name="rank0">Dedicate a otra cosa</string>
 
 </resources>
