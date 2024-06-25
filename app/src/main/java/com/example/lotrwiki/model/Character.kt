@@ -16,7 +16,7 @@ data class Character(
     var titles: String? = "",
     var otherNames: String? = "",
     var family: String? = "desconocido",
-    var culture: String? = "",
+//    var culture: String? = "",
     var biography: String? = "",
     var images: List<String> = emptyList(),
     var faction: String? = "",

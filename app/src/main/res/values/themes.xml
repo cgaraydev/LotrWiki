@@ -43,5 +43,14 @@
         <item name="strokeWidth">2dp</item>
     </style>
 
+    <style name="CustomDialog" parent="Theme.MaterialComponents.Dialog.Alert">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.8</item>
+        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
+    </style>
+
+
+
 
 </resources>

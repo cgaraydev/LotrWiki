@@ -34,4 +34,11 @@
     <string name="rank5">Nivel divino, podrias ser un Istari junto a Gandalf</string>
     <string name="rank0">Dedicate a otra cosa</string>
 
+    <string-array name="factions" >
+        <item>good</item>
+        <item>evil</item>
+        <item>neutral</item>
+    </string-array>
+
+
 </resources>

@@ -15,6 +15,7 @@ import com.example.lotrwiki.model.Character
 import com.example.lotrwiki.model.Map
 import com.example.lotrwiki.model.Movie
 import com.example.lotrwiki.model.Race
+import com.example.lotrwiki.utils.CharacterFilter
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -59,24 +60,22 @@ class MainViewModel : ViewModel() {
     private val _bookDetails = MutableLiveData<Book?>()
     val bookDetails: LiveData<Book?> = _bookDetails
 
-//    init {
-//        _movieDetails.value = null
-//    }
-
     //CHARACTER
     //Pagination
-    val characters: Flow<PagingData<Character>> = Pager(
-        config = PagingConfig(
-            pageSize = 50,
-            enablePlaceholders = false
-        ),
-        pagingSourceFactory = { CharactersPagingSource() }
-    ).flow
-        .cachedIn(viewModelScope)
 
+    fun getCharacters(filter: CharacterFilter): Flow<PagingData<Character>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 50,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { CharactersPagingSource(filter) }
+        ).flow
+            .cachedIn(viewModelScope)
+    }
 
     fun getCharacterById(id: String) {
-        val ref = firebaseDatabase.getReference("articles").child(id)
+        val ref = firebaseDatabase.getReference("characters").child(id)
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val character = snapshot.getValue(Character::class.java)
@@ -326,6 +325,7 @@ class MainViewModel : ViewModel() {
     fun clearBookDetails() {
         _bookDetails.value = null
     }
+}
 
 
 //    fun initMovieList() {
@@ -335,7 +335,7 @@ class MainViewModel : ViewModel() {
 //        }
 //    }
 
-    //    fun loadCharacterImages(id: String) {
+//    fun loadCharacterImages(id: String) {
 //        val ref = firebaseDatabase.getReference("characters").child(id)
 //        ref.addListenerForSingleValueEvent(object : ValueEventListener {
 //            override fun onDataChange(snapshot: DataSnapshot) {
@@ -498,4 +498,23 @@ class MainViewModel : ViewModel() {
 //
 //        })
 //    }
-}
+
+//    val characters: Flow<PagingData<Character>> = Pager(
+//        config = PagingConfig(
+//            pageSize = 50,
+//            enablePlaceholders = false
+//        ),
+//        pagingSourceFactory = { CharactersPagingSource(isFiltered = true) }
+//    ).flow
+//        .cachedIn(viewModelScope)
+
+//    val allCharacters: Flow<PagingData<Character>> = Pager(
+//        config = PagingConfig(
+//            pageSize = 50,
+//            enablePlaceholders = false
+//        ),
+//        pagingSourceFactory = { CharactersPagingSource() }
+//    ).flow
+//        .cachedIn(viewModelScope)
+
+

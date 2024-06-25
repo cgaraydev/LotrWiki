@@ -22,7 +22,7 @@ class TriviaOptionAdapter(
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("NotifyDataSetChanged")
         fun bind(option: String) {
-            binding.tvTriviaOption.text = option
+            binding.tvTriviaOption.text = option.lowercase()
             binding.tvTriviaOption.isEnabled = !isOptionSelected
 
             val backgroundColor = getBackgroundColor(binding.cvTriviaOption.context, option)

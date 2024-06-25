@@ -63,7 +63,7 @@ class TriviaQuestionFragment : Fragment() {
         binding.rvTriviaOptions.adapter = adapter
         viewModel.currentQuestion.observe(viewLifecycleOwner) {
             it?.let { question ->
-                binding.tvQuestionText.text = question.text
+                binding.tvQuestionText.text = question.text.lowercase()
                 adapter.updateOptions(question.options, question.correct)
 //                startTimer()
             }

@@ -4,6 +4,7 @@ data class Race(
     var image: String? = "",
     var name: String? = "",
     var id: String? = "",
+//    var characters: List<String>? = emptyList(),
     var introduction: String? = "",
     var body1: String? = "",
     var body2: String? = "",

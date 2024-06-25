@@ -21,11 +21,13 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_weight="1"
-            android:fontFamily="@font/ring_bearer_medium"
+            android:fontFamily="@font/aniron"
             android:paddingStart="22dp"
-            android:text="Smeagol"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Las Aventuras de Tom Bombadil"
             android:textColor="@color/text_color"
-            android:textSize="24sp" />
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/ivCorrect"

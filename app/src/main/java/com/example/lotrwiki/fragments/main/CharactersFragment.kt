@@ -1,10 +1,13 @@
 package com.example.lotrwiki.fragments.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -14,7 +17,9 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.lotrwiki.R
 import com.example.lotrwiki.adapters.CharacterAdapter
+import com.example.lotrwiki.databinding.CharacterFilterDialogBinding
 import com.example.lotrwiki.databinding.FragmentCharactersBinding
+import com.example.lotrwiki.utils.CharacterFilter
 import com.example.lotrwiki.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -34,10 +39,26 @@ class CharactersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initCharactersLoad()
         initBackButton()
+        initViewAll()
 
+        binding.ivFilterCharacters.setOnClickListener {
+            showFilterDialog()
+        }
+    }
+
+    private fun initViewAll() {
+        binding.tvViewAll.setOnClickListener {
+            binding.tvFeatured.visibility = View.GONE
+            binding.tvViewAll.visibility = View.INVISIBLE
+            updateRecyclerView(CharacterFilter.All)
+//            viewLifecycleOwner.lifecycleScope.launch {
+//                viewModel.getCharacters(CharacterFilter.All).collectLatest {
+//                    (binding.rvCharactersFragment.adapter as? CharacterAdapter)?.submitData(it)
+//                }
+//            }
+        }
     }
 
     private fun initCharactersLoad() {
@@ -67,14 +88,12 @@ class CharactersFragment : Fragment() {
                 }
             }
         }
-
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.characters.collectLatest {
+                viewModel.getCharacters(CharacterFilter.Featured).collectLatest {
                     adapter.submitData(it)
                 }
             }
-
         }
     }
 
@@ -84,7 +103,49 @@ class CharactersFragment : Fragment() {
         }
     }
 
-    //    private fun initCharactersFiltered() {
+    private fun showFilterDialog() {
+        val bindingDialog = CharacterFilterDialogBinding.inflate(layoutInflater)
+        val factions = resources.getStringArray(R.array.factions)
+
+        val adapterFactions =
+            ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, factions)
+        bindingDialog.spinnerFaction.adapter = adapterFactions
+
+        val dialog = AlertDialog.Builder(requireContext(), R.style.CustomDialog)
+            .setView(bindingDialog.root)
+            .create()
+
+        bindingDialog.btnExitDialog.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        bindingDialog.btnFilterDialog.setOnClickListener {
+            binding.tvFeatured.visibility = View.GONE
+            val selectedFaction = bindingDialog.spinnerFaction.selectedItem.toString()
+            val filter = CharacterFilter.ByFaction(selectedFaction)
+            updateRecyclerView(filter)
+//            viewLifecycleOwner.lifecycleScope.launch {
+//                viewModel.getCharacters(filter).collectLatest {
+//                    (binding.rvCharactersFragment.adapter as? CharacterAdapter)?.submitData(it)
+//                    Log.d("CharactersFragment", "Received characters: $it")
+//                }
+//            }
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+
+    private fun updateRecyclerView(filter: CharacterFilter) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.getCharacters(filter).collectLatest {
+                (binding.rvCharactersFragment.adapter as? CharacterAdapter)?.submitData(it)
+            }
+        }
+
+    }
+}
+
+//    private fun initCharactersFiltered() {
 //        val adapter = CharacterAdapter {
 //            val action =
 //                CharactersFragmentDirections.actionCharactersFragmentToDetailsFragment(
@@ -165,7 +226,7 @@ class CharactersFragment : Fragment() {
 //    }
 
 
-    //        val adapter = CharacterAdapter {
+//        val adapter = CharacterAdapter {
 //            val action =
 //                CharactersFragmentDirections.actionCharactersFragmentToDetailsFragment(characterId = it)
 //            findNavController().navigate(action)
@@ -205,4 +266,12 @@ class CharactersFragment : Fragment() {
 //        val dialog = FilterDialogFragment()
 //        dialog.show(parentFragmentManager, "FilterDialogFragment")
 //    }
-}
+
+
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                viewModel.characters.collectLatest {
+//                    adapter.submitData(it)
+//                }
+//            }
+//        }
