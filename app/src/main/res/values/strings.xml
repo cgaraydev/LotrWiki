@@ -35,9 +35,20 @@
     <string name="rank0">Dedicate a otra cosa</string>
 
     <string-array name="factions" >
-        <item>good</item>
-        <item>evil</item>
-        <item>neutral</item>
+        <item>bien</item>
+        <item>mal</item>
+    </string-array>
+
+    <string-array name="races" >
+        <item>Hobbits</item>
+        <item>Hombres</item>
+        <item>Elfos</item>
+        <item>Enanos</item>
+        <item>Orcos</item>
+        <item>Dragones</item>
+        <item>Ainur</item>
+        <item>Maiar</item>
+        <item>Aguilas</item>
     </string-array>
 
 

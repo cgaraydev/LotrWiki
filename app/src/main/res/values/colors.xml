@@ -28,5 +28,8 @@
     <color name="text_color">@color/white</color>
     <color name="text_color_disabled">#B0B0B0</color>
 
+    <color name="selected_color">#FF0000</color> <!-- Color when selected -->
+    <color name="default_color">#000000</color> <!-- Default color -->
+
 
 </resources>
