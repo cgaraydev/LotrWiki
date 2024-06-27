@@ -40,7 +40,6 @@ The database is built by me and is located in Firebase Storage and Firebase Real
   <li>XML</li>
   <li>Navigation, Global Actions</li>
   <li>MVVM, LiveData</li>
-  <li>Single Activity Architecture</li>
   <li>Firebase Realtime Database, Firebase Storage</li>
   <li>Fragments, SafeArgs</li>
   <li>DrawerLayout, ExpandableLayout</li>
