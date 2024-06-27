@@ -25,9 +25,11 @@ import com.example.lotrwiki.adapters.CharacterAdapter
 import com.example.lotrwiki.databinding.CharacterFilterDialogBinding
 import com.example.lotrwiki.databinding.FragmentCharactersBinding
 import com.example.lotrwiki.utils.CharacterFilter
+import com.example.lotrwiki.utils.normalize
 import com.example.lotrwiki.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.text.Normalizer
 
 class CharactersFragment : Fragment() {
 
@@ -133,7 +135,8 @@ class CharactersFragment : Fragment() {
         setUpAutocompleteTextViewLister(bindingDialog.tvRaceFilter) { selectedRace = it }
         setUpAutocompleteTextViewLister(bindingDialog.tvFactionFilter) { selectedFaction = it }
         bindingDialog.etName.doOnTextChanged { text, _, _, _ ->
-            enteredName = text.toString()
+//            enteredName = text.toString()
+            enteredName = text.toString().normalize()
         }
         bindingDialog.btnFilterDialog.setOnClickListener {
             binding.tvFeatured.visibility = View.GONE

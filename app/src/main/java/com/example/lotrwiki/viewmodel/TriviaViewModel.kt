@@ -34,9 +34,9 @@ class TriviaViewModel : ViewModel() {
     val score: LiveData<Int> = _score
 
 
-    var randomIndices = generateUniqueRandomIndices(5)
+    var randomIndices = generateUniqueRandomIndices()
     private var correctAnswers = 0
-    private var incorrectAnswers = 0
+//    private var incorrectAnswers = 0
 
     init {
         _currentIndex.value = 0
@@ -63,11 +63,11 @@ class TriviaViewModel : ViewModel() {
         })
     }
 
-    private fun generateUniqueRandomIndices(numIndices: Int): List<Int> {
+    private fun generateUniqueRandomIndices(): List<Int> {
         val indices = mutableSetOf<Int>()
         val random = Random
-        while (indices.size < numIndices) {
-            val newIndex = random.nextInt(10)
+        while (indices.size < 5) {
+            val newIndex = random.nextInt(20)
             if (newIndex !in indices) {
                 indices.add(newIndex)
             }
