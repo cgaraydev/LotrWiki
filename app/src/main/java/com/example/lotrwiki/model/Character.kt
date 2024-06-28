@@ -1,10 +1,5 @@
 package com.example.lotrwiki.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
-
-
-@Parcelize
 data class Character(
     var id: String? = "",
     var name: String? = "",
@@ -19,6 +14,8 @@ data class Character(
 //    var culture: String? = "",
     var biography: String? = "",
     var images: List<String> = emptyList(),
+//    var images: List<Images> = emptyList(),
     var faction: String? = "",
     var featured: Boolean = false
-) : Parcelable
+)
+

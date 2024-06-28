@@ -10,8 +10,10 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.lotrwiki.adapters.CharactersPagingSource
+import com.example.lotrwiki.adapters.LocationsPagingSource
 import com.example.lotrwiki.model.Book
 import com.example.lotrwiki.model.Character
+import com.example.lotrwiki.model.Location
 import com.example.lotrwiki.model.Map
 import com.example.lotrwiki.model.Movie
 import com.example.lotrwiki.model.Race
@@ -70,6 +72,17 @@ class MainViewModel : ViewModel() {
                 enablePlaceholders = false
             ),
             pagingSourceFactory = { CharactersPagingSource(filter) }
+        ).flow
+            .cachedIn(viewModelScope)
+    }
+
+    fun getLocations(): Flow<PagingData<Location>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 50,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { LocationsPagingSource() }
         ).flow
             .cachedIn(viewModelScope)
     }

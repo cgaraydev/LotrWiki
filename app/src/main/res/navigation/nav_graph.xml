@@ -112,6 +112,15 @@
             app:destination="@id/weaponsFragment" />
     </fragment>
     <fragment
+        android:id="@+id/othersFragment"
+        android:name="com.example.lotrwiki.fragments.main.OthersFragment"
+        android:label="fragment_others"
+        tools:layout="@layout/fragment_others">
+        <action
+            android:id="@+id/action_global_othersFragment"
+            app:destination="@id/othersFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.lotrwiki.fragments.main.CharacterDetailsFragment"
         android:label="fragment_details"
@@ -156,7 +165,6 @@
             android:name="bookId"
             app:argType="string" />
     </fragment>
-
     <action
         android:id="@+id/action_global_raceFragment"
         app:destination="@id/raceFragment" />
@@ -187,7 +195,7 @@
     <action
         android:id="@+id/action_global_homeFragment"
         app:destination="@id/homeFragment" />
-
-
-
+    <action
+        android:id="@+id/action_global_othersFragment"
+        app:destination="@id/othersFragment" />
 </navigation>

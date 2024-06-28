@@ -47,9 +47,11 @@ class CharacterDetailsFragment : Fragment() {
             binding.apply {
                 if (it != null) {
                     val imageUrls = it.images
+//                    val characterImages = it.images
                     pbDetailsImage.visibility = View.GONE
                     tvDetailsName.text = it.name
                     adapter = ImagePagerAdapter(imageUrls)
+//                    adapter = ImagePagerAdapter(characterImages)
                     viewPager2.adapter = adapter
                     dotIndicator.attachTo(viewPager2)
 

@@ -31,5 +31,16 @@
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone"/>
 
+    <TextView
+        android:id="@+id/tvImageDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/ivItemDetails"
+        app:layout_constraintBottom_toBottomOf="@id/ivItemDetails"
+        tools:text="description"
+        android:textColor="@color/black"
+        android:background="@color/gray"
+        android:padding="1dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

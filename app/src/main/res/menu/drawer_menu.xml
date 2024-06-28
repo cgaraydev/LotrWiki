@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="@string/explorar">
+    <item android:title="Tierra Media">
         <menu>
             <item
                 android:id="@+id/characters"
@@ -14,10 +14,22 @@
                 android:id="@+id/races"
                 android:icon="@drawable/ic_race"
                 android:title="@string/razas" />
+            <item
+                android:id="@+id/maps"
+                android:icon="@drawable/ic_maps"
+                android:title="@string/mapas" />
+            <item
+                android:id="@+id/others"
+                android:icon="@drawable/ic_maps"
+                android:title="Otros" />
         </menu>
     </item>
-    <item android:title="@string/media">
+    <item android:title="Legado Tolkien">
         <menu>
+            <item
+                android:id="@+id/tolkien"
+                android:icon="@drawable/ic_ring"
+                android:title="@string/tolkien" />
             <item
                 android:id="@+id/movies"
                 android:icon="@drawable/ic_movies"
@@ -32,16 +44,8 @@
                 android:title="@string/juegos" />
         </menu>
     </item>
-    <item android:title="@string/otros">
+    <item android:title="Entretenimiento">
         <menu>
-            <item
-                android:id="@+id/tolkien"
-                android:icon="@drawable/ic_ring"
-                android:title="@string/tolkien" />
-            <item
-                android:id="@+id/maps"
-                android:icon="@drawable/ic_maps"
-                android:title="@string/mapas" />
             <item
                 android:id="@+id/trivia"
                 android:icon="@drawable/ic_dice"
