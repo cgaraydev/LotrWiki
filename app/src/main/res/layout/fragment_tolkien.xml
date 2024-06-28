@@ -58,7 +58,7 @@
         android:layout_width="170dp"
         android:layout_height="250dp"
         android:scaleType="fitXY"
-        android:src="@drawable/tolkien_1"
+        android:src="@drawable/tolkien"
         app:layout_constraintBottom_toBottomOf="@id/tvBiography1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/tvBiography1"

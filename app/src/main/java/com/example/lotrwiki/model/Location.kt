@@ -1,6 +1,6 @@
 package com.example.lotrwiki.model
 
-data class Locations(
+data class Location(
     var id: String = "",
     var name: String = "",
     var poster: String = "",
