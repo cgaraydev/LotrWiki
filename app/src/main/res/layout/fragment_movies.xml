@@ -8,35 +8,40 @@
     android:orientation="vertical"
     tools:context=".fragments.main.MoviesFragment">
 
-    <LinearLayout
+    <com.example.lotrwiki.fragments.customviews.CustomToolBar
+        android:id="@+id/moviesCustomToolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        tools:ignore="UseCompoundDrawables">
+        android:layout_height="wrap_content"/>
 
-        <TextView
-            android:id="@+id/tvCharacters"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/ring_bearer_medium"
-            android:gravity="center"
-            android:text="Peliculas"
-            android:textColor="@color/white"
-            android:textSize="30sp" />
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal"-->
+<!--        tools:ignore="UseCompoundDrawables">-->
 
-        <ImageView
-            android:id="@+id/ivBtnBackMovies"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:contentDescription="@string/back_button"
-            android:src="@drawable/ic_back"
-            app:tint="@color/white" />
+<!--        <TextView-->
+<!--            android:id="@+id/tvCharacters"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:fontFamily="@font/ring_bearer_medium"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Peliculas"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="30sp" />-->
 
-    </LinearLayout>
+<!--        <ImageView-->
+<!--            android:id="@+id/ivBtnBackMovies"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:contentDescription="@string/back_button"-->
+<!--            android:src="@drawable/ic_back"-->
+<!--            app:tint="@color/white" />-->
+
+<!--    </LinearLayout>-->
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"

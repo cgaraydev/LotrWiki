@@ -24,8 +24,10 @@ import com.example.lotrwiki.R
 import com.example.lotrwiki.adapters.CharacterAdapter
 import com.example.lotrwiki.databinding.CharacterFilterDialogBinding
 import com.example.lotrwiki.databinding.FragmentCharactersBinding
+import com.example.lotrwiki.fragments.customviews.CustomToolBar
 import com.example.lotrwiki.utils.CharacterFilter
 import com.example.lotrwiki.utils.normalize
+import com.example.lotrwiki.utils.setUpCustomToolbar
 import com.example.lotrwiki.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -41,27 +43,56 @@ class CharactersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCharactersBinding.inflate(layoutInflater)
+
+        initCustomToolbar()
+        initCustomFilterbar()
+
         return binding.root
+    }
+
+    private fun initCustomFilterbar() {
+        binding.customFilterbar.setViewAllClickListener{
+            binding.tvFeatured.visibility = View.GONE
+            binding.customFilterbar.setViewAllVisibility(View.INVISIBLE)
+            updateRecyclerView(CharacterFilter.All)
+        }
+        binding.customFilterbar.setFilterClickListener{
+            showFilterDialog()
+        }
+
+        //        binding.tvViewAll.setOnClickListener {
+//            binding.tvFeatured.visibility = View.GONE
+//            binding.tvViewAll.visibility = View.INVISIBLE
+//            updateRecyclerView(CharacterFilter.All)
+//        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initCharactersLoad()
-        initBackButton()
-        initViewAll()
+//        initViewAll()
 
-        binding.ivFilterCharacters.setOnClickListener {
-            showFilterDialog()
-        }
+//        binding.ivFilterCharacters.setOnClickListener {
+//            showFilterDialog()
+//        }
     }
 
-    private fun initViewAll() {
-        binding.tvViewAll.setOnClickListener {
-            binding.tvFeatured.visibility = View.GONE
-            binding.tvViewAll.visibility = View.INVISIBLE
-            updateRecyclerView(CharacterFilter.All)
-        }
+    private fun initCustomToolbar() {
+        setUpCustomToolbar(binding.customToolbar, "Personajes", findNavController())
+//        binding.customToolbar.setTitle("Personajes")
+//        binding.customToolbar.setBackButtonClickListener {
+//            findNavController().navigate(R.id.action_global_homeFragment)
+//        }
     }
+
+//    private fun initViewAll() {
+//        binding.tvViewAll.setOnClickListener {
+//            binding.tvFeatured.visibility = View.GONE
+//            binding.tvViewAll.visibility = View.INVISIBLE
+//            updateRecyclerView(CharacterFilter.All)
+//        }
+//    }
 
     private fun initCharactersLoad() {
         val adapter = CharacterAdapter {
@@ -96,12 +127,6 @@ class CharactersFragment : Fragment() {
                     adapter.submitData(it)
                 }
             }
-        }
-    }
-
-    private fun initBackButton() {
-        binding.ivBtnBack.setOnClickListener {
-            findNavController().navigate(R.id.action_global_homeFragment)
         }
     }
 
@@ -143,17 +168,20 @@ class CharactersFragment : Fragment() {
             when {
                 !enteredName.isNullOrEmpty() -> {
                     updateRecyclerView(CharacterFilter.ByName(enteredName!!))
-                    binding.tvViewAll.visibility = View.VISIBLE
+//                    binding.tvViewAll.visibility = View.VISIBLE
+                    binding.customFilterbar.setViewAllVisibility(View.VISIBLE)
                 }
 
                 selectedRace != null -> {
                     updateRecyclerView(CharacterFilter.ByRace(selectedRace!!))
-                    binding.tvViewAll.visibility = View.VISIBLE
+//                    binding.tvViewAll.visibility = View.VISIBLE
+                    binding.customFilterbar.setViewAllVisibility(View.VISIBLE)
                 }
 
                 selectedFaction != null -> {
                     updateRecyclerView(CharacterFilter.ByFaction(selectedFaction!!))
-                    binding.tvViewAll.visibility = View.VISIBLE
+//                    binding.tvViewAll.visibility = View.VISIBLE
+                    binding.customFilterbar.setViewAllVisibility(View.VISIBLE)
                 }
             }
             dialog.dismiss()

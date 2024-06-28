@@ -9,10 +9,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lotrwiki.R
 import com.example.lotrwiki.adapters.LocationAdapter
 import com.example.lotrwiki.databinding.FragmentLocationsBinding
+import com.example.lotrwiki.utils.setUpCustomToolbar
 import com.example.lotrwiki.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -28,7 +30,14 @@ class LocationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentLocationsBinding.inflate(layoutInflater)
+
+        initCustomToolbar()
+
         return binding.root
+    }
+
+    private fun initCustomToolbar() {
+        setUpCustomToolbar(binding.locationsCustomToolbar, "Ubicaciones", findNavController())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,7 +47,8 @@ class LocationsFragment : Fragment() {
 
     private fun initLocationsLoad() {
         val adapter = LocationAdapter()
-        binding.rvLocationsFragment.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        binding.rvLocationsFragment.layoutManager =
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rvLocationsFragment.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {

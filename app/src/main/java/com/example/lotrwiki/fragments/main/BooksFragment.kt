@@ -14,6 +14,7 @@ import com.example.lotrwiki.R
 import com.example.lotrwiki.adapters.BookAdapter
 import com.example.lotrwiki.databinding.FragmentBooksBinding
 import com.example.lotrwiki.model.Book
+import com.example.lotrwiki.utils.setUpCustomToolbar
 import com.example.lotrwiki.viewmodel.MainViewModel
 import net.cachapa.expandablelayout.ExpandableLayout
 
@@ -27,16 +28,22 @@ class BooksFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentBooksBinding.inflate(layoutInflater)
+        initCustomToolbar()
         return binding.root
+    }
+
+    private fun initCustomToolbar() {
+        setUpCustomToolbar(binding.BooksCustomToolbar, "Libros", findNavController())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initRecyclerView(binding.rvBookNonPosthumous, viewModel.nonPosthumousBookList)
         initRecyclerView(binding.rvBookPosthumous, viewModel.posthumousBookList)
         initBookLists()
         initExpandableClick()
-        initBackButton()
+
     }
 
     override fun onDestroy() {
@@ -73,12 +80,6 @@ class BooksFragment : Fragment(), View.OnClickListener {
             constrainPublished.setOnClickListener(this@BooksFragment)
             constrainPosthumous.setOnClickListener(this@BooksFragment)
             constrainOtherAuthors.setOnClickListener(this@BooksFragment)
-        }
-    }
-
-    private fun initBackButton() {
-        binding.ivBtnBackBooks.setOnClickListener {
-            findNavController().navigate(R.id.action_global_homeFragment)
         }
     }
 

@@ -8,34 +8,39 @@
     android:orientation="vertical"
     tools:context=".fragments.main.MapsFragment">
 
-    <LinearLayout
+    <com.example.lotrwiki.fragments.customviews.CustomToolBar
+        android:id="@+id/MapsCustomToolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        tools:ignore="UseCompoundDrawables">
+        android:layout_height="wrap_content"/>
 
-        <TextView
-            android:id="@+id/tvCharacters"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/ring_bearer_medium"
-            android:gravity="center"
-            android:text="Mapas"
-            android:textColor="@color/white"
-            android:textSize="30sp" />
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal"-->
+<!--        tools:ignore="UseCompoundDrawables">-->
 
-        <ImageView
-            android:id="@+id/ivBtnBackMaps"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/back_button"
-            android:src="@drawable/ic_back"
-            app:tint="@color/white" />
+<!--        <TextView-->
+<!--            android:id="@+id/tvCharacters"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:fontFamily="@font/ring_bearer_medium"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Mapas"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="30sp" />-->
 
-    </LinearLayout>
+<!--        <ImageView-->
+<!--            android:id="@+id/ivBtnBackMaps"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:contentDescription="@string/back_button"-->
+<!--            android:src="@drawable/ic_back"-->
+<!--            app:tint="@color/white" />-->
+
+<!--    </LinearLayout>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMapsFragment"

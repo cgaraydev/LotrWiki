@@ -26,14 +26,22 @@ class MapsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMapsBinding.inflate(layoutInflater)
+        initCustomToolbar()
         return binding.root
+    }
+
+    private fun initCustomToolbar() {
+        binding.MapsCustomToolbar.setTitle("Mapas")
+        binding.MapsCustomToolbar.setBackButtonClickListener {
+            findNavController().navigate(R.id.action_global_homeFragment)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initMaps()
-        initBackButton()
     }
+
     private fun initMaps() {
         val adapter = MapAdapter {
             val action = MapsFragmentDirections.actionMapsFragmentToZoomImageFragment(mapId = it)
@@ -47,11 +55,5 @@ class MapsFragment : Fragment() {
             adapter.submitList(it)
         })
         viewModel.getMapList()
-    }
-
-    private fun initBackButton() {
-        binding.ivBtnBackMaps.setOnClickListener {
-            findNavController().navigate(R.id.action_global_homeFragment)
-        }
     }
 }

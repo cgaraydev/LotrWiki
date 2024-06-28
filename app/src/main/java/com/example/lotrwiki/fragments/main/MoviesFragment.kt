@@ -24,14 +24,21 @@ class MoviesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMoviesBinding.inflate(layoutInflater)
+        initCustomToolbar()
         return binding.root
+    }
+
+    private fun initCustomToolbar() {
+        binding.moviesCustomToolbar.setTitle("Peliculas")
+        binding.moviesCustomToolbar.setBackButtonClickListener {
+            findNavController().navigate(R.id.action_global_homeFragment)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         initMovieList()
-        initBackButton()
 
     }
 
@@ -70,13 +77,6 @@ class MoviesFragment : Fragment() {
     private fun navigateToMovieDetails(movieId: String) {
         val action = MoviesFragmentDirections.actionMoviesFragmentToMovieDetailFragment(movieId)
         findNavController().navigate(action)
-    }
-
-
-    private fun initBackButton() {
-        binding.ivBtnBackMovies.setOnClickListener {
-            findNavController().navigate(R.id.action_global_homeFragment)
-        }
     }
 
     override fun onDestroy() {
