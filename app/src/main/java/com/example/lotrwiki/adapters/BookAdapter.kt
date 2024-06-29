@@ -5,14 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.lotrwiki.databinding.BookItemBinding
+import com.example.lotrwiki.databinding.ItemBookBinding
 import com.example.lotrwiki.model.Book
 
 class BookAdapter(
     private val onItemClick: (String) -> Unit
 ) : ListAdapter<Book, BookAdapter.BookViewHolder>(BookDiffCallBack()) {
 
-    inner class BookViewHolder(val binding: BookItemBinding) :
+    inner class BookViewHolder(val binding: ItemBookBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(book: Book) {
             binding.tvItemBookName.text = book.name
@@ -23,7 +23,7 @@ class BookAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
-        val binding = BookItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemBookBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return BookViewHolder(binding)
     }
 

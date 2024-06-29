@@ -7,7 +7,7 @@
     android:background="@color/black"
     tools:context=".fragments.main.OthersFragment">
 
-    <com.example.lotrwiki.fragments.customviews.CustomToolBar
+    <com.example.lotrwiki.utils.customviews.CustomToolBar
         android:id="@+id/othersCustomToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

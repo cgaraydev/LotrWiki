@@ -3,18 +3,17 @@ package com.example.lotrwiki.adapters
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.lotrwiki.databinding.MapItemBinding
+import com.example.lotrwiki.databinding.ItemMapBinding
 import com.example.lotrwiki.model.Map
 
 class MapAdapter(
     private val onClick: (String) -> Unit
 ) : ListAdapter<Map, MapAdapter.MapsViewHolder>(MapDiffCallBack()) {
 
-    inner class MapsViewHolder(val binding: MapItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class MapsViewHolder(val binding: ItemMapBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(map: Map) {
             binding.tvMapItemName.text = map.name
             binding.tvMapItemName.setOnClickListener {
@@ -26,7 +25,7 @@ class MapAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MapAdapter.MapsViewHolder {
-        val binding = MapItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemMapBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MapsViewHolder(binding)
     }
 

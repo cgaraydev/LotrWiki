@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".fragments.main.MapsFragment">
 
-    <com.example.lotrwiki.fragments.customviews.CustomToolBar
+    <com.example.lotrwiki.utils.customviews.CustomToolBar
         android:id="@+id/MapsCustomToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

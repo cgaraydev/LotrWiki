@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
     android:orientation="vertical"
     tools:context=".fragments.main.CharactersFragment">
 
-    <com.example.lotrwiki.fragments.customviews.CustomToolBar
+    <com.example.lotrwiki.utils.customviews.CustomToolBar
         android:id="@+id/custom_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <com.example.lotrwiki.fragments.customviews.CustomFilterBar
-        android:id="@+id/custom_filterbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -25,32 +20,74 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvFeatured"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:fontFamily="@font/ring_bearer_medium"
-                android:gravity="center"
-                android:text="destacados:"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
+            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress
+                android:id="@+id/custom_recycler_progress_featured"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-            <ProgressBar
-                android:id="@+id/pbCharacters"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:visibility="gone" />
+            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress
+                android:id="@+id/custom_recycler_progress_elves"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvCharactersFragment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/item_character_fragment" />
+            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress
+                android:id="@+id/custom_recycler_progress_men"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress
+                android:id="@+id/custom_recycler_progress_evil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress
+                android:id="@+id/custom_recycler_progress_dwarves"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress
+                android:id="@+id/custom_recycler_progress_hobbits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvViewAllCharacters"
+                android:layout_width="120dp"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="11dp"
+                android:layout_marginVertical="32dp"
+                android:backgroundTint="@color/golden">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="100dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_right_arrow"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:text="ver todos"
+                        android:fontFamily="@font/ring_bearer_medium"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 

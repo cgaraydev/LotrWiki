@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.lotrwiki.databinding.RaceItemBinding
+import com.example.lotrwiki.databinding.ItemRaceBinding
 import com.example.lotrwiki.model.Race
 
 class RaceAdapter(
     private val onClick: (String) -> Unit
 ) : ListAdapter<Race, RaceAdapter.RaceViewHolder>(RaceDiffCallBack()) {
 
-    inner class RaceViewHolder(val binding: RaceItemBinding) :
+    inner class RaceViewHolder(val binding: ItemRaceBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(race: Race) {
             binding.tvRaceText.text = race.name
@@ -26,7 +26,7 @@ class RaceAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RaceViewHolder {
         val binding =
-            RaceItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemRaceBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RaceViewHolder(binding)
     }
 

@@ -1,4 +1,4 @@
-package com.example.lotrwiki.fragments.customviews
+package com.example.lotrwiki.utils.customviews
 
 import android.content.Context
 import android.util.AttributeSet

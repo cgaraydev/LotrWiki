@@ -6,13 +6,13 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.lotrwiki.databinding.LocationItemBinding
+import com.example.lotrwiki.databinding.ItemLocationBinding
 import com.example.lotrwiki.model.Location
 
 class LocationAdapter :
     PagingDataAdapter<Location, LocationAdapter.LocationViewHolder>(DIFF_CALLBACK) {
 
-    inner class LocationViewHolder(val binding: LocationItemBinding) :
+    inner class LocationViewHolder(val binding: ItemLocationBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(location: Location) {
             binding.apply {
@@ -45,7 +45,7 @@ class LocationAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
         val binding =
-            LocationItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemLocationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return LocationViewHolder(binding)
     }
 }

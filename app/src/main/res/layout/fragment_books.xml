@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.example.lotrwiki.fragments.customviews.CustomToolBar
+            <com.example.lotrwiki.utils.customviews.CustomToolBar
                 android:id="@+id/BooksCustomToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -78,7 +78,7 @@
                         android:id="@+id/rvBookNonPosthumous"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:listitem="@layout/book_item" />
+                        tools:listitem="@layout/item_book" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -140,7 +140,7 @@
                         android:id="@+id/rvBookPosthumous"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:listitem="@layout/book_item" />
+                        tools:listitem="@layout/item_book" />
 
                     <TextView
                         android:layout_width="wrap_content"

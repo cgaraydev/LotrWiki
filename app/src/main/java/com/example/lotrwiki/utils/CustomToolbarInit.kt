@@ -2,7 +2,7 @@ package com.example.lotrwiki.utils
 
 import androidx.navigation.NavController
 import com.example.lotrwiki.R
-import com.example.lotrwiki.fragments.customviews.CustomToolBar
+import com.example.lotrwiki.utils.customviews.CustomToolBar
 
 fun setUpCustomToolbar(
     customToolbar: CustomToolBar,

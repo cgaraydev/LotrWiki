@@ -8,12 +8,12 @@
     android:orientation="vertical"
     tools:context=".fragments.main.LocationsFragment">
 
-    <com.example.lotrwiki.fragments.customviews.CustomToolBar
+    <com.example.lotrwiki.utils.customviews.CustomToolBar
         android:id="@+id/locationsCustomToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <com.example.lotrwiki.fragments.customviews.CustomFilterBar
+    <com.example.lotrwiki.utils.customviews.CustomFilterBar
         android:id="@+id/locationsFilterBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -22,6 +22,6 @@
         android:id="@+id/rvLocationsFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:listitem="@layout/location_item"/>
+        tools:listitem="@layout/item_location"/>
 
 </LinearLayout>

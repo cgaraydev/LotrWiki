@@ -6,7 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.lotrwiki.databinding.ItemCharacterFragmentBinding
+import com.example.lotrwiki.databinding.ItemCharacterBinding
 import com.example.lotrwiki.model.Character
 
 
@@ -16,7 +16,7 @@ class CharacterAdapter(
 ) :
     PagingDataAdapter<Character, CharacterAdapter.CharacterFragmentViewHolder>(DIFF_CALLBACK) {
 
-    inner class CharacterFragmentViewHolder(val binding: ItemCharacterFragmentBinding) :
+    inner class CharacterFragmentViewHolder(val binding: ItemCharacterBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(character: Character) {
             binding.apply {
@@ -52,7 +52,7 @@ class CharacterAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterFragmentViewHolder {
         val binding =
-            ItemCharacterFragmentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemCharacterBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return CharacterFragmentViewHolder(binding)
     }
 

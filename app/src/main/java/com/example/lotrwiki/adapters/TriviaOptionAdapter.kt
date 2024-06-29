@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lotrwiki.R
-import com.example.lotrwiki.databinding.TriviaOptionItemBinding
+import com.example.lotrwiki.databinding.ItemTriviaOptionBinding
 
 class TriviaOptionAdapter(
     private var options: List<String>,
@@ -18,7 +18,7 @@ class TriviaOptionAdapter(
     private var selectedOption: String? = null
     private var isOptionSelected = false
 
-    inner class TriviaViewHolder(val binding: TriviaOptionItemBinding) :
+    inner class TriviaViewHolder(val binding: ItemTriviaOptionBinding) :
         RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("NotifyDataSetChanged")
         fun bind(option: String) {
@@ -52,7 +52,7 @@ class TriviaOptionAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TriviaViewHolder {
         val binding =
-            TriviaOptionItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemTriviaOptionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TriviaViewHolder(binding)
     }
 
