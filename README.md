@@ -1,4 +1,4 @@
-# Enciclopedia Tolkien
+# Enciclopedia Tolkien/Tolkien Wiki
 
 Esta app busca acercar a los fanáticos del mundo creado por Tolkien a información rápida y precisa.
 La base de datos está construida por mí y está ubicada en Firebase Storage
