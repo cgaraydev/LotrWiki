@@ -1,4 +1,4 @@
-package com.example.lotrwiki.fragments.trivia
+package com.example.lotrwiki.ui.fragments.trivia
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,8 +11,8 @@ import androidx.activity.addCallback
 import androidx.fragment.app.activityViewModels
 import com.bumptech.glide.Glide
 import com.example.lotrwiki.R
-import com.example.lotrwiki.activities.MainActivity
-import com.example.lotrwiki.activities.TriviaActivity
+import com.example.lotrwiki.ui.activities.MainActivity
+import com.example.lotrwiki.ui.activities.TriviaActivity
 import com.example.lotrwiki.databinding.FragmentTriviaResultBinding
 import com.example.lotrwiki.viewmodel.TriviaViewModel
 

@@ -1,4 +1,4 @@
-package com.example.lotrwiki.fragments.trivia
+package com.example.lotrwiki.ui.fragments.trivia
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -15,7 +15,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lotrwiki.R
-import com.example.lotrwiki.activities.TriviaActivity
+import com.example.lotrwiki.ui.activities.TriviaActivity
 import com.example.lotrwiki.adapters.TriviaOptionAdapter
 import com.example.lotrwiki.databinding.FragmentTriviaQuestionBinding
 import com.example.lotrwiki.viewmodel.TriviaViewModel

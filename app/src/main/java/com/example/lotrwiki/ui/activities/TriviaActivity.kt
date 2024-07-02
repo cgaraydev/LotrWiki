@@ -1,4 +1,4 @@
-package com.example.lotrwiki.activities
+package com.example.lotrwiki.ui.activities
 
 import android.graphics.Color
 import android.os.Build

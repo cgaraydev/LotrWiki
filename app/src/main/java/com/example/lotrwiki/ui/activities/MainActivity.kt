@@ -1,4 +1,4 @@
-package com.example.lotrwiki.activities
+package com.example.lotrwiki.ui.activities
 
 import android.content.Intent
 import android.graphics.Color
@@ -19,7 +19,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.lotrwiki.NavGraphDirections
 import com.example.lotrwiki.R
 import com.example.lotrwiki.databinding.ActivityMainBinding
-import com.example.lotrwiki.fragments.main.HomeFragment
+import com.example.lotrwiki.ui.fragments.main.HomeFragment
 
 
 class MainActivity : AppCompatActivity(), HomeFragment.MenuClickListener {

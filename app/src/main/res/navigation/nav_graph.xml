@@ -6,7 +6,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.lotrwiki.fragments.main.HomeFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/booksFragment"
-        android:name="com.example.lotrwiki.fragments.main.BooksFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.BooksFragment"
         android:label="fragment_books"
         tools:layout="@layout/fragment_books">
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/charactersFragment"
-        android:name="com.example.lotrwiki.fragments.main.CharactersFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.CharactersFragment"
         android:label="fragment_characters"
         tools:layout="@layout/fragment_characters">
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/gamesFragment"
-        android:name="com.example.lotrwiki.fragments.main.GamesFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.GamesFragment"
         android:label="fragment_games"
         tools:layout="@layout/fragment_games">
         <action
@@ -52,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/locationsFragment"
-        android:name="com.example.lotrwiki.fragments.main.LocationsFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.LocationsFragment"
         android:label="fragment_locations"
         tools:layout="@layout/fragment_locations">
         <action
@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/mapsFragment"
-        android:name="com.example.lotrwiki.fragments.main.MapsFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.MapsFragment"
         android:label="fragment_maps"
         tools:layout="@layout/fragment_maps">
         <action
@@ -74,7 +74,7 @@
     </fragment>
     <fragment
         android:id="@+id/moviesFragment"
-        android:name="com.example.lotrwiki.fragments.main.MoviesFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.MoviesFragment"
         android:label="fragment_movies"
         tools:layout="@layout/fragment_movies">
         <action
@@ -86,7 +86,7 @@
     </fragment>
     <fragment
         android:id="@+id/raceFragment"
-        android:name="com.example.lotrwiki.fragments.main.RaceFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.RaceFragment"
         android:label="fragment_race"
         tools:layout="@layout/fragment_race">
         <action
@@ -98,7 +98,7 @@
     </fragment>
     <fragment
         android:id="@+id/tolkienFragment"
-        android:name="com.example.lotrwiki.fragments.main.TolkienFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.TolkienFragment"
         android:label="fragment_tolkien"
         tools:layout="@layout/fragment_tolkien">
         <action
@@ -107,7 +107,7 @@
     </fragment>
     <fragment
         android:id="@+id/weaponsFragment"
-        android:name="com.example.lotrwiki.fragments.main.WeaponsFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.WeaponsFragment"
         android:label="fragment_weapons"
         tools:layout="@layout/fragment_weapons">
         <action
@@ -116,7 +116,7 @@
     </fragment>
     <fragment
         android:id="@+id/othersFragment"
-        android:name="com.example.lotrwiki.fragments.main.OthersFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.OthersFragment"
         android:label="fragment_others"
         tools:layout="@layout/fragment_others">
         <action
@@ -125,7 +125,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.example.lotrwiki.fragments.main.CharacterDetailsFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.CharacterDetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_character_details">
         <argument
@@ -134,7 +134,7 @@
     </fragment>
     <fragment
         android:id="@+id/zoomImageFragment"
-        android:name="com.example.lotrwiki.fragments.main.MapDetailsFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.MapDetailsFragment"
         android:label="fragment_zoom_image"
         tools:layout="@layout/fragment_zoom_image">
         <argument
@@ -143,7 +143,7 @@
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
-        android:name="com.example.lotrwiki.fragments.main.MovieDetailsFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.MovieDetailsFragment"
         android:label="fragment_movie_detail"
         tools:layout="@layout/fragment_movie_detail">
         <argument
@@ -152,7 +152,7 @@
     </fragment>
     <fragment
         android:id="@+id/raceDetailsFragment"
-        android:name="com.example.lotrwiki.fragments.main.RaceDetailsFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.RaceDetailsFragment"
         android:label="fragment_race_details"
         tools:layout="@layout/fragment_race_details">
         <argument
@@ -161,7 +161,7 @@
     </fragment>
     <fragment
         android:id="@+id/bookDetailsFragment"
-        android:name="com.example.lotrwiki.fragments.main.BookDetailsFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.BookDetailsFragment"
         android:label="fragment_book_details"
         tools:layout="@layout/fragment_book_details">
         <argument
@@ -203,7 +203,7 @@
         app:destination="@id/othersFragment" />
     <fragment
         android:id="@+id/allCharactersFragment"
-        android:name="com.example.lotrwiki.fragments.main.AllCharactersFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.AllCharactersFragment"
         android:label="fragment_all_characters"
         tools:layout="@layout/fragment_all_characters" >
         <action

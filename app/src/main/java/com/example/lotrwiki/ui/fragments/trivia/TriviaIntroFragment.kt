@@ -1,4 +1,4 @@
-package com.example.lotrwiki.fragments.trivia
+package com.example.lotrwiki.ui.fragments.trivia
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.lotrwiki.R
-import com.example.lotrwiki.activities.MainActivity
+import com.example.lotrwiki.ui.activities.MainActivity
 import com.example.lotrwiki.databinding.FragmentTriviaIntroBinding
 
 class TriviaIntroFragment : Fragment() {
