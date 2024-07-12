@@ -14,54 +14,8 @@ import com.example.lotrwiki.databinding.ImageItemViewholderBinding
 import com.example.lotrwiki.model.Images
 
 
-//class ImagePagerAdapter(
-//    private val images: List<Images>
-//) : RecyclerView.Adapter<ImagePagerAdapter.ImageViewHolder>() {
-//
-//    class ImageViewHolder(val binding: ImageItemViewholderBinding) :
-//        RecyclerView.ViewHolder(binding.root)
-//
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-//        val binding =
-//            ImageItemViewholderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-//        return ImageViewHolder(binding)
-//    }
-//
-//    override fun getItemCount() = images.size
-//
-//    override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-//        val image = images[position]
-//        holder.binding.pbImageLoading.visibility = View.VISIBLE
-//        Glide.with(holder.binding.root)
-//            .load(image.url)
-//            .listener(object : RequestListener<Drawable> {
-//                override fun onLoadFailed(
-//                    e: GlideException?,
-//                    model: Any?,
-//                    target: Target<Drawable>?,
-//                    isFirstResource: Boolean
-//                ): Boolean {
-//                    holder.binding.pbImageLoading.visibility = View.GONE
-//                    return false
-//                }
-//
-//                override fun onResourceReady(
-//                    resource: Drawable?,
-//                    model: Any?,
-//                    target: Target<Drawable>?,
-//                    dataSource: DataSource?,
-//                    isFirstResource: Boolean
-//                ): Boolean {
-//                    holder.binding.pbImageLoading.visibility = View.GONE
-//                    return false
-//                }
-//            })
-//            .into(holder.binding.ivItemDetails)
-//        holder.binding.tvImageDescription.text = image.description
-//    }
-//}
 class ImagePagerAdapter(
-    private val imageUrls: List<String>
+    private val images: List<Images>
 ) : RecyclerView.Adapter<ImagePagerAdapter.ImageViewHolder>() {
 
     class ImageViewHolder(val binding: ImageItemViewholderBinding) :
@@ -73,13 +27,13 @@ class ImagePagerAdapter(
         return ImageViewHolder(binding)
     }
 
-    override fun getItemCount() = imageUrls.size
+    override fun getItemCount() = images.size
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        val imageUrl = imageUrls[position]
+        val image = images[position]
         holder.binding.pbImageLoading.visibility = View.VISIBLE
         Glide.with(holder.binding.root)
-            .load(imageUrl)
+            .load(image.url)
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
                     e: GlideException?,
@@ -103,8 +57,60 @@ class ImagePagerAdapter(
                 }
             })
             .into(holder.binding.ivItemDetails)
+        if (image.artist != null) {
+            holder.binding.tvImageDescription.text = image.artist
+            holder.binding.tvImageDescription.isSelected = true
+            holder.binding.tvImageDescription.requestFocus()
+        } else {
+            holder.binding.tvImageDescription.visibility = View.GONE
+        }
     }
 }
+//class ImagePagerAdapter(
+//    private val imageUrls: List<String>
+//) : RecyclerView.Adapter<ImagePagerAdapter.ImageViewHolder>() {
+//
+//    class ImageViewHolder(val binding: ImageItemViewholderBinding) :
+//        RecyclerView.ViewHolder(binding.root)
+//
+//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
+//        val binding =
+//            ImageItemViewholderBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+//        return ImageViewHolder(binding)
+//    }
+//
+//    override fun getItemCount() = imageUrls.size
+//
+//    override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
+//        val imageUrl = imageUrls[position]
+//        holder.binding.pbImageLoading.visibility = View.VISIBLE
+//        Glide.with(holder.binding.root)
+//            .load(imageUrl)
+//            .listener(object : RequestListener<Drawable> {
+//                override fun onLoadFailed(
+//                    e: GlideException?,
+//                    model: Any?,
+//                    target: Target<Drawable>?,
+//                    isFirstResource: Boolean
+//                ): Boolean {
+//                    holder.binding.pbImageLoading.visibility = View.GONE
+//                    return false
+//                }
+//
+//                override fun onResourceReady(
+//                    resource: Drawable?,
+//                    model: Any?,
+//                    target: Target<Drawable>?,
+//                    dataSource: DataSource?,
+//                    isFirstResource: Boolean
+//                ): Boolean {
+//                    holder.binding.pbImageLoading.visibility = View.GONE
+//                    return false
+//                }
+//            })
+//            .into(holder.binding.ivItemDetails)
+//    }
+//}
 
 //    override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
 //        val imageUrl = imageUrls[position]

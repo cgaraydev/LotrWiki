@@ -6,6 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.lotrwiki.R
 import com.example.lotrwiki.databinding.ItemCharacterBinding
 import com.example.lotrwiki.model.Character
 
@@ -23,6 +24,7 @@ class CharacterAdapter(
                 tvCharacterNameFragment.text = character.name
                 Glide.with(ivCharacterFragment.context)
                     .load(character.poster)
+                    .placeholder(R.drawable.tolkien_logo)
                     .into(ivCharacterFragment)
             }
         }

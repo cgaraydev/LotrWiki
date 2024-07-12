@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginBottom="12dp">
 
     <ImageView
         android:id="@+id/ivItemDetails"
@@ -33,14 +34,18 @@
 
     <TextView
         android:id="@+id/tvImageDescription"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@id/ivItemDetails"
+        android:gravity="end"
         app:layout_constraintBottom_toBottomOf="@id/ivItemDetails"
+        app:layout_constraintEnd_toEndOf="@id/ivItemDetails"
+        app:layout_constraintStart_toStartOf="@id/ivItemDetails"
         tools:text="description"
-        android:textColor="@color/black"
-        android:background="@color/gray"
-        android:padding="1dp"/>
+        android:textSize="14sp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/golden"
+        android:background="@color/black"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

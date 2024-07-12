@@ -43,36 +43,25 @@ class CharactersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initCharactersLoad(
-            "la comunidad del anillo",
-            CharacterFilter.Featured,
-            binding.customRecyclerProgressFeatured
-        )
-        initCharactersLoad(
-            "elfos",
-            CharacterFilter.ByRace("Elfos"),
-            binding.customRecyclerProgressElves
-        )
-        initCharactersLoad(
-            "hombres",
-            CharacterFilter.ByRace("Hombres"),
-            binding.customRecyclerProgressMen
-        )
+
         initCharactersLoad(
             "villanos",
             CharacterFilter.ByFaction("mal"),
             binding.customRecyclerProgressEvil
         )
+
         initCharactersLoad(
-            "enanos",
-            CharacterFilter.ByRace("Enanos"),
-            binding.customRecyclerProgressDwarves
+            "edain",
+            CharacterFilter.ByTag("edain"),
+            binding.customRecyclerProgressFeatured
         )
+
         initCharactersLoad(
-            "hobbits",
-            CharacterFilter.ByRace("Hobbits"),
-            binding.customRecyclerProgressHobbits
+            "elfos",
+            CharacterFilter.ByTag("elfo"),
+            binding.customRecyclerProgressElves
         )
+
         initViewAllButton()
     }
 

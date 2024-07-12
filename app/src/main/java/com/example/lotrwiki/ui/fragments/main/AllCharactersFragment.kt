@@ -56,7 +56,7 @@ class AllCharactersFragment : Fragment() {
             findNavController().navigate(action)
         }
         val recyclerView = binding.customRecyclerProgressAllCharacters.getRecyclerView()
-        binding.customRecyclerProgressAllCharacters.setTitle("todos")
+        binding.customRecyclerProgressAllCharacters.setTitle("")
         recyclerView.layoutManager =
             GridLayoutManager(requireContext(), 3)
         recyclerView.adapter = adapter

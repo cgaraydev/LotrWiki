@@ -32,35 +32,35 @@ class BookDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initDetails()
+//        initDetails()
         initBackButton()
     }
 
-    private fun initDetails() {
-        binding.pbBookDetailsViewPager.visibility = View.VISIBLE
-        val bookId = args.bookId
-        viewModel.getBookDetailsById(bookId)
-        viewModel.bookDetails.observe(viewLifecycleOwner) {
-            binding.apply {
-                if (it != null) {
-                    val imageUrls = it.images
-                    pbBookDetailsViewPager.visibility = View.GONE
-                    tvBookDetailsName.text = it.name
-                    tvBookIntroduction.text = it.introduction
-                    adapter = ImagePagerAdapter(imageUrls)
-                    bookDetailsViewPager.adapter = adapter
-                    dotIndicatorBookDetails.attachTo(bookDetailsViewPager)
-                } else {
-                    pbBookDetailsViewPager.visibility = View.GONE
-                    Toast.makeText(
-                        requireContext(),
-                        "Error al cargar los detalles del libro",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
-        }
-    }
+//    private fun initDetails() {
+//        binding.pbBookDetailsViewPager.visibility = View.VISIBLE
+//        val bookId = args.bookId
+//        viewModel.getBookDetailsById(bookId)
+//        viewModel.bookDetails.observe(viewLifecycleOwner) {
+//            binding.apply {
+//                if (it != null) {
+//                    val imageUrls = it.images
+//                    pbBookDetailsViewPager.visibility = View.GONE
+//                    tvBookDetailsName.text = it.name
+//                    tvBookIntroduction.text = it.introduction
+//                    adapter = ImagePagerAdapter(imageUrls)
+//                    bookDetailsViewPager.adapter = adapter
+//                    dotIndicatorBookDetails.attachTo(bookDetailsViewPager)
+//                } else {
+//                    pbBookDetailsViewPager.visibility = View.GONE
+//                    Toast.makeText(
+//                        requireContext(),
+//                        "Error al cargar los detalles del libro",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//            }
+//        }
+//    }
 
     override fun onDestroy() {
         super.onDestroy()

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/triviaIntroFragment"
-        android:name="com.example.lotrwiki.fragments.trivia.TriviaIntroFragment"
+        android:name="com.example.lotrwiki.ui.fragments.trivia.TriviaIntroFragment"
         android:label="fragment_trivia_intro"
         tools:layout="@layout/fragment_trivia_intro" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/triviaQuestionFragment"
-        android:name="com.example.lotrwiki.fragments.trivia.TriviaQuestionFragment"
+        android:name="com.example.lotrwiki.ui.fragments.trivia.TriviaQuestionFragment"
         android:label="fragment_trivia_question"
         tools:layout="@layout/fragment_trivia_question" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/triviaResultFragment"
-        android:name="com.example.lotrwiki.fragments.trivia.TriviaResultFragment"
+        android:name="com.example.lotrwiki.ui.fragments.trivia.TriviaResultFragment"
         android:label="fragment_trivia_result"
         tools:layout="@layout/fragment_trivia_result" />
 </navigation>

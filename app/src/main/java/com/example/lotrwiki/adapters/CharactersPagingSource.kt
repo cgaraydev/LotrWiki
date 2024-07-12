@@ -26,11 +26,11 @@ class CharactersPagingSource(
         val pageSize = params.loadSize
 
         return try {
+
             val ref = firebaseDatabase.getReference("characters")
             val snapshot = ref.orderByKey().limitToFirst(pageSize).get().await()
             val characters = snapshot.children.mapNotNull { it.getValue(Character::class.java) }
                 .filter { character -> filter.filter(character) }
-
 
             LoadResult.Page(
                 data = characters,
