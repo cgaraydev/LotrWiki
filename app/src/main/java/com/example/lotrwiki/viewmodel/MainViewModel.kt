@@ -68,7 +68,7 @@ class MainViewModel : ViewModel() {
     fun getCharacters(filter: CharacterFilter): Flow<PagingData<Character>> {
         return Pager(
             config = PagingConfig(
-                pageSize = 50,
+                pageSize = 400,
                 enablePlaceholders = false
             ),
             pagingSourceFactory = { CharactersPagingSource(filter) }

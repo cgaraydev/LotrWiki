@@ -124,6 +124,15 @@
             app:destination="@id/othersFragment" />
     </fragment>
     <fragment
+        android:id="@+id/allCharactersFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.AllCharactersFragment"
+        android:label="fragment_all_characters"
+        tools:layout="@layout/fragment_all_characters" >
+        <action
+            android:id="@+id/action_allCharactersFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.lotrwiki.ui.fragments.main.CharacterDetailsFragment"
         android:label="fragment_details"
@@ -201,13 +210,7 @@
     <action
         android:id="@+id/action_global_othersFragment"
         app:destination="@id/othersFragment" />
-    <fragment
-        android:id="@+id/allCharactersFragment"
-        android:name="com.example.lotrwiki.ui.fragments.main.AllCharactersFragment"
-        android:label="fragment_all_characters"
-        tools:layout="@layout/fragment_all_characters" >
-        <action
-            android:id="@+id/action_allCharactersFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-    </fragment>
+
+    <action android:id="@+id/action_global_characterDetailsFragment"
+        app:destination="@id/detailsFragment"/>
 </navigation>
