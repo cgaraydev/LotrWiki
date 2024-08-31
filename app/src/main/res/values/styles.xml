@@ -14,4 +14,15 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:padding">8dp</item>
     </style>
+
+    <style name="Widget.MaterialComponents.ShapeableImageView.CharacterDetailsPoster">
+        <item name="strokeColor">@color/golden</item>
+        <item name="strokeWidth">4dp</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.CharacterDetailsPoster</item>
+    </style>
+
+    <style name="ShapeAppearance.CharacterDetailsPoster" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
 </resources>

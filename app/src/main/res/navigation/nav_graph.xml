@@ -33,7 +33,6 @@
         <action
             android:id="@+id/action_charactersFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
-
         <action
             android:id="@+id/action_global_charactersFragment"
             app:destination="@id/charactersFragment" />
@@ -50,15 +49,7 @@
             android:id="@+id/action_global_gamesFragment"
             app:destination="@id/gamesFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/locationsFragment"
-        android:name="com.example.lotrwiki.ui.fragments.main.LocationsFragment"
-        android:label="fragment_locations"
-        tools:layout="@layout/fragment_locations">
-        <action
-            android:id="@+id/action_global_locationsFragmentFragment"
-            app:destination="@id/locationsFragment" />
-    </fragment>
+
     <fragment
         android:id="@+id/mapsFragment"
         android:name="com.example.lotrwiki.ui.fragments.main.MapsFragment"
@@ -127,10 +118,31 @@
         android:id="@+id/allCharactersFragment"
         android:name="com.example.lotrwiki.ui.fragments.main.AllCharactersFragment"
         android:label="fragment_all_characters"
-        tools:layout="@layout/fragment_all_characters" >
+        tools:layout="@layout/fragment_all_characters">
         <action
             android:id="@+id/action_allCharactersFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationsFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.LocationsFragment"
+        android:label="fragment_locations"
+        tools:layout="@layout/fragment_locations">
+        <action
+            android:id="@+id/action_locationsFragment_to_locationDetailsFragment"
+            app:destination="@id/locationDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationDetailsFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.LocationDetailsFragment"
+        android:label="fragment_location_details"
+        tools:layout="@layout/fragment_location_details">
+        <argument
+            android:name="locationId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_locationDetailsFragment_self"
+            app:destination="@id/locationDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
@@ -140,6 +152,9 @@
         <argument
             android:name="characterId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_detailsFragment_self"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/zoomImageFragment"
@@ -210,7 +225,10 @@
     <action
         android:id="@+id/action_global_othersFragment"
         app:destination="@id/othersFragment" />
-
-    <action android:id="@+id/action_global_characterDetailsFragment"
-        app:destination="@id/detailsFragment"/>
+    <action
+        android:id="@+id/action_global_characterDetailsFragment"
+        app:destination="@id/detailsFragment" />
+    <action
+        android:id="@+id/action_global_locationDetailsFragment"
+        app:destination="@id/locationDetailsFragment" />
 </navigation>

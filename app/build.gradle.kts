@@ -44,6 +44,7 @@ android {
 
 dependencies {
 
+    implementation("com.google.firebase:firebase-firestore-ktx:25.0.0")
     val navVersion = "2.7.0"
 
     implementation("androidx.core:core-ktx:1.13.1")

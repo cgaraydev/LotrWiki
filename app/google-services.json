@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "504304444884",
+    "firebase_url": "https://lotrwiki-2dd76-default-rtdb.firebaseio.com",
     "project_id": "lotrwiki-2dd76",
     "storage_bucket": "lotrwiki-2dd76.appspot.com"
   },

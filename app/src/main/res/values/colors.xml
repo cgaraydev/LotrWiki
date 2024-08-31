@@ -3,7 +3,7 @@
     <!--    Primary-->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="golden">#BBFFD700</color>
+    <color name="golden">#E6FFD700</color>
     <color name="red">#FFFF0000</color>
 
     <!--    Secondary-->

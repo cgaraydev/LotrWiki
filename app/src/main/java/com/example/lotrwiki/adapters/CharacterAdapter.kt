@@ -10,8 +10,6 @@ import com.example.lotrwiki.R
 import com.example.lotrwiki.databinding.ItemCharacterBinding
 import com.example.lotrwiki.model.Character
 
-
-
 class CharacterAdapter(
     private val onItemClick: (String) -> Unit
 ) :

@@ -10,10 +10,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.lotrwiki.R
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.lotrwiki.adapters.LocationAdapter
 import com.example.lotrwiki.databinding.FragmentLocationsBinding
+import com.example.lotrwiki.utils.recyclerview.MarginItemDecoration
 import com.example.lotrwiki.utils.setUpCustomToolbar
 import com.example.lotrwiki.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -46,15 +46,29 @@ class LocationsFragment : Fragment() {
     }
 
     private fun initLocationsLoad() {
-        val adapter = LocationAdapter()
-        binding.rvLocationsFragment.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        binding.rvLocationsFragment.adapter = adapter
+        val adapter = LocationAdapter {
+            val action =
+                LocationsFragmentDirections.actionLocationsFragmentToLocationDetailsFragment(
+                    locationId = it
+                )
+            findNavController().navigate(action)
+        }
+        val recyclerView = binding.customRecyclerProgressLocations.getRecyclerView()
+        binding.customRecyclerProgressLocations.setTitle("")
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        recyclerView.adapter = adapter
+        recyclerView.addItemDecoration(MarginItemDecoration(10))
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.getLocations().collectLatest {
                     adapter.submitData(it)
                 }
+            }
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                binding.customRecyclerProgressLocations.observeLoadState(adapter)
+
             }
         }
     }

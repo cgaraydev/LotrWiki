@@ -4,15 +4,14 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_marginBottom="4dp">
+    android:layout_marginBottom="8dp"
+    tools:background="@color/black">
 
     <TextView
         android:id="@+id/tvCustomDetailsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/opensans_regular"
-        android:layout_gravity="center"
-        android:gravity="center"
+        android:fontFamily="@font/opensans_light"
         android:textStyle="bold"
         tools:text="Nacimiento"
         android:textColor="@color/gray"
@@ -22,10 +21,8 @@
         android:id="@+id/tvCustomDetailsDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
         android:textSize="15sp"
-        android:fontFamily="@font/opensans_regular"
+        android:fontFamily="@font/opensans_light"
         tools:text="2931 de la Tercera Edad, Eriador"
         android:textColor="@color/white"/>
 

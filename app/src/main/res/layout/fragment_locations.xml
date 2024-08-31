@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
     android:orientation="vertical"
-    tools:context=".fragments.main.LocationsFragment">
+    tools:context=".ui.fragments.main.LocationsFragment">
 
     <com.example.lotrwiki.utils.customviews.CustomToolBar
         android:id="@+id/locationsCustomToolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <com.example.lotrwiki.utils.customviews.CustomFilterBar
-        android:id="@+id/locationsFilterBar"
+    <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress
+        android:id="@+id/custom_recycler_progress_locations"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvLocationsFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item_location"/>
 
 </LinearLayout>

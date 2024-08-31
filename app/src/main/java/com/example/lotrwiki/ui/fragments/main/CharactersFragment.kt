@@ -43,25 +43,41 @@ class CharactersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         initCharactersLoad(
-            "villanos",
-            CharacterFilter.ByFaction("mal"),
-            binding.customRecyclerProgressEvil
-        )
-
-        initCharactersLoad(
-            "edain",
-            CharacterFilter.ByTag("edain"),
-            binding.customRecyclerProgressFeatured
+            "la comunidad del anillo",
+            CharacterFilter.ByTag("fellowship_of_the_ring"),
+            binding.customRecyclerProgress1
         )
 
         initCharactersLoad(
             "elfos",
-            CharacterFilter.ByTag("elfo"),
-            binding.customRecyclerProgressElves
+            CharacterFilter.ByTag("elves"),
+            binding.customRecyclerProgress2
         )
 
+        initCharactersLoad(
+            "villanos",
+            CharacterFilter.ByFaction("mal"),
+            binding.customRecyclerProgress3
+        )
+
+        initCharactersLoad(
+            "casa de finarfin",
+            CharacterFilter.ByTag("house_of_finarfin"),
+            binding.customRecyclerProgress4
+        )
+
+        initCharactersLoad(
+            "segunda edad",
+            CharacterFilter.ByTag("second_age"),
+            binding.customRecyclerProgress5
+        )
+
+        initCharactersLoad(
+            "compañia de thorin",
+            CharacterFilter.ByTag("thorin_company"),
+            binding.customRecyclerProgress6
+        )
         initViewAllButton()
     }
 

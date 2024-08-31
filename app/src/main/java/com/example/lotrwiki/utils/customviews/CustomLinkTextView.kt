@@ -7,9 +7,11 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.URLSpan
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.text.HtmlCompat
 import androidx.core.text.toSpannable
 import androidx.navigation.findNavController
@@ -24,7 +26,6 @@ class CustomLinkTextView @JvmOverloads constructor(
 
     init {
         movementMethod = LinkMovementMethod.getInstance()
-//        applyScaleAnimation()
     }
 
     fun setHtmlText(htmlText: String?) {
@@ -40,7 +41,10 @@ class CustomLinkTextView @JvmOverloads constructor(
             spannable.setSpan(clickableSPan, start, end, flags)
             spannable.removeSpan(urlSpan)
         }
+
         text = spannable
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, 15f)
+
 
     }
 
@@ -64,21 +68,12 @@ class CustomLinkTextView @JvmOverloads constructor(
             super.updateDrawState(ds)
             ds.color = resources.getColor(R.color.golden, null)
             ds.isUnderlineText = false
-            ds.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
+//            ds.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
+//            val typeface = ResourcesCompat.getFont(context, R.font.opensans_regular)
+//            ds.typeface = typeface
         }
     }
 
-//    private fun applyScaleAnimation() {
-//        val scaleUp = AnimationUtils.loadAnimation(context, R.anim.scale_click)
-//        val scaleDown = AnimationUtils.loadAnimation(context, R.anim.scale_click_back)
-//
-//        setOnClickListener {
-//            startAnimation(scaleUp)
-//            postDelayed({
-//                startAnimation(scaleDown)
-//            }, scaleUp.duration)
-//        }
-//    }
 
     private fun navigateToCharacter(characterId: String) {
         val action = NavGraphDirections.actionGlobalCharacterDetailsFragment(characterId)
