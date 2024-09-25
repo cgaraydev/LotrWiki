@@ -15,9 +15,17 @@
                 android:icon="@drawable/ic_race"
                 android:title="@string/razas" />
             <item
+                android:id="@+id/events"
+                android:icon="@drawable/ic_maps"
+                android:title="Eventos/Batallas" />
+            <item
                 android:id="@+id/maps"
                 android:icon="@drawable/ic_maps"
                 android:title="@string/mapas" />
+            <item
+                android:id="@+id/languages"
+                android:icon="@drawable/ic_male"
+                android:title="Lenguas/Escrituras" />
             <item
                 android:id="@+id/others"
                 android:icon="@drawable/ic_maps"
@@ -31,7 +39,7 @@
                 android:icon="@drawable/ic_ring"
                 android:title="@string/tolkien" />
             <item
-                android:id="@+id/movies"
+                android:id="@+id/adaptations"
                 android:icon="@drawable/ic_movies"
                 android:title="@string/peliculas" />
             <item
@@ -42,6 +50,14 @@
                 android:id="@+id/games"
                 android:icon="@drawable/ic_games"
                 android:title="@string/juegos" />
+            <item
+                android:id="@+id/music"
+                android:icon="@drawable/ic_dice"
+                android:title="Musica" />
+            <item
+                android:id="@+id/people"
+                android:icon="@drawable/ic_dice"
+                android:title="Autores" />
         </menu>
     </item>
     <item android:title="Entretenimiento">
@@ -50,6 +66,10 @@
                 android:id="@+id/trivia"
                 android:icon="@drawable/ic_dice"
                 android:title="@string/trivia" />
+            <item
+                android:id="@+id/memes"
+                android:icon="@drawable/ic_dice"
+                android:title="Memes" />
         </menu>
     </item>
 </menu>

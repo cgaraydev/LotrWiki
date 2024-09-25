@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity(), HomeFragment.MenuClickListener {
             R.id.characters -> navController.navigate(NavGraphDirections.actionGlobalCharactersFragment())
             R.id.locations -> navController.navigate(NavGraphDirections.actionGlobalLocationsFragment())
             R.id.others -> navController.navigate(NavGraphDirections.actionGlobalOthersFragment())
-            R.id.movies -> navController.navigate(NavGraphDirections.actionGlobalMoviesFragment())
+            R.id.adaptations -> navController.navigate(NavGraphDirections.actionGlobalMoviesFragment())
             R.id.tolkien -> navController.navigate(NavGraphDirections.actionGlobalTolkienFragment())
             R.id.maps -> navController.navigate(NavGraphDirections.actionGlobalMapsFragment())
             R.id.games -> navController.navigate(NavGraphDirections.actionGlobalGamesFragment())

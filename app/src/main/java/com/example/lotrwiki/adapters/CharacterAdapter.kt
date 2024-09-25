@@ -21,7 +21,7 @@ class CharacterAdapter(
             binding.apply {
                 tvCharacterNameFragment.text = character.name
                 Glide.with(ivCharacterFragment.context)
-                    .load(character.poster)
+                    .load("https://firebasestorage.googleapis.com/v0/b/lotrwiki-2dd76.appspot.com/o/" + character.poster)
                     .placeholder(R.drawable.tolkien_logo)
                     .into(ivCharacterFragment)
             }

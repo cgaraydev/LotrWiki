@@ -1,14 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".ui.fragments.main.LocationDetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/locationDetailsHeader"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseCompoundDrawables">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tvLocationDetailsName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/ring_bearer_medium"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            tools:text="Mordor" />
+
+        <ImageView
+            android:id="@+id/ivBtnBackDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/back_button"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollViewLocationDetails"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/locationDetailsHeader">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/locationDetailsPosterContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivLocationDetailsPoster"
+                    android:layout_width="250dp"
+                    android:layout_height="300dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:scaleType="centerCrop"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearance.CharacterDetailsPoster" />
+
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="8dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables">
+
+                <TextView
+                    android:id="@+id/tvLocationDetailsType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/opensans_regular"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    tools:text="hobbit" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/the_one_ring"
+                android:text="a"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/tvLocationDetailsBiographyTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="center"
+                android:text="Historia"
+                android:textColor="@color/golden_dark"
+                android:textSize="18sp"
+                android:visibility="invisible"
+                tools:visibility="visible" />
+
+            <com.example.lotrwiki.utils.customviews.CustomLinkTextView
+                android:id="@+id/tvLocationDetailsBiography"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/opensans_light"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                tools:text="@string/tolkien_resumen" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/the_one_ring"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:text="a" />
+
+            <TextView
+                android:id="@+id/tvInformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Información"
+                android:textColor="@color/golden_dark"
+                android:textSize="14sp"
+                android:visibility="invisible"
+                tools:visibility="visible" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvLocationDetailsOtherNames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvLocationDetailsInhabitants"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvLocationDetailsFounded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvLocationDetailsDestroyed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvLocationDetailsLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvLocationDetailsEvents"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvLocationDetailsLanguages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvLocationDetailsEtymology"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/pbLocationDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

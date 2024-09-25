@@ -35,6 +35,9 @@ class MainViewModel : ViewModel() {
     private val _characterDetails = MutableLiveData<Character?>()
     val characterDetails: LiveData<Character?> = _characterDetails
 
+    private val _locationDetails = MutableLiveData<Location?>()
+    val locationDetails: LiveData<Location?> = _locationDetails
+
     private val _mapList = MutableLiveData<List<Map>>()
     val mapList: LiveData<List<Map>> = _mapList
 
@@ -104,6 +107,26 @@ class MainViewModel : ViewModel() {
 
     fun clearCharacterDetails() {
         _characterDetails.value = null
+    }
+
+    fun getLocationsById(id: String) {
+        val ref = firebaseDatabase.getReference("locations").child(id)
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val location = snapshot.getValue(Location::class.java)
+                if (location != null) {
+                    _locationDetails.value = location
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+    }
+
+    fun clearLocationDetails() {
+        _locationDetails.value = null
     }
 
     // QUOTE

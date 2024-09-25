@@ -53,10 +53,10 @@ class CustomLinkTextView @JvmOverloads constructor(
     ) : ClickableSpan() {
         override fun onClick(widget: View) {
             when {
-//                url.startsWith("location:") -> {
-//                    val locationId = url.substringAfter("location:")
-//                    navigateToLocation(locationId)
-//                }
+                url.startsWith("location:") -> {
+                    val locationId = url.substringAfter("location:")
+                    navigateToLocation(locationId)
+                }
                 url.startsWith("character") -> {
                     val characterId = url.substringAfter("character:")
                     navigateToCharacter(characterId)
@@ -80,9 +80,11 @@ class CustomLinkTextView @JvmOverloads constructor(
         findNavController().navigate(action)
     }
 
-//    private fun navigateToLocation(locationId: String) {
-//
-//    }
+    private fun navigateToLocation(locationId: String) {
+        val action = NavGraphDirections.actionGlobalLocationDetailsFragment(locationId)
+        findNavController().navigate(action)
+
+    }
 
 
 }
