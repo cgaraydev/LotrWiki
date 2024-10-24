@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/black"
     android:orientation="vertical"
     tools:context=".ui.fragments.main.CharactersFragment">
@@ -22,76 +21,294 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvViewAllCharacters"
-                android:layout_width="120dp"
-                android:layout_height="200dp"
-                android:layout_marginHorizontal="11dp"
-                android:layout_marginVertical="32dp"
-                android:backgroundTint="@color/golden">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Personajes por raza"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginBottom="16dp"/>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="100dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_right_arrow"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:text="ver todos"
-                        android:fontFamily="@font/ring_bearer_medium"
-                        android:textSize="20sp"
-                        android:textColor="@color/black"/>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress
-                android:id="@+id/custom_recycler_progress_1"
+            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                android:id="@+id/categoryEagles"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
-            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress
-                android:id="@+id/custom_recycler_progress_2"
+            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                android:id="@+id/categoryAinur"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
-            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress
-                android:id="@+id/custom_recycler_progress_3"
+            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                android:id="@+id/categorySpiders"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
-            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress
-                android:id="@+id/custom_recycler_progress_4"
+            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                android:id="@+id/categoryBalrogs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
-            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress
-                android:id="@+id/custom_recycler_progress_5"
+            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                android:id="@+id/categoryRavens"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
-            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress
-                android:id="@+id/custom_recycler_progress_6"
+            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                android:id="@+id/categoryDragons"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"/>
 
+            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                android:id="@+id/categoryElves"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                android:id="@+id/categoryDwarves"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                android:id="@+id/categoryEnts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                android:id="@+id/categoryHobbits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                android:id="@+id/categoryMen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                android:id="@+id/categoryOrcs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                android:id="@+id/categoryNazguls"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>
+
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:id="@+id/clAinur"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="18dp">-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/tvAinur"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginHorizontal="8dp"-->
+    <!--                    android:text="Ainur"-->
+    <!--                    android:textColor="@color/golden"-->
+    <!--                    android:textSize="18sp"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent"-->
+    <!--                    app:layout_constraintEnd_toEndOf="parent"/>-->
+
+    <!--                <ImageView-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:src="@drawable/ic_down"-->
+    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="@id/tvAinur"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="@id/tvAinur"-->
+    <!--                    app:layout_constraintStart_toEndOf="@id/tvAinur"-->
+    <!--                    app:tint="@color/golden"-->
+    <!--                    android:contentDescription="arrow down" />-->
+
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--            <net.cachapa.expandablelayout.ExpandableLayout-->
+    <!--                android:id="@+id/expandableLayoutAinur"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                app:el_duration="300"-->
+    <!--                app:el_expanded="false">-->
+
+    <!--                    <androidx.recyclerview.widget.RecyclerView-->
+    <!--                        android:id="@+id/rvAinur"-->
+    <!--                        android:layout_width="match_parent"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        tools:listitem="@layout/item_book" />-->
+
+    <!--            </net.cachapa.expandablelayout.ExpandableLayout>-->
+
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:id="@+id/clElves"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="18dp">-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/tvElves"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginHorizontal="8dp"-->
+    <!--                    android:text="Elfos"-->
+    <!--                    android:textColor="@color/golden"-->
+    <!--                    android:textSize="18sp"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent"-->
+    <!--                    app:layout_constraintEnd_toEndOf="parent"/>-->
+
+    <!--                <ImageView-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:src="@drawable/ic_down"-->
+    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="@id/tvElves"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="@id/tvElves"-->
+    <!--                    app:layout_constraintStart_toEndOf="@id/tvElves"-->
+    <!--                    app:tint="@color/golden"-->
+    <!--                    android:contentDescription="arrow down" />-->
+
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--            <net.cachapa.expandablelayout.ExpandableLayout-->
+    <!--                android:id="@+id/expandableLayoutElves"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                app:el_duration="300"-->
+    <!--                app:el_expanded="false">-->
+
+    <!--                <androidx.recyclerview.widget.RecyclerView-->
+    <!--                    android:id="@+id/rvElves"-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    tools:listitem="@layout/item_book" />-->
+
+
+
+    <!--            </net.cachapa.expandablelayout.ExpandableLayout>-->
+
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:id="@+id/clMen"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="18dp">-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/tvMen"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginHorizontal="8dp"-->
+    <!--                    android:text="Hombres"-->
+    <!--                    android:textColor="@color/golden"-->
+    <!--                    android:textSize="18sp"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent"-->
+    <!--                    app:layout_constraintEnd_toEndOf="parent"/>-->
+
+    <!--                <ImageView-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:src="@drawable/ic_down"-->
+    <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="@id/tvMen"-->
+    <!--                    app:layout_constraintBottom_toBottomOf="@id/tvMen"-->
+    <!--                    app:layout_constraintStart_toEndOf="@id/tvMen"-->
+    <!--                    app:tint="@color/golden"-->
+    <!--                    android:contentDescription="arrow down" />-->
+
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--            <net.cachapa.expandablelayout.ExpandableLayout-->
+    <!--                android:id="@+id/expandableLayoutMen"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                app:el_duration="300"-->
+    <!--                app:el_expanded="false">-->
+
+    <!--                <androidx.recyclerview.widget.RecyclerView-->
+    <!--                    android:id="@+id/rvMen"-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    tools:listitem="@layout/item_book" />-->
+
+
+
+    <!--            </net.cachapa.expandablelayout.ExpandableLayout>-->
+
+    <!--            <androidx.cardview.widget.CardView-->
+    <!--                android:id="@+id/cvViewAllCharacters"-->
+    <!--                android:layout_width="120dp"-->
+    <!--                android:layout_height="200dp"-->
+    <!--                android:layout_marginHorizontal="11dp"-->
+    <!--                android:layout_marginVertical="32dp"-->
+    <!--                android:backgroundTint="@color/golden">-->
+
+    <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="match_parent">-->
+
+    <!--                    <ImageView-->
+    <!--                        android:layout_width="60dp"-->
+    <!--                        android:layout_height="100dp"-->
+    <!--                        android:scaleType="fitXY"-->
+    <!--                        android:src="@drawable/ic_right_arrow"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent"-->
+    <!--                        app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                        android:text="ver todos"-->
+    <!--                        android:fontFamily="@font/ring_bearer_medium"-->
+    <!--                        android:textSize="20sp"-->
+    <!--                        android:textColor="@color/black"/>-->
+
+    <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--            </androidx.cardview.widget.CardView>-->
+
+    <!--            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress-->
+    <!--                android:id="@+id/custom_recycler_progress_1"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content" />-->
+
+    <!--            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress-->
+    <!--                android:id="@+id/custom_recycler_progress_2"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content" />-->
+
+    <!--            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress-->
+    <!--                android:id="@+id/custom_recycler_progress_3"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content" />-->
+
+    <!--            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress-->
+    <!--                android:id="@+id/custom_recycler_progress_4"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content" />-->
+
+    <!--            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress-->
+    <!--                android:id="@+id/custom_recycler_progress_5"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content" />-->
+
+    <!--            <com.example.lotrwiki.utils.customviews.CustomRecyclerProgress-->
+    <!--                android:id="@+id/custom_recycler_progress_6"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content" />-->

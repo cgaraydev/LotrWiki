@@ -10,13 +10,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.lotrwiki.R
-import com.example.lotrwiki.adapters.CharacterAdapter
+import com.example.lotrwiki.adapters.CharacterListAdapter
 import com.example.lotrwiki.databinding.FragmentCharactersBinding
 import com.example.lotrwiki.utils.CharacterFilter
-import com.example.lotrwiki.utils.customviews.CustomRecyclerProgress
-import com.example.lotrwiki.utils.recyclerview.MarginItemDecoration
+import com.example.lotrwiki.utils.customviews.CustomCharacterCategory
 import com.example.lotrwiki.utils.setUpCustomToolbar
 import com.example.lotrwiki.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -26,95 +23,52 @@ class CharactersFragment : Fragment() {
 
     private val viewModel: MainViewModel by activityViewModels()
     private lateinit var binding: FragmentCharactersBinding
-    private val recyclerItemMargin = 10
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCharactersBinding.inflate(layoutInflater)
-
         initCustomToolbar()
-
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initCharactersLoad(
-            "la comunidad del anillo",
-            CharacterFilter.ByTag("fellowship_of_the_ring"),
-            binding.customRecyclerProgress1
-        )
-
-        initCharactersLoad(
-            "elfos",
-            CharacterFilter.ByTag("elves"),
-            binding.customRecyclerProgress2
-        )
-
-        initCharactersLoad(
-            "villanos",
-            CharacterFilter.ByFaction("mal"),
-            binding.customRecyclerProgress3
-        )
-
-        initCharactersLoad(
-            "casa de finarfin",
-            CharacterFilter.ByTag("house_of_finarfin"),
-            binding.customRecyclerProgress4
-        )
-
-        initCharactersLoad(
-            "segunda edad",
-            CharacterFilter.ByTag("second_age"),
-            binding.customRecyclerProgress5
-        )
-
-        initCharactersLoad(
-            "compañia de thorin",
-            CharacterFilter.ByTag("thorin_company"),
-            binding.customRecyclerProgress6
-        )
-        initViewAllButton()
+        initCharacterCategory(binding.categoryEagles, "Aguilas", CharacterFilter.ByTag("eagles"))
+        initCharacterCategory(binding.categoryAinur, "Ainur", CharacterFilter.ByTag("ainur"))
+        initCharacterCategory(binding.categorySpiders, "Arañas", CharacterFilter.ByTag("spiders"))
+        initCharacterCategory(binding.categoryBalrogs, "Balrogs", CharacterFilter.ByTag("balrogs"))
+        initCharacterCategory(binding.categoryRavens, "Cuervos", CharacterFilter.ByTag("ravens"))
+        initCharacterCategory(binding.categoryDragons, "Dragones", CharacterFilter.ByTag("dragons"))
+        initCharacterCategory(binding.categoryElves, "Elfos", CharacterFilter.ByTag("elves"))
+        initCharacterCategory(binding.categoryDwarves, "Enanos", CharacterFilter.ByTag("dwarves"))
+        initCharacterCategory(binding.categoryEnts, "Ents", CharacterFilter.ByTag("ents"))
+        initCharacterCategory(binding.categoryHobbits, "Hobbits", CharacterFilter.ByTag("hobbits"))
+        initCharacterCategory(binding.categoryMen, "Hombres", CharacterFilter.ByTag("men"))
+        initCharacterCategory(binding.categoryOrcs, "Orcos", CharacterFilter.ByTag("orcs"))
+        initCharacterCategory(binding.categoryNazguls, "Nazgul", CharacterFilter.ByTag("nazgul"))
     }
 
-    private fun initViewAllButton() {
-        binding.cvViewAllCharacters.setOnClickListener {
-            findNavController().navigate(R.id.action_charactersFragment_to_allCharactersFragment)
-        }
-    }
-
-    private fun initCharactersLoad(
+    private fun initCharacterCategory(
+        characterCategory: CustomCharacterCategory,
         title: String,
-        filter: CharacterFilter,
-        customRecyclerProgress: CustomRecyclerProgress
+        filter: CharacterFilter
     ) {
-        val adapter = CharacterAdapter {
-            val action =
-                CharactersFragmentDirections.actionCharactersFragmentToDetailsFragment(
-                    characterId = it
-                )
+        characterCategory.setTitle(title)
+        val characterListAdapter = CharacterListAdapter {
+            val action = CharactersFragmentDirections.actionCharactersFragmentToDetailsFragment(
+                characterId = it
+            )
             findNavController().navigate(action)
         }
-        val recyclerView = customRecyclerProgress.getRecyclerView()
-        customRecyclerProgress.setTitle(title)
-        recyclerView.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(MarginItemDecoration(recyclerItemMargin))
+        characterCategory.setAdapter(characterListAdapter)
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.getCharacters(filter).collectLatest {
-                    adapter.submitData(it)
+                viewModel.getCharacters(filter).collectLatest { pagingData ->
+                    characterListAdapter.submitData(pagingData)
                 }
-            }
-        }
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                customRecyclerProgress.observeLoadState(adapter)
             }
         }
     }
@@ -123,7 +77,187 @@ class CharactersFragment : Fragment() {
         setUpCustomToolbar(binding.customToolbar, "Personajes", findNavController())
     }
 
-    //    private fun initCustomFilterBar() {
+}
+
+
+//    private fun initRecyclerView(
+//        recyclerView: RecyclerView,
+//        filter: CharacterFilter
+//    ) {
+//        val characterListAdapter = CharacterListAdapter {
+//            val action = CharactersFragmentDirections.actionCharactersFragmentToDetailsFragment(
+//                characterId = it
+//            )
+//            findNavController().navigate(action)
+//        }
+//        recyclerView.layoutManager =
+//            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+//        recyclerView.adapter = characterListAdapter
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                viewModel.getCharacters(filter).collectLatest {pagingData ->
+//                    characterListAdapter.submitData(pagingData)
+//                }
+//            }
+//        }
+//    }
+//
+//    private fun initExpandableClick(layout: ConstraintLayout, expandable: ExpandableLayout) {
+//        layout.setOnClickListener {
+//            toggleExpandableLayouts(expandable)
+//        }
+//    }
+//
+//    private fun toggleExpandableLayouts(expandableLayout: ExpandableLayout) {
+//        if (expandableLayout.isExpanded) {
+//            expandableLayout.collapse()
+//        } else {
+//            expandableLayout.expand()
+//        }
+//    }
+
+
+
+
+//    private fun initRecyclerView(
+//        title: String,
+//        filter: CharacterFilter,
+//        customRecyclerProgress: CustomRecyclerProgress
+//        recycler: RecyclerView,
+//        tag: String,
+
+
+//    ) {
+//        val characterListAdapter = CharacterListAdapter {
+//            val action = CharactersFragmentDirections.actionCharactersFragmentToDetailsFragment(
+//                characterId = it
+//            )
+//            findNavController().navigate(action)
+//        }
+//        val recyclerView = customRecyclerProgress.getRecyclerView()
+//        customRecyclerProgress.setTitle(title)
+//        recyclerView.layoutManager =
+//            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+//        recyclerView.adapter = characterListAdapter
+
+//        recyclerView.adapter = characterListAdapter
+//        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                viewModel.getCharacters(filter).collectLatest {
+//                    characterListAdapter.submitData(it)
+//                }
+//            }
+//        }
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                customRecyclerProgress.observeLoadState(characterListAdapter)
+//            }
+//        }
+//    }
+
+
+//        title: String,
+//        filter: CharacterFilter,
+//        customRecyclerProgress: CustomRecyclerProgress
+//    ) {
+//
+//        val recyclerView = customRecyclerProgress.getRecyclerView()
+//        customRecyclerProgress.setTitle(title)
+//        recyclerView.layoutManager =
+//            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+//        recyclerView.adapter = adapter
+//        recyclerView.addItemDecoration(MarginItemDecoration(recyclerItemMargin))
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                viewModel.getCharacters(filter).collectLatest {
+//                    adapter.submitData(it)
+//                }
+//            }
+//        }
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                customRecyclerProgress.observeLoadState(adapter)
+//            }
+//        }
+
+//        initCharactersLoad(
+//            "la comunidad del anillo",
+//            CharacterFilter.ByTag("fellowship_of_the_ring"),
+//            binding.customRecyclerProgress1
+//        )
+//
+//        initCharactersLoad(
+//            "elfos",
+//            CharacterFilter.ByTag("elves"),
+//            binding.customRecyclerProgress2
+//        )
+//
+//        initCharactersLoad(
+//            "villanos",
+//            CharacterFilter.ByFaction("mal"),
+//            binding.customRecyclerProgress3
+//        )
+//
+//        initCharactersLoad(
+//            "casa de finarfin",
+//            CharacterFilter.ByTag("house_of_finarfin"),
+//            binding.customRecyclerProgress4
+//        )
+//
+//        initCharactersLoad(
+//            "segunda edad",
+//            CharacterFilter.ByTag("second_age"),
+//            binding.customRecyclerProgress5
+//        )
+//
+//        initCharactersLoad(
+//            "compañia de thorin",
+//            CharacterFilter.ByTag("thorin_company"),
+//            binding.customRecyclerProgress6
+//        )
+//        initViewAllButton()
+//    }
+
+//    private fun initViewAllButton() {
+//        binding.cvViewAllCharacters.setOnClickListener {
+//            findNavController().navigate(R.id.action_charactersFragment_to_allCharactersFragment)
+//        }
+//    }
+
+//    private fun initCharactersLoad(
+//        title: String,
+//        filter: CharacterFilter,
+//        customRecyclerProgress: CustomRecyclerProgress
+//    ) {
+//        val adapter = CharacterAdapter {
+//            val action =
+//                CharactersFragmentDirections.actionCharactersFragmentToDetailsFragment(
+//                    characterId = it
+//                )
+//            findNavController().navigate(action)
+//        }
+//        val recyclerView = customRecyclerProgress.getRecyclerView()
+//        customRecyclerProgress.setTitle(title)
+//        recyclerView.layoutManager =
+//            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+//        recyclerView.adapter = adapter
+//        recyclerView.addItemDecoration(MarginItemDecoration(recyclerItemMargin))
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                viewModel.getCharacters(filter).collectLatest {
+//                    adapter.submitData(it)
+//                }
+//            }
+//        }
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                customRecyclerProgress.observeLoadState(adapter)
+//            }
+//        }
+
+//    private fun initCustomFilterBar() {
 //        binding.customFilterbar.setViewAllClickListener {
 //            binding.tvFeatured.visibility = View.GONE
 //
@@ -227,7 +361,6 @@ class CharactersFragment : Fragment() {
 //            onItemSelected(parent.getItemAtPosition(position) as String)
 //        }
 //    }
-}
 
 
 //        bindingDialog.tvRaceFilter.setOnItemClickListener { parent, _, position, _ ->

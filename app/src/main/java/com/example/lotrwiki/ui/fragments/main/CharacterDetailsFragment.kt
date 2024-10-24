@@ -78,7 +78,7 @@ class CharacterDetailsFragment : Fragment() {
                         characterDetailsPosterContainer.visibility = View.VISIBLE
                         ivCharacterDetailsPoster.strokeColor = ColorStateList.valueOf(strokeColor)
                         ivCharacterDetailsPoster.strokeWidth = 4f
-                        Glide.with(requireContext()).load(it.poster).into(ivCharacterDetailsPoster)
+                        Glide.with(requireContext()).load("https://firebasestorage.googleapis.com/v0/b/lotrwiki-2dd76.appspot.com/o/" + it.poster).into(ivCharacterDetailsPoster)
                     } else {
                         characterDetailsPosterContainer.visibility = View.GONE
                     }
