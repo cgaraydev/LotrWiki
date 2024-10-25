@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,79 +22,324 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvCharactersByRace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/ripple_effect"
+                    android:text="Personajes por Raza"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivArrowDown"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginEnd="26dp"
+                    android:contentDescription="arrow down"
+                    android:src="@drawable/ic_down"
+                    app:layout_constraintBottom_toBottomOf="@id/tvCharactersByRace"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvCharactersByRace"
+                    app:tint="@color/white" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandableLayoutRace"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Personajes por raza"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                android:layout_marginHorizontal="8dp"
-                android:layout_marginBottom="16dp"/>
+                app:el_duration="300"
+                app:el_expanded="false">
 
-            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
-                android:id="@+id/categoryEagles"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
-                android:id="@+id/categoryAinur"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryEagles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
-                android:id="@+id/categorySpiders"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryAinur"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
-                android:id="@+id/categoryBalrogs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categorySpiders"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
-                android:id="@+id/categoryRavens"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryBalrogs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
-                android:id="@+id/categoryDragons"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryRavens"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
-                android:id="@+id/categoryElves"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryDragons"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
-                android:id="@+id/categoryDwarves"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryElves"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
-                android:id="@+id/categoryEnts"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryDwarves"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
-                android:id="@+id/categoryHobbits"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryEnts"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
-                android:id="@+id/categoryMen"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryHobbits"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
-                android:id="@+id/categoryOrcs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryMen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
-            <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
-                android:id="@+id/categoryNazguls"
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryOrcs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvCharactersByAge"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/ripple_effect"
+                    android:text="Personajes por Edad"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginEnd="26dp"
+                    android:contentDescription="arrow down"
+                    android:src="@drawable/ic_down"
+                    app:layout_constraintBottom_toBottomOf="@id/tvCharactersByAge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvCharactersByAge"
+                    app:tint="@color/white" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandableLayoutAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:el_duration="300"
+                app:el_expanded="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryFirstAge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categorySecondAge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryThirdAge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryFourthAge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvCharactersByBook"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/ripple_effect"
+                    android:text="Personajes por Libro"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginEnd="26dp"
+                    android:contentDescription="arrow down"
+                    android:src="@drawable/ic_down"
+                    app:layout_constraintBottom_toBottomOf="@id/tvCharactersByBook"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvCharactersByBook"
+                    app:tint="@color/white" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandableLayoutBook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:el_duration="300"
+                app:el_expanded="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryTheHobbit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryTheLordOfTheRings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryTheSilmarillion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryBookOfLostTales"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryChildrenOfHurin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvCharactersByOthers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/ripple_effect"
+                    android:text="Otras Categorías"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginEnd="26dp"
+                    android:contentDescription="arrow down"
+                    android:src="@drawable/ic_down"
+                    app:layout_constraintBottom_toBottomOf="@id/tvCharactersByOthers"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvCharactersByOthers"
+                    app:tint="@color/white" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandableLayoutOthers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:el_duration="300"
+                app:el_expanded="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryFellowshipOfTheRing"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryThorinCompany"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryEdain"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryNoldor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomCharacterCategory
+                        android:id="@+id/categoryIstari"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
 
         </LinearLayout>
 
@@ -194,7 +440,6 @@
     <!--                    tools:listitem="@layout/item_book" />-->
 
 
-
     <!--            </net.cachapa.expandablelayout.ExpandableLayout>-->
 
     <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
@@ -241,7 +486,6 @@
     <!--                    android:layout_width="match_parent"-->
     <!--                    android:layout_height="wrap_content"-->
     <!--                    tools:listitem="@layout/item_book" />-->
-
 
 
     <!--            </net.cachapa.expandablelayout.ExpandableLayout>-->

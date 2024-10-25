@@ -12,7 +12,7 @@ data class Character(
     var genre: String? = "",
     var otherNames: String? = "",
     var family: String? = null,
-    var etimology: String? = "",
+    var etymology: String? = "",
     var house: String? = "",
     var wikiUrl: WikiUrl? = null,
     var biography: String? = "",

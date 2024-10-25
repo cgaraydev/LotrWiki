@@ -67,18 +67,17 @@ class CharacterDetailsFragment : Fragment() {
         viewModel.characterDetails.observe(viewLifecycleOwner) {
             with(binding) {
                 if (it != null) {
-
-                    val strokeColor = if (it.faction == "bien") {
-                        ContextCompat.getColor(requireContext(), R.color.white)
-                    } else {
-                        ContextCompat.getColor(requireContext(), R.color.red)
-                    }
+                    val imageUrls = it.images
 
                     if (!it.poster.isNullOrEmpty()) {
                         characterDetailsPosterContainer.visibility = View.VISIBLE
-                        ivCharacterDetailsPoster.strokeColor = ColorStateList.valueOf(strokeColor)
-                        ivCharacterDetailsPoster.strokeWidth = 4f
-                        Glide.with(requireContext()).load("https://firebasestorage.googleapis.com/v0/b/lotrwiki-2dd76.appspot.com/o/" + it.poster).into(ivCharacterDetailsPoster)
+                        tvCharacterDetailsImagesTitle.visibility = View.VISIBLE
+                        Glide.with(requireContext())
+                            .load("https://firebasestorage.googleapis.com/v0/b/lotrwiki-2dd76.appspot.com/o/" + it.poster)
+                            .into(ivCharacterDetailsPoster)
+                        adapter = ImagePagerAdapter(imageUrls)
+                        viewPager2.adapter = adapter
+                        dotIndicator.attachTo(viewPager2)
                     } else {
                         characterDetailsPosterContainer.visibility = View.GONE
                     }
@@ -87,9 +86,7 @@ class CharacterDetailsFragment : Fragment() {
                     tvInformation.visibility = View.VISIBLE
                     pbCharacterDetails.visibility = View.GONE
                     tvCharacterDetailsName.text = it.name
-                    if (!it.race.isNullOrEmpty()) {
-                        tvCharacterDetailsRace.text = it.race
-                    }
+                    tvCharacterDetailsRace.text = it.race
                     tvCharacterDetailsBiography.setHtmlText(it.biography)
                     tvCharacterDetailsOtherNames.setTextOrHide("Otro nombres", it.otherNames)
                     tvCharacterDetailsTitles.setTextOrHide("Títulos", it.titles)
@@ -98,7 +95,8 @@ class CharacterDetailsFragment : Fragment() {
                     tvCharacterDetailsLove.setTextOrHide("Cónyuge/Amor", it.love)
                     tvCharacterDetailsFamily.setTextOrHide("Familia", it.family)
                     tvCharacterDetailsHouse.setTextOrHide("Casa", it.house)
-                    tvCharacterDetailsEtimology.setTextOrHide("Etimología", it.etimology)
+                    tvCharacterDetailsEtymology.setTextOrHide("Etimología", it.etymology)
+
                 }
             }
         }

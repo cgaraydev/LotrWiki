@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:visibility="gone"/>
 
-    <TextView
+    <com.example.lotrwiki.utils.customviews.CustomLinkTextView
         android:id="@+id/tvImageDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
 import com.example.lotrwiki.adapters.CharacterListAdapter
 import com.example.lotrwiki.databinding.FragmentCharactersBinding
 import com.example.lotrwiki.utils.CharacterFilter
@@ -17,7 +19,10 @@ import com.example.lotrwiki.utils.customviews.CustomCharacterCategory
 import com.example.lotrwiki.utils.setUpCustomToolbar
 import com.example.lotrwiki.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+import net.cachapa.expandablelayout.ExpandableLayout
 
 class CharactersFragment : Fragment() {
 
@@ -36,6 +41,13 @@ class CharactersFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        with(binding) {
+            initExpandable(tvCharactersByRace, expandableLayoutRace)
+            initExpandable(tvCharactersByAge, expandableLayoutAge)
+            initExpandable(tvCharactersByBook, expandableLayoutBook)
+            initExpandable(tvCharactersByOthers, expandableLayoutOthers)
+        }
+
         initCharacterCategory(binding.categoryEagles, "Aguilas", CharacterFilter.ByTag("eagles"))
         initCharacterCategory(binding.categoryAinur, "Ainur", CharacterFilter.ByTag("ainur"))
         initCharacterCategory(binding.categorySpiders, "Arañas", CharacterFilter.ByTag("spiders"))
@@ -48,7 +60,25 @@ class CharactersFragment : Fragment() {
         initCharacterCategory(binding.categoryHobbits, "Hobbits", CharacterFilter.ByTag("hobbits"))
         initCharacterCategory(binding.categoryMen, "Hombres", CharacterFilter.ByTag("men"))
         initCharacterCategory(binding.categoryOrcs, "Orcos", CharacterFilter.ByTag("orcs"))
-        initCharacterCategory(binding.categoryNazguls, "Nazgul", CharacterFilter.ByTag("nazgul"))
+
+
+        initCharacterCategory(binding.categoryFirstAge, "Primera Edad", CharacterFilter.ByTag("first_age"))
+        initCharacterCategory(binding.categorySecondAge, "Segunda Edad", CharacterFilter.ByTag("second_age"))
+        initCharacterCategory(binding.categoryThirdAge, "Tercera Edad", CharacterFilter.ByTag("third_age"))
+        initCharacterCategory(binding.categoryFourthAge, "Cuarta Edad", CharacterFilter.ByTag("fourth_age"))
+
+        initCharacterCategory(binding.categoryTheHobbit, "El Hobbit", CharacterFilter.ByTag("the_hobbit"))
+        initCharacterCategory(binding.categoryTheLordOfTheRings, "El Señor de los Anillos", CharacterFilter.ByTag("lord_of_the_rings"))
+        initCharacterCategory(binding.categoryTheSilmarillion, "El Silmarillion", CharacterFilter.ByTag("silmarillion"))
+        initCharacterCategory(binding.categoryBookOfLostTales, "El Libro de los Cuentos Perdidos", CharacterFilter.ByTag("book_of_lost_tales"))
+        initCharacterCategory(binding.categoryChildrenOfHurin, "Los Hijos de Hurin", CharacterFilter.ByTag("children_of_hurin"))
+
+        initCharacterCategory(binding.categoryFellowshipOfTheRing, "La Comunidad del Anillo", CharacterFilter.ByTag("fellowship_of_the_ring"))
+        initCharacterCategory(binding.categoryThorinCompany, "Compañía de Thorin", CharacterFilter.ByTag("thorin_company"))
+        initCharacterCategory(binding.categoryEdain, "Edain", CharacterFilter.ByTag("edain"))
+        initCharacterCategory(binding.categoryNoldor, "Noldor", CharacterFilter.ByTag("noldor"))
+        initCharacterCategory(binding.categoryIstari, "Istari", CharacterFilter.ByTag("istari"))
+
     }
 
     private fun initCharacterCategory(
@@ -64,6 +94,7 @@ class CharactersFragment : Fragment() {
             findNavController().navigate(action)
         }
         characterCategory.setAdapter(characterListAdapter)
+
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.getCharacters(filter).collectLatest { pagingData ->
@@ -71,13 +102,59 @@ class CharactersFragment : Fragment() {
                 }
             }
         }
+        characterListAdapter.loadStateFlow.onEach { loadState ->
+            characterCategory.showLoading()
+            when(loadState.refresh) {
+                is LoadState.Loading -> characterCategory.showLoading()
+                is LoadState.NotLoading -> characterCategory.hideLoading()
+                is LoadState.Error -> characterCategory.hideLoading()
+            }
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
+    }
+
+    private fun initExpandable(tv: TextView, expandableLayout: ExpandableLayout) {
+        tv.setOnClickListener {
+            toggleExpandable(expandableLayout)
+        }
     }
 
     private fun initCustomToolbar() {
         setUpCustomToolbar(binding.customToolbar, "Personajes", findNavController())
     }
 
+    private fun toggleExpandable(expandableLayout: ExpandableLayout) {
+        if (expandableLayout.isExpanded) {
+            expandableLayout.collapse()
+        } else {
+            expandableLayout.expand()
+        }
+    }
+
 }
+
+
+//        characterCategory.setOnHeaderClickListener {
+//            if (!characterCategory.isExpanded()) {
+//                characterCategory.showLoading()
+//                viewLifecycleOwner.lifecycleScope.launch {
+//                    repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                        viewModel.getCharacters(filter).collectLatest { pagingData ->
+//                            characterListAdapter.submitData(pagingData)
+//                            characterCategory.hideLoading()
+//                        }
+//                    }
+//                }
+//            }
+//        }
+
+
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                viewModel.getCharacters(filter).collectLatest { pagingData ->
+//                    characterListAdapter.submitData(pagingData)
+//                }
+//            }
+//        }
 
 
 //    private fun initRecyclerView(
@@ -115,8 +192,6 @@ class CharactersFragment : Fragment() {
 //            expandableLayout.expand()
 //        }
 //    }
-
-
 
 
 //    private fun initRecyclerView(

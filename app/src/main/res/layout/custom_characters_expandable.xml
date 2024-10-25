@@ -8,7 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
-        android:layout_marginVertical="8dp">
+        android:background="@drawable/ripple_effect"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="4dp">
 
         <TextView
             android:id="@+id/tvCategoryTitle"
@@ -24,13 +27,13 @@
             android:id="@+id/ivArrowDown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
             android:contentDescription="arrow down"
             android:src="@drawable/ic_down"
             app:layout_constraintBottom_toBottomOf="@id/tvCategoryTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tvCategoryTitle"
-            app:tint="@color/golden"
-            android:layout_marginEnd="20dp"/>
+            app:tint="@color/golden" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -46,6 +49,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:listitem="@layout/item_book" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
 
     </net.cachapa.expandablelayout.ExpandableLayout>
 

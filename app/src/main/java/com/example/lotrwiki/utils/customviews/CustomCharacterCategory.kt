@@ -3,6 +3,7 @@ package com.example.lotrwiki.utils.customviews
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,4 +44,22 @@ class CustomCharacterCategory @JvmOverloads constructor(
         }
     }
 
+    fun showLoading() {
+        binding.progressBar.visibility = View.VISIBLE
+    }
+
+    fun hideLoading() {
+        binding.progressBar.visibility = View.GONE
+    }
+
 }
+
+
+//    fun setOnHeaderClickListener(onClick: () -> Unit) {
+//        binding.headerLayout.setOnClickListener {
+//            toggleExpandableLayout()
+//            onClick()
+//        }
+//    }
+//
+//    fun isExpanded() = binding.expandableLayout.isExpanded

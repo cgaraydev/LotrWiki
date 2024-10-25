@@ -33,7 +33,7 @@ class ImagePagerAdapter(
         val image = images[position]
         holder.binding.pbImageLoading.visibility = View.VISIBLE
         Glide.with(holder.binding.root)
-            .load(image.url)
+            .load("https://firebasestorage.googleapis.com/v0/b/lotrwiki-2dd76.appspot.com/o/" + image.url)
             .listener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
                     e: GlideException?,
@@ -58,9 +58,9 @@ class ImagePagerAdapter(
             })
             .into(holder.binding.ivItemDetails)
         if (image.artist != null) {
-            holder.binding.tvImageDescription.text = image.artist
-            holder.binding.tvImageDescription.isSelected = true
-            holder.binding.tvImageDescription.requestFocus()
+            holder.binding.tvImageDescription.setHtmlText(image.artist)
+//            holder.binding.tvImageDescription.isSelected = true
+//            holder.binding.tvImageDescription.requestFocus()
         } else {
             holder.binding.tvImageDescription.visibility = View.GONE
         }
