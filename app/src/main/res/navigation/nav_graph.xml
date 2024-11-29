@@ -36,9 +36,6 @@
         <action
             android:id="@+id/action_global_charactersFragment"
             app:destination="@id/charactersFragment" />
-        <action
-            android:id="@+id/action_charactersFragment_to_allCharactersFragment"
-            app:destination="@id/allCharactersFragment" />
     </fragment>
     <fragment
         android:id="@+id/gamesFragment"
@@ -113,15 +110,7 @@
         <action
             android:id="@+id/action_global_othersFragment"
             app:destination="@id/othersFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/allCharactersFragment"
-        android:name="com.example.lotrwiki.ui.fragments.main.AllCharactersFragment"
-        android:label="fragment_all_characters"
-        tools:layout="@layout/fragment_all_characters">
-        <action
-            android:id="@+id/action_allCharactersFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/locationsFragment"

@@ -86,6 +86,18 @@ class CustomLinkTextView @JvmOverloads constructor(
 
     }
 
+//    private fun navigateToOther(otherId: String) {
+//        val action = NavGraphDirections.actionGlobalOthersFragment(otherId)
+//        findNavController().navigate(action)
+//
+//    }
+
+//    private fun navigateToLocation(locationId: String) {
+//        val action = NavGraphDirections.actionGlobalLocationDetailsFragment(locationId)
+//        findNavController().navigate(action)
+//
+//    }
+
 
 }
 

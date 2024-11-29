@@ -9,57 +9,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
-//class CharactersPagingSource(
-//    private val filter: CharacterFilter.ByTag
-//) : PagingSource<String, Character>() {
-//
-//    private val firestore = FirebaseFirestore.getInstance()
-//    override fun getRefreshKey(state: PagingState<String, Character>): String? {
-//        return null
-//    }
-//
-//    override suspend fun load(params: LoadParams<String>): LoadResult<String, Character> {
-//
-//        val currentPageKey = params.key ?: ""
-//        val pageSize = params.loadSize
-//
-//        return try {
-//            val query = firestore.collection("characters")
-////                .apply {
-////                    when (filter) {
-////                        is CharacterFilter.ByTag -> whereArrayContains("tags", filter.tag)
-////                        is CharacterFilter.ByFaction -> whereEqualTo("faction", filter.faction)
-////                        is CharacterFilter.All -> orderBy("name")
-////                        else -> {}
-////                    }
-////                }
-//                .whereArrayContains("tags", filter.tag)
-//                .orderBy("name")
-//                .limit(pageSize.toLong())
-//                .apply {
-//                    if (currentPageKey.isNotEmpty()) {
-////                        startAfter(currentPageKey.takeIf { it.isNotEmpty() })
-//                        startAfter(currentPageKey)
-//                    }
-//                }
-//
-//            val snapshot = query.get().await()
-//            val characters = snapshot.toObjects(Character::class.java)
-//            val lastVisible = snapshot.documents.lastOrNull()?.id
-//
-//            LoadResult.Page(
-//                data = characters,
-//                prevKey = null,
-//                nextKey = lastVisible
-//            )
-//        } catch (e: Exception) {
-//            Log.e("CharactersPagingSource", "Error loading characters", e)
-//            LoadResult.Error(e)
-//        }
-//    }
-//
-//    override val keyReuseSupported: Boolean = true
-//}
+
 
 class CharactersPagingSource(
     private val filter: CharacterFilter
@@ -121,4 +71,54 @@ class CharactersPagingSource(
 //            val snapshot = ref.orderByKey().limitToFirst(pageSize).get().await()
 //            val characters = snapshot.children.mapNotNull { it.getValue(Character::class.java) }
 
-
+//class CharactersPagingSource(
+//    private val filter: CharacterFilter.ByTag
+//) : PagingSource<String, Character>() {
+//
+//    private val firestore = FirebaseFirestore.getInstance()
+//    override fun getRefreshKey(state: PagingState<String, Character>): String? {
+//        return null
+//    }
+//
+//    override suspend fun load(params: LoadParams<String>): LoadResult<String, Character> {
+//
+//        val currentPageKey = params.key ?: ""
+//        val pageSize = params.loadSize
+//
+//        return try {
+//            val query = firestore.collection("characters")
+////                .apply {
+////                    when (filter) {
+////                        is CharacterFilter.ByTag -> whereArrayContains("tags", filter.tag)
+////                        is CharacterFilter.ByFaction -> whereEqualTo("faction", filter.faction)
+////                        is CharacterFilter.All -> orderBy("name")
+////                        else -> {}
+////                    }
+////                }
+//                .whereArrayContains("tags", filter.tag)
+//                .orderBy("name")
+//                .limit(pageSize.toLong())
+//                .apply {
+//                    if (currentPageKey.isNotEmpty()) {
+////                        startAfter(currentPageKey.takeIf { it.isNotEmpty() })
+//                        startAfter(currentPageKey)
+//                    }
+//                }
+//
+//            val snapshot = query.get().await()
+//            val characters = snapshot.toObjects(Character::class.java)
+//            val lastVisible = snapshot.documents.lastOrNull()?.id
+//
+//            LoadResult.Page(
+//                data = characters,
+//                prevKey = null,
+//                nextKey = lastVisible
+//            )
+//        } catch (e: Exception) {
+//            Log.e("CharactersPagingSource", "Error loading characters", e)
+//            LoadResult.Error(e)
+//        }
+//    }
+//
+//    override val keyReuseSupported: Boolean = true
+//}

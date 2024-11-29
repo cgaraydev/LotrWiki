@@ -13,7 +13,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lotrwiki.R
-import com.example.lotrwiki.adapters.CharacterAdapter
 import com.example.lotrwiki.databinding.FragmentAllCharactersBinding
 import com.example.lotrwiki.utils.CharacterFilter
 import com.example.lotrwiki.utils.customviews.CustomRecyclerProgress
@@ -44,34 +43,34 @@ class AllCharactersFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initCharactersLoad()
+//        initCharactersLoad()
     }
 
-    private fun initCharactersLoad() {
-        val adapter = CharacterAdapter {
-            val action =
-                AllCharactersFragmentDirections.actionAllCharactersFragmentToDetailsFragment(
-                    characterId = it
-                )
-            findNavController().navigate(action)
-        }
-        val recyclerView = binding.customRecyclerProgressAllCharacters.getRecyclerView()
-        binding.customRecyclerProgressAllCharacters.setTitle("")
-        recyclerView.layoutManager =
-            GridLayoutManager(requireContext(), 3)
-        recyclerView.adapter = adapter
-        recyclerView.addItemDecoration(MarginItemDecoration(10))
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.getCharacters(CharacterFilter.All).collectLatest {
-                    adapter.submitData(it)
-                }
-            }
-        }
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                binding.customRecyclerProgressAllCharacters.observeLoadState(adapter)
-            }
-        }
-    }
+//    private fun initCharactersLoad() {
+//        val adapter = CharacterAdapter {
+//            val action =
+//                AllCharactersFragmentDirections.actionAllCharactersFragmentToDetailsFragment(
+//                    characterId = it
+//                )
+//            findNavController().navigate(action)
+//        }
+//        val recyclerView = binding.customRecyclerProgressAllCharacters.getRecyclerView()
+//        binding.customRecyclerProgressAllCharacters.setTitle("")
+//        recyclerView.layoutManager =
+//            GridLayoutManager(requireContext(), 3)
+//        recyclerView.adapter = adapter
+//        recyclerView.addItemDecoration(MarginItemDecoration(10))
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                viewModel.getCharacters(CharacterFilter.All).collectLatest {
+//                    adapter.submitData(it)
+//                }
+//            }
+//        }
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                binding.customRecyclerProgressAllCharacters.observeLoadState(adapter)
+//            }
+//        }
+//    }
 }

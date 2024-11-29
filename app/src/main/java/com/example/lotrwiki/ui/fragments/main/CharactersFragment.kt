@@ -112,7 +112,7 @@ class CharactersFragment : Fragment() {
         }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
-    private fun initExpandable(tv: TextView, expandableLayout: ExpandableLayout) {
+        private fun initExpandable(tv: TextView, expandableLayout: ExpandableLayout) {
         tv.setOnClickListener {
             toggleExpandable(expandableLayout)
         }
