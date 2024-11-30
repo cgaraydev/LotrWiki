@@ -73,7 +73,6 @@ class LocationsFragment : Fragment() {
         tv.setOnClickListener {
             toggleExpandable(expandableLayout)
         }
-
     }
 
     private fun initCustomToolbar() {

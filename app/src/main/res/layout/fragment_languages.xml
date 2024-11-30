@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <com.example.lotrwiki.utils.customviews.CustomToolBar
-        android:id="@+id/othersCustomToolbar"
+        android:id="@+id/custom_toolbar_languages"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -26,7 +26,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tvOthersAll"
+                    android:id="@+id/tvLanguages"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="8dp"
@@ -46,15 +46,15 @@
                     android:layout_marginEnd="26dp"
                     android:contentDescription="arrow down"
                     android:src="@drawable/ic_down"
-                    app:layout_constraintBottom_toBottomOf="@id/tvOthersAll"
+                    app:layout_constraintBottom_toBottomOf="@id/tvLanguages"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tvOthersAll"
+                    app:layout_constraintTop_toTopOf="@id/tvLanguages"
                     app:tint="@color/white" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <net.cachapa.expandablelayout.ExpandableLayout
-                android:id="@+id/expandableLayoutOthers"
+                android:id="@+id/expandableLayoutLanguages"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:el_duration="300"

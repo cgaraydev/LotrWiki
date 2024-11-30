@@ -61,6 +61,10 @@ class CustomLinkTextView @JvmOverloads constructor(
                     val characterId = url.substringAfter("character:")
                     navigateToCharacter(characterId)
                 }
+                url.startsWith("other") -> {
+                    val otherId = url.substringAfter("other:")
+                    navigateToOther(otherId)
+                }
             }
         }
 
@@ -83,21 +87,12 @@ class CustomLinkTextView @JvmOverloads constructor(
     private fun navigateToLocation(locationId: String) {
         val action = NavGraphDirections.actionGlobalLocationDetailsFragment(locationId)
         findNavController().navigate(action)
+    }
+    private fun navigateToOther(otherId: String) {
+        val action = NavGraphDirections.actionGlobalOtherDetailsFragment(otherId)
+        findNavController().navigate(action)
 
     }
-
-//    private fun navigateToOther(otherId: String) {
-//        val action = NavGraphDirections.actionGlobalOthersFragment(otherId)
-//        findNavController().navigate(action)
-//
-//    }
-
-//    private fun navigateToLocation(locationId: String) {
-//        val action = NavGraphDirections.actionGlobalLocationDetailsFragment(locationId)
-//        findNavController().navigate(action)
-//
-//    }
-
 
 }
 

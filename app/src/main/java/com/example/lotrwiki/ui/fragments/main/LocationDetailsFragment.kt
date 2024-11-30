@@ -74,5 +74,9 @@ class LocationDetailsFragment : Fragment() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.clearLocationDetails()
+    }
 
 }

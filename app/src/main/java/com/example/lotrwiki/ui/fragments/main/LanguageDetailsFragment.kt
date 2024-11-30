@@ -6,16 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.lotrwiki.R
+import com.example.lotrwiki.databinding.FragmentLanguageDetailsBinding
 
 
-class WeaponsFragment : Fragment() {
+class LanguageDetailsFragment : Fragment() {
+
+    private lateinit var binding: FragmentLanguageDetailsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_weapons, container, false)
+    ): View {
+        binding = FragmentLanguageDetailsBinding.inflate(layoutInflater)
+        return binding.root
     }
 
 }

@@ -14,60 +14,47 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lotrwiki.R
-import com.example.lotrwiki.adapters.LocationListAdapter
-import com.example.lotrwiki.adapters.OthersListAdapter
-import com.example.lotrwiki.databinding.FragmentOthersBinding
+import com.example.lotrwiki.adapters.LanguageListAdapter
+import com.example.lotrwiki.databinding.FragmentLanguagesBinding
 import com.example.lotrwiki.utils.setUpCustomToolbar
 import com.example.lotrwiki.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import net.cachapa.expandablelayout.ExpandableLayout
 
-class OthersFragment : Fragment() {
+class LanguagesFragment : Fragment() {
 
-    private lateinit var binding: FragmentOthersBinding
+    private lateinit var binding: FragmentLanguagesBinding
     private val viewModel: MainViewModel by activityViewModels()
-    private lateinit var adapter: OthersListAdapter
+    private lateinit var adapter: LanguageListAdapter
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentOthersBinding.inflate(layoutInflater)
+        binding = FragmentLanguagesBinding.inflate(layoutInflater)
         initCustomToolbar()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initExpandable(binding.tvOthersAll, binding.expandableLayoutOthers)
-        initOthersLoad()
-        observeOthers()
-
-
+        initExpandable(binding.tvLanguages, binding.expandableLayoutLanguages)
+        initLanguagesLoad()
+        observeLanguages()
     }
 
-    private fun initOthersLoad() {
-        adapter = OthersListAdapter {
+    private fun initLanguagesLoad() {
+        adapter = LanguageListAdapter {
             val action =
-                OthersFragmentDirections.actionOthersFragmentToOtherDetailsFragment(
-                    otherId = it
+                LanguagesFragmentDirections.actionLanguagesFragmentToLanguageDetailsFragment(
+                    languageId = it
                 )
             findNavController().navigate(action)
         }
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-    }
-
-    private fun observeOthers() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.getOthers().collectLatest { pagingData ->
-                    adapter.submitData(pagingData)
-                }
-            }
-        }
     }
 
     private fun initExpandable(tv: TextView, expandableLayout: ExpandableLayout) {
@@ -76,8 +63,22 @@ class OthersFragment : Fragment() {
         }
     }
 
+    private fun observeLanguages() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.getLanguages().collectLatest { pagingData ->
+                    adapter.submitData(pagingData)
+                }
+            }
+        }
+    }
+
     private fun initCustomToolbar() {
-        setUpCustomToolbar(binding.othersCustomToolbar, "Otros", findNavController())
+        setUpCustomToolbar(
+            binding.customToolbarLanguages,
+            "Lenguajes y Escritura",
+            findNavController()
+        )
     }
 
     private fun toggleExpandable(expandableLayout: ExpandableLayout) {
@@ -87,4 +88,5 @@ class OthersFragment : Fragment() {
             expandableLayout.expand()
         }
     }
+
 }

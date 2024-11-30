@@ -10,12 +10,16 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.lotrwiki.adapters.CharactersPagingSource
+import com.example.lotrwiki.adapters.LanguagesPagingSource
 import com.example.lotrwiki.adapters.LocationsPagingSource
+import com.example.lotrwiki.adapters.OthersPagingSource
 import com.example.lotrwiki.model.Book
 import com.example.lotrwiki.model.Character
+import com.example.lotrwiki.model.Language
 import com.example.lotrwiki.model.Location
 import com.example.lotrwiki.model.Map
 import com.example.lotrwiki.model.Movie
+import com.example.lotrwiki.model.Other
 import com.example.lotrwiki.model.Race
 import com.example.lotrwiki.utils.CharacterFilter
 import com.google.firebase.database.DataSnapshot
@@ -37,6 +41,9 @@ class MainViewModel : ViewModel() {
 
     private val _locationDetails = MutableLiveData<Location?>()
     val locationDetails: LiveData<Location?> = _locationDetails
+
+    private val _otherDetails = MutableLiveData<Other?>()
+    val otherDetails: LiveData<Other?> = _otherDetails
 
     private val _mapList = MutableLiveData<List<Map>>()
     val mapList: LiveData<List<Map>> = _mapList
@@ -90,6 +97,28 @@ class MainViewModel : ViewModel() {
             .cachedIn(viewModelScope)
     }
 
+    fun getOthers(): Flow<PagingData<Other>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 50,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { OthersPagingSource() }
+        ).flow
+            .cachedIn(viewModelScope)
+    }
+
+    fun getLanguages(): Flow<PagingData<Language>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 50,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { LanguagesPagingSource() }
+        ).flow
+            .cachedIn(viewModelScope)
+    }
+
     fun getCharacterById(id: String) {
         val ref = firebaseDatabase.getReference("characters").child(id)
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -125,8 +154,28 @@ class MainViewModel : ViewModel() {
         })
     }
 
+    fun getOthersById(id: String) {
+        val ref = firebaseDatabase.getReference("others").child(id)
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val other = snapshot.getValue(Other::class.java)
+                if (other != null) {
+                    _otherDetails.value = other
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+    }
+
     fun clearLocationDetails() {
         _locationDetails.value = null
+    }
+
+    fun clearOtherDetails() {
+        _otherDetails.value = null
     }
 
     // QUOTE

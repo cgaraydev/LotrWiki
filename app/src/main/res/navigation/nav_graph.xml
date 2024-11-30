@@ -94,15 +94,6 @@
             app:destination="@id/tolkienFragment" />
     </fragment>
     <fragment
-        android:id="@+id/weaponsFragment"
-        android:name="com.example.lotrwiki.ui.fragments.main.WeaponsFragment"
-        android:label="fragment_weapons"
-        tools:layout="@layout/fragment_weapons">
-        <action
-            android:id="@+id/action_global_weaponsFragment"
-            app:destination="@id/weaponsFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/othersFragment"
         android:name="com.example.lotrwiki.ui.fragments.main.OthersFragment"
         android:label="fragment_others"
@@ -110,6 +101,9 @@
         <action
             android:id="@+id/action_global_othersFragment"
             app:destination="@id/othersFragment" />
+        <action
+            android:id="@+id/action_othersFragment_to_otherDetailsFragment"
+            app:destination="@id/otherDetailsFragment" />
 
     </fragment>
     <fragment
@@ -120,6 +114,32 @@
         <action
             android:id="@+id/action_locationsFragment_to_locationDetailsFragment"
             app:destination="@id/locationDetailsFragment" />
+        <action
+            android:id="@+id/action_locationsFragment_self"
+            app:destination="@id/locationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/languagesFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.LanguagesFragment"
+        android:label="LanguagesFragment">
+        <action
+            android:id="@+id/action_languagesFragment_self"
+            app:destination="@id/languagesFragment" />
+        <action
+            android:id="@+id/action_languagesFragment_to_languageDetailsFragment"
+            app:destination="@id/languageDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/languageDetailsFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.LanguageDetailsFragment"
+        android:label="fragment_language_details"
+        tools:layout="@layout/fragment_language_details">
+        <argument
+            android:name="languageId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_languageDetailsFragment_self"
+            app:destination="@id/languageDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/locationDetailsFragment"
@@ -133,6 +153,19 @@
             android:id="@+id/action_locationDetailsFragment_self"
             app:destination="@id/locationDetailsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/otherDetailsFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.OtherDetailsFragment"
+        android:label="fragment_other_details"
+        tools:layout="@layout/fragment_other_details">
+        <argument
+            android:name="otherId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_otherDetailsFragment_self"
+            app:destination="@id/otherDetailsFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.example.lotrwiki.ui.fragments.main.CharacterDetailsFragment"
@@ -185,9 +218,6 @@
         android:id="@+id/action_global_raceFragment"
         app:destination="@id/raceFragment" />
     <action
-        android:id="@+id/action_global_weaponsFragment"
-        app:destination="@id/weaponsFragment" />
-    <action
         android:id="@+id/action_global_tolkienFragment"
         app:destination="@id/tolkienFragment" />
     <action
@@ -220,4 +250,13 @@
     <action
         android:id="@+id/action_global_locationDetailsFragment"
         app:destination="@id/locationDetailsFragment" />
+    <action
+        android:id="@+id/action_global_otherDetailsFragment"
+        app:destination="@id/otherDetailsFragment" />
+    <action
+        android:id="@+id/action_global_languagesFragment"
+        app:destination="@id/languagesFragment" />
+    <action
+        android:id="@+id/action_global_languageDetailsFragment"
+        app:destination="@id/languageDetailsFragment" />
 </navigation>
