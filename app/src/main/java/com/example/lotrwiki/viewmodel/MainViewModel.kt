@@ -10,11 +10,13 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.lotrwiki.adapters.CharactersPagingSource
+import com.example.lotrwiki.adapters.EventsPagingSource
 import com.example.lotrwiki.adapters.LanguagesPagingSource
 import com.example.lotrwiki.adapters.LocationsPagingSource
 import com.example.lotrwiki.adapters.OthersPagingSource
 import com.example.lotrwiki.model.Book
 import com.example.lotrwiki.model.Character
+import com.example.lotrwiki.model.Event
 import com.example.lotrwiki.model.Language
 import com.example.lotrwiki.model.Location
 import com.example.lotrwiki.model.Map
@@ -44,6 +46,12 @@ class MainViewModel : ViewModel() {
 
     private val _otherDetails = MutableLiveData<Other?>()
     val otherDetails: LiveData<Other?> = _otherDetails
+
+    private val _languageDetails = MutableLiveData<Language?>()
+    val languageDetails: LiveData<Language?> = _languageDetails
+
+    private val _eventDetails = MutableLiveData<Event?>()
+    val eventDetails: LiveData<Event?> = _eventDetails
 
     private val _mapList = MutableLiveData<List<Map>>()
     val mapList: LiveData<List<Map>> = _mapList
@@ -119,6 +127,33 @@ class MainViewModel : ViewModel() {
             .cachedIn(viewModelScope)
     }
 
+    fun getEvents(): Flow<PagingData<Event>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 50,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { EventsPagingSource() }
+        ).flow
+            .cachedIn(viewModelScope)
+    }
+
+    fun getEventsById(id: String) {
+        val ref = firebaseDatabase.getReference("events").child(id)
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val event = snapshot.getValue(Event::class.java)
+                if (event != null) {
+                    _eventDetails.value = event
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+    }
+
     fun getCharacterById(id: String) {
         val ref = firebaseDatabase.getReference("characters").child(id)
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -136,6 +171,14 @@ class MainViewModel : ViewModel() {
 
     fun clearCharacterDetails() {
         _characterDetails.value = null
+    }
+
+    fun clearLanguageDetails() {
+        _languageDetails.value = null
+    }
+
+    fun clearEventDetails() {
+        _eventDetails.value = null
     }
 
     fun getLocationsById(id: String) {
@@ -161,6 +204,22 @@ class MainViewModel : ViewModel() {
                 val other = snapshot.getValue(Other::class.java)
                 if (other != null) {
                     _otherDetails.value = other
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+    }
+
+    fun getLanguagesById(id: String) {
+        val ref = firebaseDatabase.getReference("languages").child(id)
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val language = snapshot.getValue(Language::class.java)
+                if (language != null) {
+                    _languageDetails.value = language
                 }
             }
 

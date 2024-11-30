@@ -130,6 +130,29 @@
             app:destination="@id/languageDetailsFragment" />
     </fragment>
     <fragment
+        android:id="@+id/eventsFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.EventsFragment"
+        android:label="EventsFragment">
+        <action
+            android:id="@+id/action_eventsFragment_self"
+            app:destination="@id/eventsFragment" />
+        <action
+            android:id="@+id/action_eventsFragment_to_eventDetailsFragment"
+            app:destination="@id/eventDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eventDetailsFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.EventDetailsFragment"
+        android:label="fragment_event_details"
+        tools:layout="@layout/fragment_event_details">
+        <argument
+            android:name="eventId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_eventDetailsFragment_self"
+            app:destination="@id/eventDetailsFragment" />
+    </fragment>
+    <fragment
         android:id="@+id/languageDetailsFragment"
         android:name="com.example.lotrwiki.ui.fragments.main.LanguageDetailsFragment"
         android:label="fragment_language_details"
@@ -259,4 +282,10 @@
     <action
         android:id="@+id/action_global_languageDetailsFragment"
         app:destination="@id/languageDetailsFragment" />
+    <action
+        android:id="@+id/action_global_eventsFragment"
+        app:destination="@id/eventsFragment" />
+    <action
+        android:id="@+id/action_global_eventDetailsFragment"
+        app:destination="@id/eventDetailsFragment" />
 </navigation>
