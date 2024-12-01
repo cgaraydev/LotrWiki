@@ -11,10 +11,10 @@ data class Event(
     var location: String? = null,
     var otherNames: String? = null,
     var outcome: String? = null,
-    var combatants: String? = null,
-    var commanders: String? = null,
-    var strength: String? = null,
-    var casualties: String? = null,
+    var combatants: Combatants? = null,
+    var commanders: Commanders? = null,
+    var strength: Strength? = null,
+    var casualties: Casualties? = null,
     var wikiUrl: WikiUrl? = null,
     var images: List<Images> = emptyList(),
     var tags: List<String> = emptyList(),
@@ -22,3 +22,25 @@ data class Event(
     var etymology: String? = null,
     var battles: String? = null
 )
+
+data class Combatants(
+    var good: String? = null,
+    var evil: String? = null
+)
+
+data class Commanders(
+    var good: String? = null,
+    var evil: String? = null
+)
+
+data class Casualties(
+    var good: String? = null,
+    var evil: String? = null
+)
+
+data class Strength(
+    var good: String? = null,
+    var evil: String? = null
+)
+
+

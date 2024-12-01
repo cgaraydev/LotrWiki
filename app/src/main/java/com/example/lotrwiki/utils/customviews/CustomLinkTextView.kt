@@ -72,6 +72,11 @@ class CustomLinkTextView @JvmOverloads constructor(
                     val languageId = url.substringAfter("language:")
                     navigateToLanguage(languageId)
                 }
+
+                url.startsWith("event") -> {
+                    val eventId = url.substringAfter("event:")
+                    navigateToEvent(eventId)
+                }
             }
         }
 
@@ -90,16 +95,24 @@ class CustomLinkTextView @JvmOverloads constructor(
         val action = NavGraphDirections.actionGlobalCharacterDetailsFragment(characterId)
         findNavController().navigate(action)
     }
+
     private fun navigateToLocation(locationId: String) {
         val action = NavGraphDirections.actionGlobalLocationDetailsFragment(locationId)
         findNavController().navigate(action)
     }
+
     private fun navigateToOther(otherId: String) {
         val action = NavGraphDirections.actionGlobalOtherDetailsFragment(otherId)
         findNavController().navigate(action)
     }
+
     private fun navigateToLanguage(languageId: String) {
         val action = NavGraphDirections.actionGlobalLanguageDetailsFragment(languageId)
+        findNavController().navigate(action)
+    }
+
+    private fun navigateToEvent(eventId: String) {
+        val action = NavGraphDirections.actionGlobalEventDetailsFragment(eventId)
         findNavController().navigate(action)
     }
 

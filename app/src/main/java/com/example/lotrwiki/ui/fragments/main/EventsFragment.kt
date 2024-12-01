@@ -49,7 +49,6 @@ class EventsFragment : Fragment() {
             )
             findNavController().navigate(action)
         }
-
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }

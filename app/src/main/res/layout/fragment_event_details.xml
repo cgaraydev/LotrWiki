@@ -1,14 +1,473 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
+    android:padding="16dp"
     tools:context=".ui.fragments.main.EventDetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/eventDetailsHeader"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseCompoundDrawables">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/tvEventDetailsName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/ring_bearer_medium"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            tools:text="Batalla de los Campos del Celebrant" />
+
+        <ImageView
+            android:id="@+id/ivBtnBackDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/back_button"
+            android:src="@drawable/ic_back"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/eventDetailsHeader">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivEventDetailsPoster"
+                android:layout_width="250dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:padding="10dp"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/ShapeAppearance.CharacterDetailsPoster" />
+
+            <TextView
+                android:id="@+id/tvEventCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                tools:text="Batalla" />
+
+            <com.example.lotrwiki.utils.customviews.CustomLinkTextView
+                android:id="@+id/tvEventDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:text="3019 TE" />
+
+            <TextView
+                android:id="@+id/tvEventDetailsBiographyTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/opensans_regular"
+                android:gravity="center"
+                android:text="Descripción"
+                android:textColor="@color/golden_dark"
+                android:textSize="18sp" />
+
+            <com.example.lotrwiki.utils.customviews.CustomLinkTextView
+                android:id="@+id/tvEventDetailsHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/opensans_light"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                tools:text="@string/tolkien_resumen" />
+
+            <TextView
+                android:id="@+id/tvInformation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10dp"
+                android:fontFamily="@font/opensans_regular"
+                android:text="Información"
+                android:textColor="@color/golden_dark"
+                android:textSize="14sp" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvEventDetailsEventConflict"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvEventDetailsOtherNames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvEventDetailsLocations"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvEventDetailsOutcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvEventDetailsCombatants"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvEventDetailsCommanders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvEventDetailsStrength"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvEventDetailsCasualties"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvEventDetailsInvolved"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvEventDetailsBattles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvEventDetailsEtymology"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/llCombatants"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvEventDetailsName">
+
+                <TextView
+                    android:id="@+id/tvCombatantsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/ring_bearer_medium"
+                    android:text="Combatientes"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:id="@+id/llGoodCombatants"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Aliados"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomLinkTextView
+                        android:id="@+id/tvGoodCombatants"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textColor="@color/white"
+                        tools:text="Elfos, Hombres, Enanos" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llEvilCombatants"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Enemigos"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomLinkTextView
+                        android:id="@+id/tvEvilCombatants"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textColor="@color/white"
+                        tools:text="Orcos, Hombres malvados" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llCommanders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvEventDetailsName">
+
+                <TextView
+                    android:id="@+id/tvCommandersTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/ring_bearer_medium"
+                    android:text="Comandantes"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:id="@+id/llGoodCommanders"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Aliados"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomLinkTextView
+                        android:id="@+id/tvGoodCommanders"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textColor="@color/white"
+                        tools:text="Elfos, Hombres, Enanos" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llEvilCommanders"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Enemigos"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomLinkTextView
+                        android:id="@+id/tvEvilCommanders"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textColor="@color/white"
+                        tools:text="Orcos, Hombres malvados" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llStrength"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvEventDetailsName">
+
+                <TextView
+                    android:id="@+id/tvStrengthTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/ring_bearer_medium"
+                    android:text="Fuerzas"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:id="@+id/llGoodStrength"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Aliados"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomLinkTextView
+                        android:id="@+id/tvGoodStrength"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textColor="@color/white"
+                        tools:text="Elfos, Hombres, Enanos" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llEvilStrength"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Enemigos"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomLinkTextView
+                        android:id="@+id/tvEvilStrength"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textColor="@color/white"
+                        tools:text="Orcos, Hombres malvados" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llCasualties"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvEventDetailsName">
+
+                <TextView
+                    android:id="@+id/tvCasualtiesTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/ring_bearer_medium"
+                    android:text="Bajas"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:id="@+id/llGoodCasualties"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Aliados"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomLinkTextView
+                        android:id="@+id/tvGoodCasualties"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textColor="@color/white"
+                        tools:text="Elfos, Hombres, Enanos" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llEvilCasualties"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Enemigos"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <com.example.lotrwiki.utils.customviews.CustomLinkTextView
+                        android:id="@+id/tvEvilCasualties"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:textColor="@color/white"
+                        tools:text="Orcos, Hombres malvados" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <ProgressBar
+        android:id="@+id/pbEventDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
