@@ -225,7 +225,7 @@
         android:label="fragment_race_details"
         tools:layout="@layout/fragment_race_details">
         <argument
-            android:name="id"
+            android:name="raceId"
             app:argType="string" />
     </fragment>
     <fragment
@@ -288,4 +288,5 @@
     <action
         android:id="@+id/action_global_eventDetailsFragment"
         app:destination="@id/eventDetailsFragment" />
+    <action android:id="@+id/action_global_raceDetailsFragment" app:destination="@id/raceDetailsFragment" />
 </navigation>

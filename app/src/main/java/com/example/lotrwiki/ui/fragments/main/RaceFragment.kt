@@ -1,6 +1,7 @@
 package com.example.lotrwiki.ui.fragments.main
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -46,7 +47,7 @@ class RaceFragment : Fragment() {
 
     private fun initRaces() {
         val adapter = RaceAdapter {
-            val action = RaceFragmentDirections.actionRaceFragmentToRaceDetailsFragment(id = it)
+            val action = RaceFragmentDirections.actionRaceFragmentToRaceDetailsFragment(raceId = it)
             findNavController().navigate(action)
 
         }
@@ -54,6 +55,7 @@ class RaceFragment : Fragment() {
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.rvRacesList.adapter = adapter
         viewModel.raceList.observe(viewLifecycleOwner, Observer {
+            Log.d("RaceFragment", "Races received: $it")
             adapter.submitList(it)
         })
         viewModel.getRaceList()

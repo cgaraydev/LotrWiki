@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    android:orientation="vertical"
-    tools:context=".fragments.main.RaceDetailsFragment">
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvRace"
@@ -29,7 +28,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="imagen raza" />
 
             <TextView
                 android:id="@+id/tvRaceDetailsTitle"
@@ -48,11 +48,11 @@
                 android:id="@+id/ivBtnBackDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:layout_margin="16dp"
                 android:contentDescription="@string/back_button"
                 android:src="@drawable/ic_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/white" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -62,13 +62,13 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cvRace">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -79,8 +79,8 @@
                 android:layout_gravity="center"
                 android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/tvRaceDetailsIntroduction"
+            <com.example.lotrwiki.utils.customviews.CustomLinkTextView
+                android:id="@+id/tvRaceDetailsHistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -88,36 +88,51 @@
                 android:textColor="@color/white"
                 tools:text="@string/tolkien_resumen" />
 
-            <ImageView
-                android:id="@+id/ivRaceDetails1"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop" />
 
-            <TextView
-                android:id="@+id/tvRaceDetailsBody1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:padding="8dp"
-                android:textColor="@color/white"
-                tools:text="@string/tolkien_resumen" />
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvRaceOtherNames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-            <ImageView
-                android:id="@+id/ivRaceDetails2"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop" />
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvRaceOrigins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/tvRaceDetailsBody2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:padding="8dp"
-                android:layout_marginBottom="48dp"
-                android:textColor="@color/white"
-                tools:text="@string/tolkien_resumen" />
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvRaceLocations"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvRaceLanguages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvRacePeople"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvRaceMembers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvRaceLifespan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvRaceCharacteristics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.example.lotrwiki.utils.customviews.CustomDetailsText
+                android:id="@+id/tvRaceEtymology"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

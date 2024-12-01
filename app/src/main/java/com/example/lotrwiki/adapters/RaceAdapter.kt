@@ -20,7 +20,9 @@ class RaceAdapter(
             binding.cvRace.setOnClickListener {
                 onClick(race.id.toString())
             }
-            Glide.with(binding.root.context).load(race.image).into(binding.ivRaceImage)
+            Glide.with(binding.root.context)
+                .load("https://firebasestorage.googleapis.com/v0/b/lotrwiki-2dd76.appspot.com/o/" + race.poster)
+                .into(binding.ivRaceImage)
         }
     }
 

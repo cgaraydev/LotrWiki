@@ -77,6 +77,12 @@ class CustomLinkTextView @JvmOverloads constructor(
                     val eventId = url.substringAfter("event:")
                     navigateToEvent(eventId)
                 }
+
+                url.startsWith("race") -> {
+                    val raceId = url.substringAfter("race:")
+                    navigateToRace(raceId)
+                }
+                else -> {}
             }
         }
 
@@ -113,6 +119,11 @@ class CustomLinkTextView @JvmOverloads constructor(
 
     private fun navigateToEvent(eventId: String) {
         val action = NavGraphDirections.actionGlobalEventDetailsFragment(eventId)
+        findNavController().navigate(action)
+    }
+
+    private fun navigateToRace(raceId: String) {
+        val action = NavGraphDirections.actionGlobalRaceDetailsFragment(raceId)
         findNavController().navigate(action)
     }
 

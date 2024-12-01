@@ -43,22 +43,34 @@ class RaceDetailsFragment : Fragment() {
 
     private fun initRaceDetails() {
         binding.pbRaceDetails.visibility = View.VISIBLE
-        val raceId = args.id
+        val raceId = args.raceId
+        viewModel.clearRaceDetails()
+        viewModel.getRaceDetailsById(raceId)
         viewModel.raceDetails.observe(viewLifecycleOwner) {
-            binding.apply {
+            with(binding) {
                 if (it != null) {
+                    if (!it.poster.isNullOrEmpty()){
+                        Glide.with(requireContext())
+                            .load("https://firebasestorage.googleapis.com/v0/b/lotrwiki-2dd76.appspot.com/o/" + it.poster)
+                            .into(ivRaceDetailsImage)
+                    }
                     pbRaceDetails.visibility = View.GONE
-                    Glide.with(requireContext()).load(it.image).into(ivRaceDetailsImage)
-                    Glide.with(requireContext()).load(it.image3).into(ivRaceDetails1)
-                    Glide.with(requireContext()).load(it.image2).into(ivRaceDetails2)
                     tvRaceDetailsTitle.text = it.name
-                    tvRaceDetailsIntroduction.text = it.introduction
-                    tvRaceDetailsBody1.text = it.body1
-                    tvRaceDetailsBody2.text = it.body2
+                    tvRaceDetailsHistory.setHtmlText(it.history)
+                    tvRaceOtherNames.setTextOrHide("Otros nombres", it.otherNames)
+                    tvRaceOrigins.setTextOrHide("Origenes", it.origins)
+                    tvRaceLocations.setTextOrHide("Ubicaciones", it.location)
+                    tvRaceLanguages.setTextOrHide("Idiomas", it.languages)
+                    tvRacePeople.setTextOrHide("Pueblos", it.people)
+                    tvRaceMembers.setTextOrHide("Miembros destacados", it.members)
+                    tvRaceLifespan.setTextOrHide("Vida", it.lifespan)
+                    tvRaceCharacteristics.setTextOrHide("Caracteristicas", it.characteristics)
+                    tvRaceEtymology.setTextOrHide("Etimologia", it.etymology)
+
+
                 }
             }
         }
-        viewModel.getRaceDetailsById(raceId)
     }
 
     override fun onDestroy() {
