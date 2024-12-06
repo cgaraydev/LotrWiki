@@ -53,15 +53,24 @@ class EventsFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
+//    private fun observeEvents() {
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                viewModel.getEvents().collectLatest { pagingData ->
+//                    adapter.submitData(pagingData)
+//                }
+//            }
+//        }
+//    }
+
     private fun observeEvents() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.getEvents().collectLatest { pagingData ->
-                    adapter.submitData(pagingData)
-                }
+        lifecycleScope.launch {
+            viewModel.events.collectLatest {
+                adapter.submitData(it)
             }
         }
     }
+
 
     private fun initExpandable(tv: TextView, expandableLayout: ExpandableLayout) {
         tv.setOnClickListener {

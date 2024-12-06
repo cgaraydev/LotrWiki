@@ -1,10 +1,13 @@
 package com.example.lotrwiki.adapters
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.lotrwiki.model.Location
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withContext
 
 class LocationsPagingSource : PagingSource<Int, Location>() {
 
@@ -19,18 +22,27 @@ class LocationsPagingSource : PagingSource<Int, Location>() {
 
         val currentPage = params.key ?: 0
         val pageSize = params.loadSize
+        Log.d("PagingSource", "Load called - currentPage: $currentPage, pageSize: $pageSize")
+
 
         return try {
 
             val ref = firebaseDatabase.getReference("locations")
-            val snapshot = ref.orderByKey().limitToFirst(pageSize).get().await()
+//            val snapshot = ref.orderByKey().limitToFirst(pageSize).get().await()
 //            val locations = snapshot.children.mapNotNull { it.getValue(Location::class.java) }
+            val snapshot = withContext(Dispatchers.IO){
+                ref.orderByKey().limitToFirst(pageSize).get().await()
+            }
             val locations = snapshot.children.mapNotNull {
                 val id = it.key
                 val name = it.child("name").getValue(String::class.java)
                 if (id != null && name != null) Location(id, name) else null
 
             }
+
+            Log.d("PagingSource", "Loaded ${locations.size} locations")
+            locations.forEach { Log.d("PagingSource", "Location loaded: ${it.id}, ${it.name}") }
+
 
             LoadResult.Page(
                 data = locations,
@@ -39,6 +51,7 @@ class LocationsPagingSource : PagingSource<Int, Location>() {
             )
 
         } catch (e: Exception) {
+            Log.e("PagingSource", "Error loading data: ${e.message}", e)
             LoadResult.Error(e)
         }
     }

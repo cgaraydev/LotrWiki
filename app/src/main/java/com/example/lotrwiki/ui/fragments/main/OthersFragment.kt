@@ -60,15 +60,24 @@ class OthersFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
+//    private fun observeOthers() {
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                viewModel.getOthers().collectLatest { pagingData ->
+//                    adapter.submitData(pagingData)
+//                }
+//            }
+//        }
+//    }
+
     private fun observeOthers() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.getOthers().collectLatest { pagingData ->
-                    adapter.submitData(pagingData)
-                }
+        lifecycleScope.launch {
+            viewModel.others.collectLatest {
+                adapter.submitData(it)
             }
         }
     }
+
 
     private fun initExpandable(tv: TextView, expandableLayout: ExpandableLayout) {
         tv.setOnClickListener {

@@ -39,6 +39,15 @@ class LocationListAdapter(
                 onItemClicked(location.id.toString())
             }
         }
+
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationFragmentViewHolder {
+        val binding = ItemBookBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return LocationFragmentViewHolder(binding)
+    }
+}
+
 //          SUGERIDO POR CHATGPT:
 //        val location = getItem(position)
 //        location?.let {
@@ -47,13 +56,6 @@ class LocationListAdapter(
 //                onItemClicked(it.id.toString())
 //            }
 //        } ?: Log.e("LocationListAdapter", "Location at position $position is null")
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationFragmentViewHolder {
-        val binding = ItemBookBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return LocationFragmentViewHolder(binding)
-    }
-}
 
 
 //class LocationAdapter(

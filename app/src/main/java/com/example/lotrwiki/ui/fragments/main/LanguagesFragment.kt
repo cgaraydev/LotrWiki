@@ -63,15 +63,24 @@ class LanguagesFragment : Fragment() {
         }
     }
 
+//    private fun observeLanguages() {
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                viewModel.getLanguages().collectLatest { pagingData ->
+//                    adapter.submitData(pagingData)
+//                }
+//            }
+//        }
+//    }
+
     private fun observeLanguages() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.getLanguages().collectLatest { pagingData ->
-                    adapter.submitData(pagingData)
-                }
+        lifecycleScope.launch {
+            viewModel.languages.collectLatest {
+                adapter.submitData(it)
             }
         }
     }
+
 
     private fun initCustomToolbar() {
         setUpCustomToolbar(

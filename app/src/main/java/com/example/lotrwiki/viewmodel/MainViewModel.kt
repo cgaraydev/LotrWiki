@@ -30,6 +30,10 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.getValue
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
 
@@ -94,49 +98,62 @@ class MainViewModel : ViewModel() {
             .cachedIn(viewModelScope)
     }
 
-    fun getLocations(): Flow<PagingData<Location>> {
-        return Pager(
-            config = PagingConfig(
-                pageSize = 50,
-                enablePlaceholders = false
-            ),
-            pagingSourceFactory = { LocationsPagingSource() }
-        ).flow
-            .cachedIn(viewModelScope)
-    }
 
-    fun getOthers(): Flow<PagingData<Other>> {
-        return Pager(
-            config = PagingConfig(
-                pageSize = 50,
-                enablePlaceholders = false
-            ),
-            pagingSourceFactory = { OthersPagingSource() }
-        ).flow
-            .cachedIn(viewModelScope)
-    }
+    val locations: Flow<PagingData<Location>> = Pager(
+        config = PagingConfig(
+            pageSize = 500,
+            enablePlaceholders = false
+        ),
+        pagingSourceFactory = { LocationsPagingSource() }
+    ).flow.cachedIn(viewModelScope)
 
-    fun getLanguages(): Flow<PagingData<Language>> {
-        return Pager(
-            config = PagingConfig(
-                pageSize = 50,
-                enablePlaceholders = false
-            ),
-            pagingSourceFactory = { LanguagesPagingSource() }
-        ).flow
-            .cachedIn(viewModelScope)
-    }
+    val others: Flow<PagingData<Other>> = Pager(
+        config = PagingConfig(
+            pageSize = 300,
+            enablePlaceholders = false
+        ),
+        pagingSourceFactory = { OthersPagingSource() }
+    ).flow.cachedIn(viewModelScope)
 
-    fun getEvents(): Flow<PagingData<Event>> {
-        return Pager(
-            config = PagingConfig(
-                pageSize = 50,
-                enablePlaceholders = false
-            ),
-            pagingSourceFactory = { EventsPagingSource() }
-        ).flow
-            .cachedIn(viewModelScope)
-    }
+    val events: Flow<PagingData<Event>> = Pager(
+        config = PagingConfig(
+            pageSize = 100,
+            enablePlaceholders = false
+        ),
+        pagingSourceFactory = { EventsPagingSource() }
+    ).flow.cachedIn(viewModelScope)
+
+    val languages: Flow<PagingData<Language>> = Pager(
+        config = PagingConfig(
+            pageSize = 20,
+            enablePlaceholders = false
+        ),
+        pagingSourceFactory = { LanguagesPagingSource() }
+    ).flow.cachedIn(viewModelScope)
+
+
+
+
+// CHATGPT OPCION
+//private fun <T : Any> createPager(
+//    pageSize: Int,
+//    pagingSourceFactory: () -> PagingSource<Int, T>
+//): Flow<PagingData<T>> {
+//    return Pager(
+//        config = PagingConfig(
+//            pageSize = pageSize,
+//            enablePlaceholders = false
+//        ),
+//        pagingSourceFactory = pagingSourceFactory
+//    ).flow.cachedIn(viewModelScope)
+//}
+//
+//    val locations: Flow<PagingData<Location>> = createPager(500) { LocationsPagingSource() }
+//    val others: Flow<PagingData<Other>> = createPager(300) { OthersPagingSource() }
+//    val events: Flow<PagingData<Event>> = createPager(100) { EventsPagingSource() }
+//    val languages: Flow<PagingData<Language>> = createPager(20) { LanguagesPagingSource() }
+
+
 
     fun getEventsById(id: String) {
         val ref = firebaseDatabase.getReference("events").child(id)
@@ -662,3 +679,62 @@ class MainViewModel : ViewModel() {
 //        .cachedIn(viewModelScope)
 
 
+//    fun getLocations(): Flow<PagingData<Location>> {
+//        return Pager(
+//            config = PagingConfig(
+//                pageSize = 50,
+//                enablePlaceholders = false
+//            ),
+//            pagingSourceFactory = { LocationsPagingSource() }
+//        ).flow
+//            .cachedIn(viewModelScope)
+//    }
+
+//    fun getLocations() {
+//        viewModelScope.launch {
+//            Pager(
+//                config = PagingConfig(
+//                    pageSize = 50,
+//                    enablePlaceholders = false
+//                ),
+//                pagingSourceFactory = { LocationsPagingSource() }
+//            ).flow
+//                .cachedIn(viewModelScope)
+////                .collectLatest { pagingData ->
+////                    _locations.value = pagingData // Emite el nuevo PagingData
+////                }
+//        }
+//    }
+
+//    fun getOthers(): Flow<PagingData<Other>> {
+//        return Pager(
+//            config = PagingConfig(
+//                pageSize = 50,
+//                enablePlaceholders = false
+//            ),
+//            pagingSourceFactory = { OthersPagingSource() }
+//        ).flow
+//            .cachedIn(viewModelScope)
+//    }
+
+//    fun getLanguages(): Flow<PagingData<Language>> {
+//        return Pager(
+//            config = PagingConfig(
+//                pageSize = 50,
+//                enablePlaceholders = false
+//            ),
+//            pagingSourceFactory = { LanguagesPagingSource() }
+//        ).flow
+//            .cachedIn(viewModelScope)
+//    }
+
+//    fun getEvents(): Flow<PagingData<Event>> {
+//        return Pager(
+//            config = PagingConfig(
+//                pageSize = 50,
+//                enablePlaceholders = false
+//            ),
+//            pagingSourceFactory = { EventsPagingSource() }
+//        ).flow
+//            .cachedIn(viewModelScope)
+//    }

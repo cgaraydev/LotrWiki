@@ -59,15 +59,24 @@ class LocationsFragment : Fragment() {
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
+//    private fun observeLocations() {
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                viewModel.getLocations().collectLatest { pagingData ->
+//                    adapter.submitData(pagingData)
+//                }
+//            }
+//        }
+//    }
+
     private fun observeLocations() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.getLocations().collectLatest { pagingData ->
-                    adapter.submitData(pagingData)
-                }
+        lifecycleScope.launch {
+            viewModel.locations.collectLatest {
+                adapter.submitData(it)
             }
         }
     }
+
 
     private fun initExpandable(tv: TextView, expandableLayout: ExpandableLayout) {
         tv.setOnClickListener {

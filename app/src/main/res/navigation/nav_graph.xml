@@ -289,4 +289,9 @@
         android:id="@+id/action_global_eventDetailsFragment"
         app:destination="@id/eventDetailsFragment" />
     <action android:id="@+id/action_global_raceDetailsFragment" app:destination="@id/raceDetailsFragment" />
+    <fragment
+        android:id="@+id/emptyFragment"
+        android:name="com.example.lotrwiki.ui.fragments.main.EmptyFragment"
+        android:label="fragment_empty"
+        tools:layout="@layout/fragment_empty" /><action android:id="@+id/action_global_emptyFragment" app:destination="@id/emptyFragment"/>
 </navigation>
